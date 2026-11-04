@@ -31,6 +31,11 @@ def summarize(results: list[dict]) -> dict:
         summary["mean_td_abs_error"] = round(
             statistics.mean(item["td_mean_abs_error"] for item in results), 4
         )
+    if all("merge_score" in item for item in results):
+        scores = [item["merge_score"] for item in results]
+        summary.update(mean_merge_score=round(statistics.mean(scores), 2),
+                       median_merge_score=statistics.median(scores),
+                       best_merge_score=max(scores))
     return summary
 
 

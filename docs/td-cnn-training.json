@@ -1,0 +1,1787 @@
+{
+  "model": "game2048/wrappers/TD/models/td-3x3-cnn.pt",
+  "model_sha256": "b6083d44c321df945691c416b7b44c9e480dbe98d4c7bce75e79d8e47aa0d221",
+  "architecture": "katsuta-deep-79874-linear",
+  "parameter_count": 79874,
+  "config": {
+    "objective": "sum",
+    "learning_rate": 0.0003,
+    "batch_size": 1024,
+    "value_scale": 1024.0,
+    "epsilon_start": 0.1,
+    "epsilon_end": 0.01,
+    "epsilon_decay_episodes": 5000,
+    "target_bonus": 256.0,
+    "gradient_clip": 10.0
+  },
+  "episodes_trained": 50000,
+  "positions_trained": 7512917,
+  "optimizer_steps": 7337,
+  "runs": [
+    {
+      "log_file": "log/game2048-td-train-20261104T103255315180Z-99408.log",
+      "first_seed": 20000,
+      "last_started_seed": 29999,
+      "completed_episodes": 10000,
+      "learning_rate": 0.001,
+      "n_envs": 32,
+      "elapsed_seconds": 102.34,
+      "retained_through_checkpoint_episode": 10000
+    },
+    {
+      "log_file": "log/game2048-td-train-20261104T103552311272Z-102131.log",
+      "first_seed": 30000,
+      "last_started_seed": 69030,
+      "completed_episodes": 39000,
+      "learning_rate": 0.0003,
+      "n_envs": 32,
+      "elapsed_seconds": 764.18,
+      "retained_through_checkpoint_episode": 49000
+    },
+    {
+      "log_file": "log/game2048-td-train-20261104T104954070919Z-112824.log",
+      "first_seed": 70000,
+      "last_started_seed": 70999,
+      "completed_episodes": 1000,
+      "learning_rate": 0.0003,
+      "n_envs": 32,
+      "elapsed_seconds": 21.78,
+      "retained_through_checkpoint_episode": 50000
+    }
+  ],
+  "checkpoint_note": "Second run was interrupted; only records through the saved 49,000-game checkpoint are included. In-flight games and queued targets are not restored.",
+  "first_500": {
+    "episodes": 500,
+    "mean_sum": 91.99,
+    "median_sum": 86.0,
+    "best_sum": 210,
+    "reach_rate": 0.0,
+    "mean_max_tile": 37.81,
+    "mean_steps": 39.79,
+    "end_reasons": {
+      "no_legal_moves": 500
+    },
+    "mean_td_abs_error": 6.0777,
+    "mean_merge_score": 273.51,
+    "median_merge_score": 230.0,
+    "best_merge_score": 976
+  },
+  "last_500": {
+    "episodes": 500,
+    "mean_sum": 406.59,
+    "median_sum": 440.0,
+    "best_sum": 876,
+    "reach_rate": 0.738,
+    "mean_max_tile": 240.64,
+    "mean_steps": 182.85,
+    "end_reasons": {
+      "no_legal_moves": 500
+    },
+    "mean_td_abs_error": 6.7094,
+    "mean_merge_score": 2384.67,
+    "median_merge_score": 2598.0,
+    "best_merge_score": 6180
+  },
+  "blocks": [
+    {
+      "through_episode": 500,
+      "episodes": 500,
+      "mean_sum": 91.99,
+      "median_sum": 86.0,
+      "best_sum": 210,
+      "reach_rate": 0.0,
+      "mean_max_tile": 37.81,
+      "mean_steps": 39.79,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.0777,
+      "mean_merge_score": 273.51,
+      "median_merge_score": 230.0,
+      "best_merge_score": 976
+    },
+    {
+      "through_episode": 1000,
+      "episodes": 500,
+      "mean_sum": 114.24,
+      "median_sum": 110.0,
+      "best_sum": 260,
+      "reach_rate": 0.0,
+      "mean_max_tile": 51.87,
+      "mean_steps": 49.88,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.2244,
+      "mean_merge_score": 391.5,
+      "median_merge_score": 356.0,
+      "best_merge_score": 1256
+    },
+    {
+      "through_episode": 1500,
+      "episodes": 500,
+      "mean_sum": 131.0,
+      "median_sum": 132.0,
+      "best_sum": 452,
+      "reach_rate": 0.006,
+      "mean_max_tile": 61.28,
+      "mean_steps": 57.57,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.209,
+      "mean_merge_score": 484.99,
+      "median_merge_score": 476.0,
+      "best_merge_score": 2676
+    },
+    {
+      "through_episode": 2000,
+      "episodes": 500,
+      "mean_sum": 113.04,
+      "median_sum": 110.0,
+      "best_sum": 258,
+      "reach_rate": 0.0,
+      "mean_max_tile": 51.54,
+      "mean_steps": 49.47,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 4.8112,
+      "mean_merge_score": 386.66,
+      "median_merge_score": 392.0,
+      "best_merge_score": 1216
+    },
+    {
+      "through_episode": 2500,
+      "episodes": 500,
+      "mean_sum": 142.79,
+      "median_sum": 138.0,
+      "best_sum": 352,
+      "reach_rate": 0.004,
+      "mean_max_tile": 70.11,
+      "mean_steps": 62.99,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.8547,
+      "mean_merge_score": 552.88,
+      "median_merge_score": 506.0,
+      "best_merge_score": 2028
+    },
+    {
+      "through_episode": 3000,
+      "episodes": 500,
+      "mean_sum": 156.22,
+      "median_sum": 146.0,
+      "best_sum": 338,
+      "reach_rate": 0.002,
+      "mean_max_tile": 77.41,
+      "mean_steps": 68.87,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.4432,
+      "mean_merge_score": 629.82,
+      "median_merge_score": 536.0,
+      "best_merge_score": 1976
+    },
+    {
+      "through_episode": 3500,
+      "episodes": 500,
+      "mean_sum": 172.07,
+      "median_sum": 155.0,
+      "best_sum": 402,
+      "reach_rate": 0.016,
+      "mean_max_tile": 88.48,
+      "mean_steps": 76.33,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.8062,
+      "mean_merge_score": 729.42,
+      "median_merge_score": 582.0,
+      "best_merge_score": 2288
+    },
+    {
+      "through_episode": 4000,
+      "episodes": 500,
+      "mean_sum": 180.96,
+      "median_sum": 164.0,
+      "best_sum": 404,
+      "reach_rate": 0.016,
+      "mean_max_tile": 92.61,
+      "mean_steps": 80.31,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.4201,
+      "mean_merge_score": 783.04,
+      "median_merge_score": 620.0,
+      "best_merge_score": 2300
+    },
+    {
+      "through_episode": 4500,
+      "episodes": 500,
+      "mean_sum": 199.02,
+      "median_sum": 200.0,
+      "best_sum": 452,
+      "reach_rate": 0.036,
+      "mean_max_tile": 106.3,
+      "mean_steps": 88.28,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.1092,
+      "mean_merge_score": 900.47,
+      "median_merge_score": 940.0,
+      "best_merge_score": 2580
+    },
+    {
+      "through_episode": 5000,
+      "episodes": 500,
+      "mean_sum": 217.44,
+      "median_sum": 222.0,
+      "best_sum": 482,
+      "reach_rate": 0.066,
+      "mean_max_tile": 119.87,
+      "mean_steps": 96.9,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.1617,
+      "mean_merge_score": 1023.26,
+      "median_merge_score": 1050.0,
+      "best_merge_score": 2864
+    },
+    {
+      "through_episode": 5500,
+      "episodes": 500,
+      "mean_sum": 214.17,
+      "median_sum": 214.0,
+      "best_sum": 464,
+      "reach_rate": 0.066,
+      "mean_max_tile": 118.66,
+      "mean_steps": 95.46,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.3998,
+      "mean_merge_score": 1005.19,
+      "median_merge_score": 984.0,
+      "best_merge_score": 2728
+    },
+    {
+      "through_episode": 6000,
+      "episodes": 500,
+      "mean_sum": 216.76,
+      "median_sum": 220.0,
+      "best_sum": 488,
+      "reach_rate": 0.082,
+      "mean_max_tile": 120.51,
+      "mean_steps": 96.41,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.282,
+      "mean_merge_score": 1023.74,
+      "median_merge_score": 1046.0,
+      "best_merge_score": 2876
+    },
+    {
+      "through_episode": 6500,
+      "episodes": 500,
+      "mean_sum": 215.48,
+      "median_sum": 216.0,
+      "best_sum": 448,
+      "reach_rate": 0.074,
+      "mean_max_tile": 122.37,
+      "mean_steps": 96.11,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.9603,
+      "mean_merge_score": 1022.91,
+      "median_merge_score": 988.0,
+      "best_merge_score": 2632
+    },
+    {
+      "through_episode": 7000,
+      "episodes": 500,
+      "mean_sum": 207.61,
+      "median_sum": 204.0,
+      "best_sum": 452,
+      "reach_rate": 0.09,
+      "mean_max_tile": 115.97,
+      "mean_steps": 92.34,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.3294,
+      "mean_merge_score": 972.87,
+      "median_merge_score": 950.0,
+      "best_merge_score": 2692
+    },
+    {
+      "through_episode": 7500,
+      "episodes": 500,
+      "mean_sum": 222.54,
+      "median_sum": 227.0,
+      "best_sum": 514,
+      "reach_rate": 0.092,
+      "mean_max_tile": 124.16,
+      "mean_steps": 99.11,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.8706,
+      "mean_merge_score": 1061.98,
+      "median_merge_score": 1100.0,
+      "best_merge_score": 2988
+    },
+    {
+      "through_episode": 8000,
+      "episodes": 500,
+      "mean_sum": 224.5,
+      "median_sum": 230.0,
+      "best_sum": 512,
+      "reach_rate": 0.124,
+      "mean_max_tile": 124.77,
+      "mean_steps": 100.05,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.231,
+      "mean_merge_score": 1079.72,
+      "median_merge_score": 1106.0,
+      "best_merge_score": 3000
+    },
+    {
+      "through_episode": 8500,
+      "episodes": 500,
+      "mean_sum": 226.17,
+      "median_sum": 230.0,
+      "best_sum": 500,
+      "reach_rate": 0.174,
+      "mean_max_tile": 130.98,
+      "mean_steps": 100.84,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 9.0816,
+      "mean_merge_score": 1104.6,
+      "median_merge_score": 1112.0,
+      "best_merge_score": 2952
+    },
+    {
+      "through_episode": 9000,
+      "episodes": 500,
+      "mean_sum": 247.33,
+      "median_sum": 246.0,
+      "best_sum": 500,
+      "reach_rate": 0.242,
+      "mean_max_tile": 143.23,
+      "mean_steps": 110.36,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 9.3591,
+      "mean_merge_score": 1242.62,
+      "median_merge_score": 1192.0,
+      "best_merge_score": 2964
+    },
+    {
+      "through_episode": 9500,
+      "episodes": 500,
+      "mean_sum": 260.28,
+      "median_sum": 251.0,
+      "best_sum": 512,
+      "reach_rate": 0.324,
+      "mean_max_tile": 155.46,
+      "mean_steps": 116.22,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 9.8733,
+      "mean_merge_score": 1341.1,
+      "median_merge_score": 1208.0,
+      "best_merge_score": 2976
+    },
+    {
+      "through_episode": 10000,
+      "episodes": 500,
+      "mean_sum": 269.14,
+      "median_sum": 260.0,
+      "best_sum": 588,
+      "reach_rate": 0.362,
+      "mean_max_tile": 160.38,
+      "mean_steps": 120.3,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 10.1446,
+      "mean_merge_score": 1402.15,
+      "median_merge_score": 1236.0,
+      "best_merge_score": 4208
+    },
+    {
+      "through_episode": 10500,
+      "episodes": 500,
+      "mean_sum": 288.19,
+      "median_sum": 260.0,
+      "best_sum": 656,
+      "reach_rate": 0.378,
+      "mean_max_tile": 167.68,
+      "mean_steps": 128.93,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 9.3043,
+      "mean_merge_score": 1525.7,
+      "median_merge_score": 1244.0,
+      "best_merge_score": 4524
+    },
+    {
+      "through_episode": 11000,
+      "episodes": 500,
+      "mean_sum": 301.04,
+      "median_sum": 275.0,
+      "best_sum": 578,
+      "reach_rate": 0.478,
+      "mean_max_tile": 179.39,
+      "mean_steps": 134.87,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 9.7816,
+      "mean_merge_score": 1623.82,
+      "median_merge_score": 1318.0,
+      "best_merge_score": 4040
+    },
+    {
+      "through_episode": 11500,
+      "episodes": 500,
+      "mean_sum": 322.23,
+      "median_sum": 326.0,
+      "best_sum": 526,
+      "reach_rate": 0.558,
+      "mean_max_tile": 192.1,
+      "mean_steps": 144.28,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 9.4345,
+      "mean_merge_score": 1768.51,
+      "median_merge_score": 1926.0,
+      "best_merge_score": 3044
+    },
+    {
+      "through_episode": 12000,
+      "episodes": 500,
+      "mean_sum": 321.5,
+      "median_sum": 319.0,
+      "best_sum": 672,
+      "reach_rate": 0.524,
+      "mean_max_tile": 189.89,
+      "mean_steps": 143.92,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 9.2332,
+      "mean_merge_score": 1758.38,
+      "median_merge_score": 1898.0,
+      "best_merge_score": 4616
+    },
+    {
+      "through_episode": 12500,
+      "episodes": 500,
+      "mean_sum": 321.84,
+      "median_sum": 312.0,
+      "best_sum": 660,
+      "reach_rate": 0.508,
+      "mean_max_tile": 188.67,
+      "mean_steps": 144.31,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 9.465,
+      "mean_merge_score": 1758.58,
+      "median_merge_score": 1850.0,
+      "best_merge_score": 4588
+    },
+    {
+      "through_episode": 13000,
+      "episodes": 500,
+      "mean_sum": 313.07,
+      "median_sum": 316.0,
+      "best_sum": 574,
+      "reach_rate": 0.518,
+      "mean_max_tile": 188.03,
+      "mean_steps": 140.52,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 8.5601,
+      "mean_merge_score": 1707.57,
+      "median_merge_score": 1870.0,
+      "best_merge_score": 4120
+    },
+    {
+      "through_episode": 13500,
+      "episodes": 500,
+      "mean_sum": 334.2,
+      "median_sum": 341.0,
+      "best_sum": 650,
+      "reach_rate": 0.582,
+      "mean_max_tile": 197.76,
+      "mean_steps": 150.04,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 8.8283,
+      "mean_merge_score": 1853.74,
+      "median_merge_score": 2006.0,
+      "best_merge_score": 4536
+    },
+    {
+      "through_episode": 14000,
+      "episodes": 500,
+      "mean_sum": 348.47,
+      "median_sum": 368.0,
+      "best_sum": 594,
+      "reach_rate": 0.632,
+      "mean_max_tile": 204.67,
+      "mean_steps": 156.5,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 8.3445,
+      "mean_merge_score": 1945.95,
+      "median_merge_score": 2142.0,
+      "best_merge_score": 4244
+    },
+    {
+      "through_episode": 14500,
+      "episodes": 500,
+      "mean_sum": 330.68,
+      "median_sum": 356.0,
+      "best_sum": 678,
+      "reach_rate": 0.582,
+      "mean_max_tile": 196.29,
+      "mean_steps": 148.53,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 8.3991,
+      "mean_merge_score": 1829.51,
+      "median_merge_score": 2054.0,
+      "best_merge_score": 4828
+    },
+    {
+      "through_episode": 15000,
+      "episodes": 500,
+      "mean_sum": 339.55,
+      "median_sum": 353.0,
+      "best_sum": 588,
+      "reach_rate": 0.58,
+      "mean_max_tile": 198.98,
+      "mean_steps": 152.43,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 8.4531,
+      "mean_merge_score": 1882.1,
+      "median_merge_score": 2044.0,
+      "best_merge_score": 4228
+    },
+    {
+      "through_episode": 15500,
+      "episodes": 500,
+      "mean_sum": 341.76,
+      "median_sum": 363.0,
+      "best_sum": 704,
+      "reach_rate": 0.61,
+      "mean_max_tile": 201.6,
+      "mean_steps": 153.58,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 8.6242,
+      "mean_merge_score": 1910.46,
+      "median_merge_score": 2106.0,
+      "best_merge_score": 4840
+    },
+    {
+      "through_episode": 16000,
+      "episodes": 500,
+      "mean_sum": 326.22,
+      "median_sum": 356.0,
+      "best_sum": 520,
+      "reach_rate": 0.608,
+      "mean_max_tile": 198.43,
+      "mean_steps": 146.38,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 8.7832,
+      "mean_merge_score": 1809.19,
+      "median_merge_score": 2062.0,
+      "best_merge_score": 3032
+    },
+    {
+      "through_episode": 16500,
+      "episodes": 500,
+      "mean_sum": 350.74,
+      "median_sum": 362.0,
+      "best_sum": 636,
+      "reach_rate": 0.646,
+      "mean_max_tile": 208.83,
+      "mean_steps": 157.55,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.7987,
+      "mean_merge_score": 1969.62,
+      "median_merge_score": 2112.0,
+      "best_merge_score": 4480
+    },
+    {
+      "through_episode": 17000,
+      "episodes": 500,
+      "mean_sum": 346.21,
+      "median_sum": 373.0,
+      "best_sum": 644,
+      "reach_rate": 0.636,
+      "mean_max_tile": 203.17,
+      "mean_steps": 155.42,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.9242,
+      "mean_merge_score": 1937.88,
+      "median_merge_score": 2180.0,
+      "best_merge_score": 4492
+    },
+    {
+      "through_episode": 17500,
+      "episodes": 500,
+      "mean_sum": 360.0,
+      "median_sum": 388.0,
+      "best_sum": 586,
+      "reach_rate": 0.678,
+      "mean_max_tile": 210.34,
+      "mean_steps": 161.62,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.9653,
+      "mean_merge_score": 2031.54,
+      "median_merge_score": 2236.0,
+      "best_merge_score": 4180
+    },
+    {
+      "through_episode": 18000,
+      "episodes": 500,
+      "mean_sum": 362.71,
+      "median_sum": 386.0,
+      "best_sum": 714,
+      "reach_rate": 0.698,
+      "mean_max_tile": 214.91,
+      "mean_steps": 162.87,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.9433,
+      "mean_merge_score": 2054.64,
+      "median_merge_score": 2224.0,
+      "best_merge_score": 4996
+    },
+    {
+      "through_episode": 18500,
+      "episodes": 500,
+      "mean_sum": 356.61,
+      "median_sum": 376.0,
+      "best_sum": 704,
+      "reach_rate": 0.666,
+      "mean_max_tile": 211.71,
+      "mean_steps": 159.82,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.7732,
+      "mean_merge_score": 2011.69,
+      "median_merge_score": 2206.0,
+      "best_merge_score": 4788
+    },
+    {
+      "through_episode": 19000,
+      "episodes": 500,
+      "mean_sum": 340.18,
+      "median_sum": 356.0,
+      "best_sum": 630,
+      "reach_rate": 0.632,
+      "mean_max_tile": 203.2,
+      "mean_steps": 152.46,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 8.1834,
+      "mean_merge_score": 1899.78,
+      "median_merge_score": 2066.0,
+      "best_merge_score": 4424
+    },
+    {
+      "through_episode": 19500,
+      "episodes": 500,
+      "mean_sum": 361.17,
+      "median_sum": 372.0,
+      "best_sum": 720,
+      "reach_rate": 0.67,
+      "mean_max_tile": 212.74,
+      "mean_steps": 162.04,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.8046,
+      "mean_merge_score": 2043.62,
+      "median_merge_score": 2162.0,
+      "best_merge_score": 4956
+    },
+    {
+      "through_episode": 20000,
+      "episodes": 500,
+      "mean_sum": 354.71,
+      "median_sum": 368.0,
+      "best_sum": 648,
+      "reach_rate": 0.686,
+      "mean_max_tile": 213.5,
+      "mean_steps": 159.35,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.8394,
+      "mean_merge_score": 2007.29,
+      "median_merge_score": 2130.0,
+      "best_merge_score": 4492
+    },
+    {
+      "through_episode": 20500,
+      "episodes": 500,
+      "mean_sum": 354.44,
+      "median_sum": 376.0,
+      "best_sum": 642,
+      "reach_rate": 0.646,
+      "mean_max_tile": 207.78,
+      "mean_steps": 158.97,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.6235,
+      "mean_merge_score": 1995.72,
+      "median_merge_score": 2174.0,
+      "best_merge_score": 4504
+    },
+    {
+      "through_episode": 21000,
+      "episodes": 500,
+      "mean_sum": 358.1,
+      "median_sum": 373.0,
+      "best_sum": 696,
+      "reach_rate": 0.662,
+      "mean_max_tile": 208.82,
+      "mean_steps": 161.01,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 8.0229,
+      "mean_merge_score": 2018.6,
+      "median_merge_score": 2180.0,
+      "best_merge_score": 4872
+    },
+    {
+      "through_episode": 21500,
+      "episodes": 500,
+      "mean_sum": 362.42,
+      "median_sum": 384.0,
+      "best_sum": 632,
+      "reach_rate": 0.686,
+      "mean_max_tile": 212.54,
+      "mean_steps": 162.89,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.2631,
+      "mean_merge_score": 2049.83,
+      "median_merge_score": 2222.0,
+      "best_merge_score": 4456
+    },
+    {
+      "through_episode": 22000,
+      "episodes": 500,
+      "mean_sum": 360.77,
+      "median_sum": 375.0,
+      "best_sum": 636,
+      "reach_rate": 0.696,
+      "mean_max_tile": 214.78,
+      "mean_steps": 161.73,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.2109,
+      "mean_merge_score": 2043.06,
+      "median_merge_score": 2188.0,
+      "best_merge_score": 4484
+    },
+    {
+      "through_episode": 22500,
+      "episodes": 500,
+      "mean_sum": 366.59,
+      "median_sum": 383.0,
+      "best_sum": 660,
+      "reach_rate": 0.698,
+      "mean_max_tile": 214.21,
+      "mean_steps": 164.65,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.9918,
+      "mean_merge_score": 2075.52,
+      "median_merge_score": 2224.0,
+      "best_merge_score": 4556
+    },
+    {
+      "through_episode": 23000,
+      "episodes": 500,
+      "mean_sum": 362.84,
+      "median_sum": 386.0,
+      "best_sum": 588,
+      "reach_rate": 0.674,
+      "mean_max_tile": 210.37,
+      "mean_steps": 162.83,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.2758,
+      "mean_merge_score": 2049.06,
+      "median_merge_score": 2228.0,
+      "best_merge_score": 4216
+    },
+    {
+      "through_episode": 23500,
+      "episodes": 500,
+      "mean_sum": 359.58,
+      "median_sum": 388.0,
+      "best_sum": 658,
+      "reach_rate": 0.664,
+      "mean_max_tile": 209.6,
+      "mean_steps": 161.56,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.347,
+      "mean_merge_score": 2031.23,
+      "median_merge_score": 2236.0,
+      "best_merge_score": 4560
+    },
+    {
+      "through_episode": 24000,
+      "episodes": 500,
+      "mean_sum": 350.36,
+      "median_sum": 375.0,
+      "best_sum": 640,
+      "reach_rate": 0.638,
+      "mean_max_tile": 204.19,
+      "mean_steps": 157.29,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.5143,
+      "mean_merge_score": 1968.5,
+      "median_merge_score": 2186.0,
+      "best_merge_score": 4488
+    },
+    {
+      "through_episode": 24500,
+      "episodes": 500,
+      "mean_sum": 365.4,
+      "median_sum": 388.0,
+      "best_sum": 756,
+      "reach_rate": 0.694,
+      "mean_max_tile": 214.21,
+      "mean_steps": 163.88,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.4939,
+      "mean_merge_score": 2072.21,
+      "median_merge_score": 2244.0,
+      "best_merge_score": 5200
+    },
+    {
+      "through_episode": 25000,
+      "episodes": 500,
+      "mean_sum": 371.64,
+      "median_sum": 388.0,
+      "best_sum": 630,
+      "reach_rate": 0.694,
+      "mean_max_tile": 216.58,
+      "mean_steps": 167.04,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.1887,
+      "mean_merge_score": 2115.47,
+      "median_merge_score": 2256.0,
+      "best_merge_score": 4452
+    },
+    {
+      "through_episode": 25500,
+      "episodes": 500,
+      "mean_sum": 361.14,
+      "median_sum": 388.0,
+      "best_sum": 526,
+      "reach_rate": 0.68,
+      "mean_max_tile": 210.05,
+      "mean_steps": 161.94,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.3017,
+      "mean_merge_score": 2038.18,
+      "median_merge_score": 2238.0,
+      "best_merge_score": 3048
+    },
+    {
+      "through_episode": 26000,
+      "episodes": 500,
+      "mean_sum": 361.96,
+      "median_sum": 385.0,
+      "best_sum": 688,
+      "reach_rate": 0.686,
+      "mean_max_tile": 213.7,
+      "mean_steps": 162.61,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.8739,
+      "mean_merge_score": 2048.72,
+      "median_merge_score": 2226.0,
+      "best_merge_score": 4760
+    },
+    {
+      "through_episode": 26500,
+      "episodes": 500,
+      "mean_sum": 379.99,
+      "median_sum": 388.0,
+      "best_sum": 754,
+      "reach_rate": 0.724,
+      "mean_max_tile": 222.4,
+      "mean_steps": 170.68,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.0781,
+      "mean_merge_score": 2169.98,
+      "median_merge_score": 2244.0,
+      "best_merge_score": 5224
+    },
+    {
+      "through_episode": 27000,
+      "episodes": 500,
+      "mean_sum": 371.91,
+      "median_sum": 388.0,
+      "best_sum": 760,
+      "reach_rate": 0.716,
+      "mean_max_tile": 220.13,
+      "mean_steps": 166.95,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.0657,
+      "mean_merge_score": 2124.52,
+      "median_merge_score": 2240.0,
+      "best_merge_score": 5220
+    },
+    {
+      "through_episode": 27500,
+      "episodes": 500,
+      "mean_sum": 359.37,
+      "median_sum": 388.0,
+      "best_sum": 514,
+      "reach_rate": 0.718,
+      "mean_max_tile": 214.85,
+      "mean_steps": 161.23,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.5539,
+      "mean_merge_score": 2045.34,
+      "median_merge_score": 2242.0,
+      "best_merge_score": 2988
+    },
+    {
+      "through_episode": 28000,
+      "episodes": 500,
+      "mean_sum": 362.31,
+      "median_sum": 388.0,
+      "best_sum": 708,
+      "reach_rate": 0.706,
+      "mean_max_tile": 215.04,
+      "mean_steps": 162.62,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.8236,
+      "mean_merge_score": 2057.01,
+      "median_merge_score": 2242.0,
+      "best_merge_score": 4908
+    },
+    {
+      "through_episode": 28500,
+      "episodes": 500,
+      "mean_sum": 358.88,
+      "median_sum": 386.0,
+      "best_sum": 708,
+      "reach_rate": 0.688,
+      "mean_max_tile": 211.97,
+      "mean_steps": 161.16,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.909,
+      "mean_merge_score": 2028.37,
+      "median_merge_score": 2228.0,
+      "best_merge_score": 4920
+    },
+    {
+      "through_episode": 29000,
+      "episodes": 500,
+      "mean_sum": 380.79,
+      "median_sum": 393.0,
+      "best_sum": 738,
+      "reach_rate": 0.698,
+      "mean_max_tile": 219.94,
+      "mean_steps": 171.2,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.7915,
+      "mean_merge_score": 2173.1,
+      "median_merge_score": 2268.0,
+      "best_merge_score": 5128
+    },
+    {
+      "through_episode": 29500,
+      "episodes": 500,
+      "mean_sum": 366.66,
+      "median_sum": 388.0,
+      "best_sum": 528,
+      "reach_rate": 0.702,
+      "mean_max_tile": 214.59,
+      "mean_steps": 164.87,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.8158,
+      "mean_merge_score": 2080.78,
+      "median_merge_score": 2248.0,
+      "best_merge_score": 3068
+    },
+    {
+      "through_episode": 30000,
+      "episodes": 500,
+      "mean_sum": 382.28,
+      "median_sum": 401.0,
+      "best_sum": 826,
+      "reach_rate": 0.698,
+      "mean_max_tile": 219.58,
+      "mean_steps": 171.63,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.0011,
+      "mean_merge_score": 2182.8,
+      "median_merge_score": 2306.0,
+      "best_merge_score": 5904
+    },
+    {
+      "through_episode": 30500,
+      "episodes": 500,
+      "mean_sum": 363.6,
+      "median_sum": 388.0,
+      "best_sum": 514,
+      "reach_rate": 0.704,
+      "mean_max_tile": 214.21,
+      "mean_steps": 163.2,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.142,
+      "mean_merge_score": 2062.64,
+      "median_merge_score": 2236.0,
+      "best_merge_score": 3004
+    },
+    {
+      "through_episode": 31000,
+      "episodes": 500,
+      "mean_sum": 377.3,
+      "median_sum": 388.0,
+      "best_sum": 744,
+      "reach_rate": 0.722,
+      "mean_max_tile": 221.7,
+      "mean_steps": 169.45,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.6502,
+      "mean_merge_score": 2151.92,
+      "median_merge_score": 2236.0,
+      "best_merge_score": 5132
+    },
+    {
+      "through_episode": 31500,
+      "episodes": 500,
+      "mean_sum": 372.01,
+      "median_sum": 390.0,
+      "best_sum": 708,
+      "reach_rate": 0.686,
+      "mean_max_tile": 215.49,
+      "mean_steps": 166.79,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.3332,
+      "mean_merge_score": 2112.13,
+      "median_merge_score": 2248.0,
+      "best_merge_score": 4912
+    },
+    {
+      "through_episode": 32000,
+      "episodes": 500,
+      "mean_sum": 379.28,
+      "median_sum": 415.0,
+      "best_sum": 754,
+      "reach_rate": 0.728,
+      "mean_max_tile": 219.71,
+      "mean_steps": 170.18,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.5946,
+      "mean_merge_score": 2164.54,
+      "median_merge_score": 2404.0,
+      "best_merge_score": 5216
+    },
+    {
+      "through_episode": 32500,
+      "episodes": 500,
+      "mean_sum": 371.98,
+      "median_sum": 388.0,
+      "best_sum": 848,
+      "reach_rate": 0.694,
+      "mean_max_tile": 217.47,
+      "mean_steps": 167.16,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.1852,
+      "mean_merge_score": 2119.04,
+      "median_merge_score": 2246.0,
+      "best_merge_score": 5960
+    },
+    {
+      "through_episode": 33000,
+      "episodes": 500,
+      "mean_sum": 370.16,
+      "median_sum": 398.0,
+      "best_sum": 708,
+      "reach_rate": 0.692,
+      "mean_max_tile": 214.4,
+      "mean_steps": 166.23,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.506,
+      "mean_merge_score": 2106.08,
+      "median_merge_score": 2272.0,
+      "best_merge_score": 4916
+    },
+    {
+      "through_episode": 33500,
+      "episodes": 500,
+      "mean_sum": 372.21,
+      "median_sum": 402.0,
+      "best_sum": 704,
+      "reach_rate": 0.704,
+      "mean_max_tile": 215.49,
+      "mean_steps": 167.22,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.9553,
+      "mean_merge_score": 2115.8,
+      "median_merge_score": 2298.0,
+      "best_merge_score": 4776
+    },
+    {
+      "through_episode": 34000,
+      "episodes": 500,
+      "mean_sum": 377.93,
+      "median_sum": 408.0,
+      "best_sum": 714,
+      "reach_rate": 0.714,
+      "mean_max_tile": 220.29,
+      "mean_steps": 169.88,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.8395,
+      "mean_merge_score": 2160.97,
+      "median_merge_score": 2330.0,
+      "best_merge_score": 4968
+    },
+    {
+      "through_episode": 34500,
+      "episodes": 500,
+      "mean_sum": 369.77,
+      "median_sum": 392.0,
+      "best_sum": 726,
+      "reach_rate": 0.706,
+      "mean_max_tile": 218.82,
+      "mean_steps": 166.01,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.5023,
+      "mean_merge_score": 2108.33,
+      "median_merge_score": 2256.0,
+      "best_merge_score": 5112
+    },
+    {
+      "through_episode": 35000,
+      "episodes": 500,
+      "mean_sum": 373.17,
+      "median_sum": 392.0,
+      "best_sum": 764,
+      "reach_rate": 0.682,
+      "mean_max_tile": 218.43,
+      "mean_steps": 167.49,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.1162,
+      "mean_merge_score": 2128.81,
+      "median_merge_score": 2258.0,
+      "best_merge_score": 5212
+    },
+    {
+      "through_episode": 35500,
+      "episodes": 500,
+      "mean_sum": 397.62,
+      "median_sum": 438.0,
+      "best_sum": 872,
+      "reach_rate": 0.742,
+      "mean_max_tile": 228.86,
+      "mean_steps": 178.76,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.8012,
+      "mean_merge_score": 2294.86,
+      "median_merge_score": 2608.0,
+      "best_merge_score": 6132
+    },
+    {
+      "through_episode": 36000,
+      "episodes": 500,
+      "mean_sum": 394.35,
+      "median_sum": 422.0,
+      "best_sum": 878,
+      "reach_rate": 0.738,
+      "mean_max_tile": 231.36,
+      "mean_steps": 177.07,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.6833,
+      "mean_merge_score": 2280.86,
+      "median_merge_score": 2548.0,
+      "best_merge_score": 6212
+    },
+    {
+      "through_episode": 36500,
+      "episodes": 500,
+      "mean_sum": 397.85,
+      "median_sum": 416.0,
+      "best_sum": 860,
+      "reach_rate": 0.738,
+      "mean_max_tile": 234.56,
+      "mean_steps": 178.86,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.8157,
+      "mean_merge_score": 2307.9,
+      "median_merge_score": 2464.0,
+      "best_merge_score": 6112
+    },
+    {
+      "through_episode": 37000,
+      "episodes": 500,
+      "mean_sum": 362.88,
+      "median_sum": 379.0,
+      "best_sum": 808,
+      "reach_rate": 0.652,
+      "mean_max_tile": 215.42,
+      "mean_steps": 162.85,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.8185,
+      "mean_merge_score": 2067.07,
+      "median_merge_score": 2204.0,
+      "best_merge_score": 5856
+    },
+    {
+      "through_episode": 37500,
+      "episodes": 500,
+      "mean_sum": 394.76,
+      "median_sum": 416.0,
+      "best_sum": 864,
+      "reach_rate": 0.714,
+      "mean_max_tile": 231.74,
+      "mean_steps": 177.64,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.3117,
+      "mean_merge_score": 2283.29,
+      "median_merge_score": 2356.0,
+      "best_merge_score": 6060
+    },
+    {
+      "through_episode": 38000,
+      "episodes": 500,
+      "mean_sum": 390.14,
+      "median_sum": 428.0,
+      "best_sum": 768,
+      "reach_rate": 0.716,
+      "mean_max_tile": 225.73,
+      "mean_steps": 175.43,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.0251,
+      "mean_merge_score": 2243.02,
+      "median_merge_score": 2574.0,
+      "best_merge_score": 5248
+    },
+    {
+      "through_episode": 38500,
+      "episodes": 500,
+      "mean_sum": 406.91,
+      "median_sum": 443.0,
+      "best_sum": 764,
+      "reach_rate": 0.776,
+      "mean_max_tile": 236.86,
+      "mean_steps": 183.09,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.8757,
+      "mean_merge_score": 2363.81,
+      "median_merge_score": 2644.0,
+      "best_merge_score": 5236
+    },
+    {
+      "through_episode": 39000,
+      "episodes": 500,
+      "mean_sum": 357.32,
+      "median_sum": 388.0,
+      "best_sum": 708,
+      "reach_rate": 0.72,
+      "mean_max_tile": 217.02,
+      "mean_steps": 160.29,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.8095,
+      "mean_merge_score": 2041.78,
+      "median_merge_score": 2240.0,
+      "best_merge_score": 4892
+    },
+    {
+      "through_episode": 39500,
+      "episodes": 500,
+      "mean_sum": 388.04,
+      "median_sum": 419.0,
+      "best_sum": 758,
+      "reach_rate": 0.736,
+      "mean_max_tile": 230.5,
+      "mean_steps": 174.53,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.7736,
+      "mean_merge_score": 2249.84,
+      "median_merge_score": 2524.0,
+      "best_merge_score": 5220
+    },
+    {
+      "through_episode": 40000,
+      "episodes": 500,
+      "mean_sum": 393.96,
+      "median_sum": 416.0,
+      "best_sum": 822,
+      "reach_rate": 0.736,
+      "mean_max_tile": 234.21,
+      "mean_steps": 177.05,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.0197,
+      "mean_merge_score": 2291.79,
+      "median_merge_score": 2358.0,
+      "best_merge_score": 5884
+    },
+    {
+      "through_episode": 40500,
+      "episodes": 500,
+      "mean_sum": 394.62,
+      "median_sum": 422.0,
+      "best_sum": 796,
+      "reach_rate": 0.734,
+      "mean_max_tile": 232.9,
+      "mean_steps": 177.38,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.7818,
+      "mean_merge_score": 2292.09,
+      "median_merge_score": 2528.0,
+      "best_merge_score": 5756
+    },
+    {
+      "through_episode": 41000,
+      "episodes": 500,
+      "mean_sum": 406.73,
+      "median_sum": 442.0,
+      "best_sum": 840,
+      "reach_rate": 0.748,
+      "mean_max_tile": 240.51,
+      "mean_steps": 182.45,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.8926,
+      "mean_merge_score": 2382.06,
+      "median_merge_score": 2644.0,
+      "best_merge_score": 5996
+    },
+    {
+      "through_episode": 41500,
+      "episodes": 500,
+      "mean_sum": 397.54,
+      "median_sum": 416.0,
+      "best_sum": 840,
+      "reach_rate": 0.742,
+      "mean_max_tile": 234.82,
+      "mean_steps": 178.72,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.0536,
+      "mean_merge_score": 2309.67,
+      "median_merge_score": 2510.0,
+      "best_merge_score": 5936
+    },
+    {
+      "through_episode": 42000,
+      "episodes": 500,
+      "mean_sum": 395.44,
+      "median_sum": 428.0,
+      "best_sum": 768,
+      "reach_rate": 0.746,
+      "mean_max_tile": 231.62,
+      "mean_steps": 178.13,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.3979,
+      "mean_merge_score": 2291.16,
+      "median_merge_score": 2568.0,
+      "best_merge_score": 5244
+    },
+    {
+      "through_episode": 42500,
+      "episodes": 500,
+      "mean_sum": 412.04,
+      "median_sum": 439.0,
+      "best_sum": 778,
+      "reach_rate": 0.744,
+      "mean_max_tile": 245.06,
+      "mean_steps": 185.14,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.9651,
+      "mean_merge_score": 2424.18,
+      "median_merge_score": 2612.0,
+      "best_merge_score": 5264
+    },
+    {
+      "through_episode": 43000,
+      "episodes": 500,
+      "mean_sum": 388.76,
+      "median_sum": 419.0,
+      "best_sum": 826,
+      "reach_rate": 0.722,
+      "mean_max_tile": 229.15,
+      "mean_steps": 174.66,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.0941,
+      "mean_merge_score": 2251.47,
+      "median_merge_score": 2538.0,
+      "best_merge_score": 5912
+    },
+    {
+      "through_episode": 43500,
+      "episodes": 500,
+      "mean_sum": 409.01,
+      "median_sum": 433.0,
+      "best_sum": 810,
+      "reach_rate": 0.782,
+      "mean_max_tile": 247.94,
+      "mean_steps": 183.92,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.7455,
+      "mean_merge_score": 2413.58,
+      "median_merge_score": 2596.0,
+      "best_merge_score": 5796
+    },
+    {
+      "through_episode": 44000,
+      "episodes": 500,
+      "mean_sum": 377.22,
+      "median_sum": 416.0,
+      "best_sum": 748,
+      "reach_rate": 0.688,
+      "mean_max_tile": 220.13,
+      "mean_steps": 169.68,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.4298,
+      "mean_merge_score": 2163.89,
+      "median_merge_score": 2396.0,
+      "best_merge_score": 5144
+    },
+    {
+      "through_episode": 44500,
+      "episodes": 500,
+      "mean_sum": 391.57,
+      "median_sum": 422.0,
+      "best_sum": 798,
+      "reach_rate": 0.734,
+      "mean_max_tile": 230.69,
+      "mean_steps": 175.86,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.398,
+      "mean_merge_score": 2267.89,
+      "median_merge_score": 2554.0,
+      "best_merge_score": 5776
+    },
+    {
+      "through_episode": 45000,
+      "episodes": 500,
+      "mean_sum": 395.56,
+      "median_sum": 401.0,
+      "best_sum": 830,
+      "reach_rate": 0.724,
+      "mean_max_tile": 234.94,
+      "mean_steps": 177.89,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.819,
+      "mean_merge_score": 2300.15,
+      "median_merge_score": 2304.0,
+      "best_merge_score": 5980
+    },
+    {
+      "through_episode": 45500,
+      "episodes": 500,
+      "mean_sum": 402.27,
+      "median_sum": 436.0,
+      "best_sum": 866,
+      "reach_rate": 0.744,
+      "mean_max_tile": 237.5,
+      "mean_steps": 180.76,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.7906,
+      "mean_merge_score": 2347.14,
+      "median_merge_score": 2612.0,
+      "best_merge_score": 6104
+    },
+    {
+      "through_episode": 46000,
+      "episodes": 500,
+      "mean_sum": 415.74,
+      "median_sum": 446.0,
+      "best_sum": 862,
+      "reach_rate": 0.77,
+      "mean_max_tile": 246.46,
+      "mean_steps": 187.1,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.8313,
+      "mean_merge_score": 2451.9,
+      "median_merge_score": 2646.0,
+      "best_merge_score": 6128
+    },
+    {
+      "through_episode": 46500,
+      "episodes": 500,
+      "mean_sum": 415.2,
+      "median_sum": 448.0,
+      "best_sum": 836,
+      "reach_rate": 0.75,
+      "mean_max_tile": 248.29,
+      "mean_steps": 186.86,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.5892,
+      "mean_merge_score": 2459.81,
+      "median_merge_score": 2656.0,
+      "best_merge_score": 5980
+    },
+    {
+      "through_episode": 47000,
+      "episodes": 500,
+      "mean_sum": 407.59,
+      "median_sum": 447.0,
+      "best_sum": 832,
+      "reach_rate": 0.746,
+      "mean_max_tile": 240.26,
+      "mean_steps": 183.37,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.4288,
+      "mean_merge_score": 2390.98,
+      "median_merge_score": 2658.0,
+      "best_merge_score": 5948
+    },
+    {
+      "through_episode": 47500,
+      "episodes": 500,
+      "mean_sum": 403.27,
+      "median_sum": 438.0,
+      "best_sum": 870,
+      "reach_rate": 0.722,
+      "mean_max_tile": 239.49,
+      "mean_steps": 181.38,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 7.016,
+      "mean_merge_score": 2365.22,
+      "median_merge_score": 2606.0,
+      "best_merge_score": 6140
+    },
+    {
+      "through_episode": 48000,
+      "episodes": 500,
+      "mean_sum": 402.91,
+      "median_sum": 438.0,
+      "best_sum": 766,
+      "reach_rate": 0.754,
+      "mean_max_tile": 236.86,
+      "mean_steps": 181.37,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.8454,
+      "mean_merge_score": 2349.94,
+      "median_merge_score": 2614.0,
+      "best_merge_score": 5248
+    },
+    {
+      "through_episode": 48500,
+      "episodes": 500,
+      "mean_sum": 401.19,
+      "median_sum": 429.0,
+      "best_sum": 854,
+      "reach_rate": 0.75,
+      "mean_max_tile": 236.93,
+      "mean_steps": 180.34,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.6304,
+      "mean_merge_score": 2336.29,
+      "median_merge_score": 2566.0,
+      "best_merge_score": 6012
+    },
+    {
+      "through_episode": 49000,
+      "episodes": 500,
+      "mean_sum": 403.9,
+      "median_sum": 436.0,
+      "best_sum": 812,
+      "reach_rate": 0.752,
+      "mean_max_tile": 238.85,
+      "mean_steps": 181.64,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.4882,
+      "mean_merge_score": 2358.86,
+      "median_merge_score": 2592.0,
+      "best_merge_score": 5824
+    },
+    {
+      "through_episode": 49500,
+      "episodes": 500,
+      "mean_sum": 403.75,
+      "median_sum": 434.0,
+      "best_sum": 840,
+      "reach_rate": 0.754,
+      "mean_max_tile": 236.32,
+      "mean_steps": 181.56,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.7717,
+      "mean_merge_score": 2350.01,
+      "median_merge_score": 2564.0,
+      "best_merge_score": 5944
+    },
+    {
+      "through_episode": 50000,
+      "episodes": 500,
+      "mean_sum": 406.59,
+      "median_sum": 440.0,
+      "best_sum": 876,
+      "reach_rate": 0.738,
+      "mean_max_tile": 240.64,
+      "mean_steps": 182.85,
+      "end_reasons": {
+        "no_legal_moves": 500
+      },
+      "mean_td_abs_error": 6.7094,
+      "mean_merge_score": 2384.67,
+      "median_merge_score": 2598.0,
+      "best_merge_score": 6180
+    }
+  ]
+}

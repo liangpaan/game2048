@@ -1,147 +1,281 @@
-"""TD(0) learning of final board utility with an n-tuple afterstate value function."""
+"""Deep CNN TD-afterstate value learning for 3x3 2048.
+
+Network: Katsuta's 2024 thesis summary, Fig. 1(a), 79,874 parameters.
+Learning: batched TD targets following Matsuzaki (JIP 29, 2021).
+The project sum objective and the paper's merge-score objective are explicit.
+"""
 
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
+import math
 from pathlib import Path
-import pickle
 import random
 
-from game2048.core import legal_actions, move_board
-from game2048.wrappers.common import heuristic
+import numpy as np
+
+from game2048.core import merge_score, move_board
 
 
 @dataclass(frozen=True)
 class TDConfig:
-    alpha: float = 0.2
-    epsilon_start: float = 0.2
-    epsilon_end: float = 0.02
-    epsilon_decay_episodes: int = 1000
-    empty_weight: float = 18.0
-    order_weight: float = 1.0
+    objective: str = "sum"
+    learning_rate: float = 0.001
+    batch_size: int = 1024
+    value_scale: float = 1024.0
+    epsilon_start: float = 0.10
+    epsilon_end: float = 0.01
+    epsilon_decay_episodes: int = 5000
     target_bonus: float = 256.0
+    gradient_clip: float = 10.0
 
     def __post_init__(self):
-        if not 0 < self.alpha <= 1:
-            raise ValueError("alpha must be in (0, 1]")
+        if self.objective not in ("sum", "merge"):
+            raise ValueError("objective must be sum or merge")
+        if not all(math.isfinite(value) for value in (
+            self.learning_rate, self.value_scale, self.target_bonus,
+            self.gradient_clip, self.epsilon_start, self.epsilon_end,
+        )):
+            raise ValueError("TD parameters must be finite")
+        if min(self.learning_rate, self.value_scale, self.gradient_clip) <= 0:
+            raise ValueError("learning_rate, value_scale and gradient_clip must be positive")
+        if not isinstance(self.batch_size, int) or self.batch_size < 1:
+            raise ValueError("batch_size must be a positive integer")
         if not 0 <= self.epsilon_end <= self.epsilon_start <= 1:
             raise ValueError("epsilon must satisfy 0 <= end <= start <= 1")
         if self.epsilon_decay_episodes < 1:
             raise ValueError("epsilon_decay_episodes must be positive")
+        if self.objective == "merge" and self.target_bonus != 0:
+            raise ValueError("merge objective requires target_bonus=0")
 
 
-def _canonical(board: tuple[int, ...], size: int) -> tuple[int, ...]:
-    grid = [board[row * size:(row + 1) * size] for row in range(size)]
-    transforms = []
-    for reflected in (False, True):
-        current = [row[::-1] for row in grid] if reflected else grid
-        for _ in range(4):
-            transforms.append(tuple(value for row in current for value in row))
-            current = [tuple(current[size - 1 - col][row] for col in range(size))
-                       for row in range(size)]
-    return min(transforms)
+def encode_boards(boards) -> np.ndarray:
+    """Eleven one-hot planes: empty, 2, 4, ..., 1024. Never clip tile ranks."""
+    raw = np.asarray(boards)
+    if raw.dtype.kind not in "iu":
+        raise ValueError("tile values must be integers")
+    array = raw.astype(np.int64, copy=False)
+    if array.ndim != 2 or array.shape[1] != 9:
+        raise ValueError("expected a batch of flat 3x3 boards")
+    if np.any(array < 0) or np.any(array == 1) or np.any(array > 1024):
+        raise ValueError("tiles must be zero or powers of two from 2 to 1024")
+    if np.any((array & (array - 1)) != 0):
+        raise ValueError("tile values must be powers of two")
+    ranks = np.zeros(array.shape, dtype=np.int64)
+    occupied = array > 0
+    ranks[occupied] = np.log2(array[occupied]).astype(np.int64)
+    return np.eye(11, dtype=np.float32)[ranks].transpose(0, 2, 1).reshape(-1, 11, 3, 3)
 
 
-def _patterns(size: int) -> tuple[tuple[int, ...], ...]:
-    rows = [tuple(row * size + col for col in range(size)) for row in range(size)]
-    cols = [tuple(row * size + col for row in range(size)) for col in range(size)]
-    squares = [
-        tuple((row + dr) * size + col + dc
-              for dr in range(2) for dc in range(2))
-        for row in range(size - 1) for col in range(size - 1)
-    ]
-    return tuple(rows + cols + squares)
+def _torch():
+    try:
+        import torch
+    except ImportError as exception:
+        raise ImportError("CNN TD requires PyTorch; run uv sync --extra td") from exception
+    return torch
+
+
+def make_network():
+    """Fig. 1(a): the common 1x1 stem plus four spatial convolution layers."""
+    torch = _torch()
+    nn = torch.nn
+    network = nn.Sequential(
+        nn.Conv2d(11, 21, 1), nn.ReLU(),
+        nn.Conv2d(21, 43, 2, padding=1), nn.ReLU(),  # 3x3 -> 4x4
+        nn.Conv2d(43, 77, 2), nn.ReLU(),            # 4x4 -> 3x3
+        nn.Conv2d(77, 85, 2), nn.ReLU(),            # 3x3 -> 2x2
+        nn.Conv2d(85, 85, 2), nn.ReLU(),            # 2x2 -> 1x1
+        nn.Flatten(), nn.Linear(85, 85), nn.ReLU(),
+        nn.Linear(85, 1),
+    )
+    # A linear scalar head avoids a permanently dead final ReLU with scaled TD
+    # residuals. This is an explicit adaptation of the summary's output ReLU.
+    for layer in network:
+        if isinstance(layer, (nn.Conv2d, nn.Linear)):
+            nn.init.kaiming_uniform_(layer.weight, nonlinearity="relu")
+            nn.init.zeros_(layer.bias)
+    nn.init.normal_(network[-1].weight, mean=0, std=0.001)
+    nn.init.constant_(network[-1].bias, 0.1)
+    return network
 
 
 class TDAgent:
-    """Learn an afterstate value from complete-game utility using TD(0).
+    """A scalar afterstate value network, not a policy/Q network or a teacher.
 
-    An afterstate is the board after a move/merge and before the random spawn.
-    The target is the value of the next chosen afterstate; at termination it is
-    final tile sum plus a one-time target achievement bonus. Symmetry-canonical
-    overlapping n-tuples share learned values across similar boards.
+    Sum mode predicts residual terminal utility above the known board sum and
+    already-earned target bonus. Merge mode predicts future merge rewards only;
+    action selection adds the immediate merge reward. Both use undiscounted TD.
     """
 
     def __init__(self, config: TDConfig = TDConfig(), *, seed: int = 0,
                  size: int = 3, target: int = 256):
+        if size != 3 or not 2 <= target <= 1024:
+            raise ValueError("CNN TD supports size=3 and targets from 2 to 1024")
+        self.torch = _torch()
+        self.torch.set_num_threads(1)
+        # Initializing one agent must not reseed other callers' PyTorch RNGs.
+        with self.torch.random.fork_rng(devices=[]):
+            self.torch.manual_seed(seed)
+            self.network = make_network()
         self.config = config
+        self.size, self.target = size, target
         self.rng = random.Random(seed)
-        self.size = size
-        self.target = target
-        self.patterns = _patterns(size)
-        self.weights: dict[tuple[int, tuple[int, ...]], float] = {}
-        self.episodes_trained = 0
-
-    def _features(self, afterstate: tuple[int, ...]) -> tuple:
-        canonical = _canonical(afterstate, self.size)
-        exponents = tuple(value.bit_length() - 1 if value else 0 for value in canonical)
-        return tuple(
-            (pattern_index, tuple(exponents[index] for index in pattern))
-            for pattern_index, pattern in enumerate(self.patterns)
+        self.optimizer = self.torch.optim.Adam(
+            self.network.parameters(), lr=config.learning_rate, eps=1e-7,
         )
+        self.episodes_trained = 0
+        self.positions_trained = 0
+        self.optimizer_steps = 0
+
+    @property
+    def parameter_count(self) -> int:
+        return sum(parameter.numel() for parameter in self.network.parameters())
+
+    def baseline(self, board: tuple[int, ...]) -> float:
+        if self.config.objective == "merge":
+            return 0.0
+        return sum(board) + self.config.target_bonus * (max(board) >= self.target)
+
+    def values(self, boards) -> np.ndarray:
+        if not len(boards):
+            return np.empty(0, dtype=np.float64)
+        self.network.eval()
+        with self.torch.inference_mode():
+            predictions = self.network(self.torch.from_numpy(encode_boards(boards)))
+        residual = predictions.flatten().numpy().astype(np.float64) * self.config.value_scale
+        return residual + np.asarray([self.baseline(board) for board in boards])
 
     def value(self, afterstate: tuple[int, ...]) -> float:
-        prior = heuristic(
-            afterstate, size=self.size, target=self.target,
-            empty_weight=self.config.empty_weight,
-            order_weight=self.config.order_weight,
-            target_bonus=self.config.target_bonus,
-        )
-        return prior + sum(self.weights.get(feature, 0.0)
-                           for feature in self._features(afterstate))
+        return float(self.values([afterstate])[0])
+
+    def candidates(self, board: tuple[int, ...]):
+        return [(action, afterstate) for action in range(4)
+                if (afterstate := move_board(board, action)) != board]
+
+    def choose_batch(self, boards, *, epsilon: float = 0.0):
+        """One batched forward pass for all legal moves in several games."""
+        candidates = [self.candidates(board) for board in boards]
+        if any(not moves for moves in candidates):
+            raise ValueError("no legal actions")
+        afterstates = [state for moves in candidates for _, state in moves]
+        predictions = self.values(afterstates)
+        selected = []
+        offset = 0
+        for board, moves in zip(boards, candidates):
+            values = predictions[offset:offset + len(moves)]
+            scores = values.copy()
+            if self.config.objective == "merge":
+                scores += [merge_score(board, action) for action, _ in moves]
+            if self.rng.random() < epsilon:
+                index = self.rng.randrange(len(moves))
+            else:
+                best = float(scores.max())
+                ties = [i for i, score in enumerate(scores) if score == best]
+                index = self.rng.choice(ties)
+            action, state = moves[index]
+            selected.append((action, state, float(values[index])))
+            offset += len(moves)
+        return selected
 
     def choose(self, board: tuple[int, ...], *, epsilon: float = 0.0) -> int:
-        actions = legal_actions(board, self.size)
-        if not actions:
-            raise ValueError("no legal actions")
-        if self.rng.random() < epsilon:
-            return self.rng.choice(actions)
-        values = {
-            action: self.value(move_board(board, action, self.size))
-            for action in actions
-        }
-        best = max(values.values())
-        return self.rng.choice([action for action in actions if values[action] == best])
+        return self.choose_batch([board], epsilon=epsilon)[0][0]
 
     def epsilon(self) -> float:
         progress = min(1.0, self.episodes_trained / self.config.epsilon_decay_episodes)
-        return (self.config.epsilon_start
-                + progress * (self.config.epsilon_end - self.config.epsilon_start))
+        return self.config.epsilon_start + progress * (
+            self.config.epsilon_end - self.config.epsilon_start
+        )
+
+    def td_target(self, *, next_value: float | None = None,
+                  next_merge_reward: float = 0.0, terminal_sum: int | None = None,
+                  reached_target: bool = False) -> float:
+        if (next_value is None) == (terminal_sum is None):
+            raise ValueError("provide exactly one of next_value and terminal_sum")
+        if terminal_sum is not None:
+            return (0.0 if self.config.objective == "merge" else
+                    float(terminal_sum + self.config.target_bonus * reached_target))
+        return float(next_value + (next_merge_reward if self.config.objective == "merge" else 0))
+
+    def train_batch(self, afterstates, targets) -> dict:
+        if len(afterstates) != len(targets) or not len(afterstates):
+            raise ValueError("training needs nonempty, equally sized states and targets")
+        tensor = self.torch.from_numpy(encode_boards(afterstates))
+        target_array = np.asarray(targets, dtype=np.float64)
+        if not np.isfinite(target_array).all():
+            raise ValueError("TD targets must be finite")
+        normalized = (target_array - np.asarray([
+            self.baseline(board) for board in afterstates
+        ])) / self.config.value_scale
+        desired = self.torch.as_tensor(normalized, dtype=self.torch.float32)
+        self.network.train()
+        prediction = self.network(tensor).flatten()
+        error = desired - prediction
+        loss = self.torch.mean(error.square())
+        if not self.torch.isfinite(loss):
+            raise FloatingPointError("nonfinite CNN TD loss")
+        self.optimizer.zero_grad(set_to_none=True)
+        loss.backward()
+        self.torch.nn.utils.clip_grad_norm_(self.network.parameters(), self.config.gradient_clip)
+        self.optimizer.step()
+        self.optimizer_steps += 1
+        self.positions_trained += len(afterstates)
+        return {"loss": float(loss.detach()),
+                "mean_abs_error": float(error.detach().abs().mean()) * self.config.value_scale,
+                "batch_size": len(afterstates), "optimizer_steps": self.optimizer_steps}
 
     def update(self, afterstate: tuple[int, ...], *,
                next_afterstate: tuple[int, ...] | None = None,
-               terminal_sum: int | None = None, reached_target: bool = False) -> float:
-        if (next_afterstate is None) == (terminal_sum is None):
-            raise ValueError("provide exactly one of next_afterstate and terminal_sum")
-        target_value = (
-            self.value(next_afterstate) if next_afterstate is not None
-            else float(terminal_sum + self.config.target_bonus * reached_target)
+               terminal_sum: int | None = None, reached_target: bool = False,
+               next_merge_reward: float = 0.0) -> float:
+        target = self.td_target(
+            next_value=self.value(next_afterstate) if next_afterstate is not None else None,
+            next_merge_reward=next_merge_reward, terminal_sum=terminal_sum,
+            reached_target=reached_target,
         )
-        error = target_value - self.value(afterstate)
-        features = self._features(afterstate)
-        increment = self.config.alpha * error / len(features)
-        for feature in features:
-            self.weights[feature] = self.weights.get(feature, 0.0) + increment
+        error = target - self.value(afterstate)
+        self.train_batch([afterstate], [target])
         return error
 
+    def set_learning_rate(self, learning_rate: float):
+        self.config = replace(self.config, learning_rate=learning_rate)
+        for group in self.optimizer.param_groups:
+            group["lr"] = learning_rate
+
     def save(self, path: Path) -> None:
+        path = Path(path)
+        if path.suffix != ".pt":
+            raise ValueError("CNN TD models must end in .pt")
         path.parent.mkdir(parents=True, exist_ok=True)
         payload = {
-            "version": 1, "config": asdict(self.config), "size": self.size,
-            "target": self.target, "episodes_trained": self.episodes_trained,
-            "weights": self.weights,
+            "version": 2, "architecture": "katsuta-deep-79874-linear",
+            "config": asdict(self.config), "size": self.size, "target": self.target,
+            "episodes_trained": self.episodes_trained,
+            "positions_trained": self.positions_trained, "optimizer_steps": self.optimizer_steps,
+            "network": self.network.state_dict(), "optimizer": self.optimizer.state_dict(),
+            "rng_state": self.rng.getstate(),
         }
-        with path.open("wb") as stream:
-            pickle.dump(payload, stream, protocol=pickle.HIGHEST_PROTOCOL)
+        temporary = path.with_suffix(".pt.tmp")
+        self.torch.save(payload, temporary)
+        temporary.replace(path)
 
     @classmethod
-    def load(cls, path: Path, *, seed: int = 0) -> "TDAgent":
-        with path.open("rb") as stream:
-            payload = pickle.load(stream)
-        if payload.get("version") != 1:
-            raise ValueError("unsupported TD model version")
+    def load(cls, path: Path, *, seed: int = 0, restore_rng: bool = False):
+        path = Path(path)
+        if path.suffix == ".pkl":
+            from .ntuple import NTupleAgent
+
+            return NTupleAgent.load(path, seed=seed)
+        payload = _torch().load(path, map_location="cpu", weights_only=True)
+        if payload.get("version") != 2 or payload.get("architecture") != "katsuta-deep-79874-linear":
+            raise ValueError("unsupported CNN TD model version or architecture")
         agent = cls(TDConfig(**payload["config"]), seed=seed,
                     size=payload["size"], target=payload["target"])
+        agent.network.load_state_dict(payload["network"])
+        agent.optimizer.load_state_dict(payload["optimizer"])
         agent.episodes_trained = payload["episodes_trained"]
-        agent.weights = payload["weights"]
+        agent.positions_trained = payload["positions_trained"]
+        agent.optimizer_steps = payload["optimizer_steps"]
+        if restore_rng:
+            agent.rng.setstate(payload["rng_state"])
+        agent.network.eval()
         return agent

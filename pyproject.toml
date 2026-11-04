@@ -17,6 +17,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+td = ["torch>=2.3,<3"]
 ppo = ["sb3-contrib>=2.6,<3", "torch>=2.3,<3"]
 
 [tool.uv.sources]

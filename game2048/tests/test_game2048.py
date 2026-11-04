@@ -12,7 +12,7 @@ import numpy as np
 from game2048.core import legal_actions, merge_score, move_board
 from game2048.envs import Game2048Env
 from game2048.wrappers.MCTS import MCTSAgent, MCTSConfig
-from game2048.wrappers.TD import TDAgent, TDConfig
+from game2048.wrappers.TD import NTupleAgent as TDAgent, NTupleConfig as TDConfig
 from game2048.wrappers.ppo.env import PPO2048Env, encode_board
 
 
@@ -100,7 +100,8 @@ class RuleTests(unittest.TestCase):
             log_dir = Path(temp_dir) / "log"
             chart = Path(temp_dir) / "chart.png"
             completed = subprocess.run(
-                [sys.executable, "-m", "game2048.play", "--mode", "random",
+                [sys.executable, "-m", "game2048.play", "--algorithm", "expectimax",
+                 "--mode", "eval", "--depth", "1",
                  "--seed", "2026", "--max-steps", "1", "--log-dir", str(log_dir),
                  "--plot", str(chart)],
                 capture_output=True, text=True, check=True,
@@ -231,10 +232,11 @@ class RuleTests(unittest.TestCase):
             )
             self.assertIn("'algorithm': 'td'", evaluated.stdout)
 
-    def test_td_default_model_path(self):
+    def test_legacy_td_default_model_path(self):
         with tempfile.TemporaryDirectory() as temp_dir:
             completed = subprocess.run(
                 [sys.executable, "-m", "game2048.play", "--algorithm", "td",
+                 "--td-network", "ntuple",
                  "--mode", "eval", "--episodes", "1", "--max-steps", "1",
                  "--log-dir", str(Path(temp_dir) / "log")],
                 capture_output=True, text=True, check=True,
