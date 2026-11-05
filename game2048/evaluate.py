@@ -37,7 +37,7 @@ def main():
     parser.add_argument('--agent', choices=(*VERSIONS, 'all'), default='all')
     parser.add_argument('--games', type=int, default=100)
     parser.add_argument('--seed', type=int, default=6000000)
-    parser.add_argument('--output', default='docs/experiments/evaluation')
+    parser.add_argument('--output', default='results/evaluation')
     parser.add_argument('--verify-retained', action='store_true', help='Reproduce all 500 historical games for each retained policy')
     args = parser.parse_args()
     if args.games < 1 or args.seed < 0 or args.seed + args.games >= 2**32:
@@ -56,10 +56,10 @@ def main():
                    success_256=float((raw[:,2]>=256).mean()), success_512=float((raw[:,2]>=512).mean()),
                    max_tile=int(raw[:,2].max()), truncated=int(raw[:,5].sum()), seconds=time.perf_counter()-start)
         if args.verify_retained:
-            reference = Path(__file__).resolve().parents[1] / 'docs/experiments/selected/raw' / (version + '.csv')
-            expected = np.loadtxt(reference,delimiter=',',skiprows=1)
-            np.testing.assert_array_equal(raw, expected)
-            row.update(exactly_matches_historical_500_games=True, historical_raw_sha256=hashlib.sha256(reference.read_bytes()).hexdigest())
+            fingerprint = hashlib.sha256(raw.astype('<i8').tobytes()).hexdigest()
+            if fingerprint != agent.config['evaluation_sha256']:
+                raise RuntimeError(f'{version}: results differ from the retained 500-game reference')
+            row.update(exactly_matches_historical_500_games=True, evaluation_sha256=fingerprint)
         np.savetxt(out/(version+'.csv'),raw,delimiter=',',fmt='%.0f',
                    header='seed,tile_sum,max_tile,steps,merge_score,truncated',comments='')
         summary.append(row)

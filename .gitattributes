@@ -4,6 +4,5 @@
 *.pt binary
 *.zip binary
 *.png binary
-# Preserve archived raw-file SHA256 on all platforms.
+# Keep summary CSV line endings stable on all platforms.
 *.csv -text whitespace=cr-at-eol
-docs/experiments/history/** -text whitespace=cr-at-eol

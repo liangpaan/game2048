@@ -1,9 +1,0 @@
-{
-  "timestamp_utc": "2026-11-05T05:07:31.228035+00:00",
-  "inspected": [
-    "comparison.png",
-    "holdout.png",
-    "autoplay.png"
-  ],
-  "findings": "All labels and values legible; complete 3x3 game frame with sum 902 and max 512; no clipped plot labels."
-}

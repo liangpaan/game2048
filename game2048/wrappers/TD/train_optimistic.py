@@ -11,7 +11,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--episodes', type=int, default=300000)
     parser.add_argument('--seed', type=int, default=42)
-    parser.add_argument('--output', default='docs/experiments/rebuilt-td')
+    parser.add_argument('--output', default='results/rebuilt-td')
     args = parser.parse_args()
     if args.episodes < 1 or not 0 <= args.seed < 2**32 - args.episodes:
         parser.error('episodes must be positive and seeds must fit uint32')

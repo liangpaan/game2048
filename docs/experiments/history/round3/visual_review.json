@@ -1,9 +1,0 @@
-{
-  "timestamp_utc": "2026-11-05T05:33:17.637655+00:00",
-  "inspected": [
-    "comparison.png",
-    "holdout.png",
-    "autoplay.png"
-  ],
-  "findings": "All 14 plot labels visible; 10000-game chart readable; final 3x3 game frame is complete and accurately labelled Planning, sum522/max256/236moves."
-}

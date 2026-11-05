@@ -176,7 +176,7 @@ def worker_call(label,call,counter):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output',default='docs/experiments/rebuilt-planner')
+    parser.add_argument('--output',default='results/rebuilt-planner')
     args=parser.parse_args();out=Path(args.output);out.mkdir(parents=True,exist_ok=True)
     threading.stack_size(64*1024*1024)
     size=11**9;small=8**9
