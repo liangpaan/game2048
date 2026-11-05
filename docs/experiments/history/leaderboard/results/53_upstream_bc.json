@@ -1,0 +1,48 @@
+{
+  "key": "53_upstream_bc",
+  "id": "53_upstream_bc",
+  "label": "上游 PPO网络仅教师模仿（BC对照）",
+  "group": "upstream",
+  "family": "教师模仿",
+  "source": "链接仓库",
+  "model": "third_party\\game2048-fc62be0aeb8a660a996cca54f517d119d817fbe7\\game2048\\wrappers\\ppo\\models\\ppo-3x3-cnn64-separate-tdwarm-bc.zip",
+  "original_config": {
+    "upstream_commit": "fc62be0aeb8a660a996cca54f517d119d817fbe7"
+  },
+  "games": 500,
+  "mean_sum": 195.004,
+  "median_sum": 185.0,
+  "max_sum": 526,
+  "min_sum": 38,
+  "std_sum": 97.42985752979706,
+  "mean_sum_ci95": [
+    186.4907,
+    203.4763
+  ],
+  "success_256": 0.124,
+  "success_256_ci95": [
+    0.09794609113930411,
+    0.1557874128877829
+  ],
+  "success_512": 0.0,
+  "largest_tile": 256,
+  "mean_steps": 86.624,
+  "mean_merge_score": 903.552,
+  "truncated": 0,
+  "tile_distribution": {
+    "8": 3,
+    "16": 14,
+    "32": 81,
+    "64": 138,
+    "128": 202,
+    "256": 62
+  },
+  "evaluation_seconds": 48.88669179996941,
+  "timing_complete": true,
+  "model_sha256": "57845603477d12774d0a853ef6f2ecd3a2a309add722be627d999c73e5bca9bd",
+  "raw_sha256": "10280f86a74a5393a078a52fb69f95d07951cb79992acabb2685b08a6544437d",
+  "ms_per_move": 1.1287100988171734,
+  "success_256_count": 62,
+  "success_1024_count": 0,
+  "origin": "新增仓库"
+}

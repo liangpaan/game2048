@@ -1,0 +1,35 @@
+{
+  "command": [
+    "C:\\Users\\31245\\Desktop\\game2048-master\\game2048-master\\game2048\\experiments.py",
+    "--episodes",
+    "100000",
+    "--games",
+    "500",
+    "--validation-games",
+    "200"
+  ],
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.5.4",
+  "train_seed": 42,
+  "episodes": 100000,
+  "validation_seeds": [
+    10000,
+    10199
+  ],
+  "test_seeds": [
+    20000,
+    20499
+  ],
+  "date": "2026-11-05T11:59:06+0800",
+  "rules": {
+    "size": 3,
+    "target": 256,
+    "stop_on_target": false,
+    "spawn_2_probability": 0.9
+  },
+  "source_sha256": {
+    "experiments.py": "c6c9c2270f1d55e429b903ab39af3ec0c5e5a425c41c4d2eba643659d7a8234a",
+    "engine.py": "1facfb50e46d1c1c4007d9fb3468e830ec417e26dbe4c1b41f500479b3736e7c"
+  }
+}

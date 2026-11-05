@@ -1,0 +1,11 @@
+{
+  "episodes": 200000,
+  "train_seed": 20261106,
+  "alpha": 0.005,
+  "epsilon": 0.0005,
+  "coherence": false,
+  "training_seconds": 27.97691010008566,
+  "source": "round2/20_greedy_refine",
+  "last20000_mean_added_mass": 280.1157,
+  "start_count": 2208
+}

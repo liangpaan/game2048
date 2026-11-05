@@ -1,0 +1,51 @@
+{
+  "key": "round2__19_low_epsilon",
+  "id": "19_low_epsilon",
+  "label": "低探索率TD续训",
+  "group": "round2",
+  "family": "学习＋搜索",
+  "source": "本项目",
+  "model": "artifacts\\round2\\models\\19_low_epsilon.npz",
+  "original_config": {
+    "source": "09_td5",
+    "episodes": 200000,
+    "seed": 20261105,
+    "epsilon": 0.0005,
+    "alpha": 0.01,
+    "kind": 0,
+    "depth": 3
+  },
+  "games": 500,
+  "mean_sum": 700.392,
+  "median_sum": 760.0,
+  "max_sum": 1016,
+  "min_sum": 204,
+  "std_sum": 204.56189643956154,
+  "mean_sum_ci95": [
+    681.9225,
+    717.9652000000001
+  ],
+  "success_256": 0.964,
+  "success_256_ci95": [
+    0.9438156730319729,
+    0.977108939019707
+  ],
+  "success_512": 0.64,
+  "largest_tile": 512,
+  "mean_steps": 316.39,
+  "mean_merge_score": 4672.096,
+  "truncated": 0,
+  "tile_distribution": {
+    "128": 18,
+    "256": 162,
+    "512": 320
+  },
+  "evaluation_seconds": 14.664249400375411,
+  "timing_complete": true,
+  "model_sha256": "fae885a305989614dfd77e02b9e74cfb871f4b293ab703656651625983cabdd5",
+  "raw_sha256": "e7038ef3331bc8e933e4a5b0ef0e4768fc0423efb5342298a57aa3bdd18dd6f7",
+  "ms_per_move": 0.09269730016988786,
+  "success_256_count": 482,
+  "success_1024_count": 0,
+  "origin": "第二轮"
+}

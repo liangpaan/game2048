@@ -1,0 +1,46 @@
+{
+  "id": "17_phase_switch",
+  "source": "C:\\Users\\31245\\Desktop\\game2048-master\\game2048-master\\artifacts\\phase",
+  "model": "models/champion.npz",
+  "criterion": "validation success_256, then validation mean_sum",
+  "depth": 3,
+  "validation": {
+    "games": 200,
+    "mean_sum": 705.29,
+    "median_sum": 760.0,
+    "max_sum": 1010,
+    "min_sum": 248,
+    "std_sum": 197.0859973507981,
+    "mean_sum_ci95": [
+      679.7495,
+      731.92275
+    ],
+    "success_256": 0.985,
+    "success_256_ci95": [
+      0.9568342712073108,
+      0.9948857622067415
+    ],
+    "success_512": 0.605,
+    "largest_tile": 512,
+    "mean_steps": 318.44,
+    "mean_merge_score": 4669.12,
+    "truncated": 0,
+    "tile_distribution": {
+      "128": 3,
+      "256": 76,
+      "512": 121
+    }
+  },
+  "config": {
+    "id": "17_phase_switch",
+    "label": "分阶段双模型 TD + 深度3搜索",
+    "method": 6,
+    "phase_switch": true,
+    "depth": 3,
+    "objective": 0,
+    "training_seconds": 0,
+    "before_source": "refinement/11_optimistic",
+    "after_source": "refinement/09_td5",
+    "source_rule": "before: highest validation success; after: highest validation mass among total-mass policies, using nonoptimistic mass TD when the same model wins both"
+  }
+}

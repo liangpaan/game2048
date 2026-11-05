@@ -1,0 +1,13 @@
+[
+  {
+    "seed": 50000,
+    "tile_sum": 756,
+    "max_tile": 512,
+    "steps": 339,
+    "reached_target": true,
+    "total_reward": 1008.0,
+    "seconds": 0.08048020000569522,
+    "decision_seconds": 0.03474719903897494,
+    "truncated": false
+  }
+]

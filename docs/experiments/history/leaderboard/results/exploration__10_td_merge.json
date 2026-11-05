@@ -1,0 +1,52 @@
+{
+  "key": "exploration__10_td_merge",
+  "id": "10_td_merge",
+  "label": "5-tuple TD 传统合并分奖励",
+  "group": "exploration",
+  "family": "强化学习",
+  "source": "本项目",
+  "model": "artifacts\\exploration\\models\\10_td_merge.npz",
+  "original_config": {
+    "method": 6,
+    "width": 5,
+    "objective": 1,
+    "episodes": 100000,
+    "train_seed": 42
+  },
+  "games": 500,
+  "mean_sum": 620.776,
+  "median_sum": 633.0,
+  "max_sum": 992,
+  "min_sum": 58,
+  "std_sum": 219.9207131311834,
+  "mean_sum_ci95": [
+    601.0439,
+    640.2683000000001
+  ],
+  "success_256": 0.918,
+  "success_256_ci95": [
+    0.8906451408426123,
+    0.9389809105315307
+  ],
+  "success_512": 0.518,
+  "largest_tile": 512,
+  "mean_steps": 280.258,
+  "mean_merge_score": 4076.264,
+  "truncated": 0,
+  "tile_distribution": {
+    "16": 2,
+    "32": 1,
+    "64": 7,
+    "128": 31,
+    "256": 200,
+    "512": 259
+  },
+  "evaluation_seconds": 0.10713899973779917,
+  "timing_complete": true,
+  "model_sha256": "d890d884a779e75910d471cb0ad1ce5d0ef8a88b5d392e17098ffeae1a481a6b",
+  "raw_sha256": "a94b411f0d4bfcc16151302f4504066ddce119dd4af6ec1d642eaf357db91be1",
+  "ms_per_move": 0.0007645740691634078,
+  "success_256_count": 459,
+  "success_1024_count": 0,
+  "origin": "第一轮"
+}

@@ -140,3 +140,9 @@ cython_debug/
 
 
 log/
+# Numba compilation cache and ad-hoc evaluation outputs
+*.nbc
+*.nbi
+docs/experiments/evaluation/
+docs/experiments/rebuilt-planner/
+docs/experiments/rebuilt-td/

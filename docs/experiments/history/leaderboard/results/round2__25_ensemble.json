@@ -1,0 +1,47 @@
+{
+  "key": "round2__25_ensemble",
+  "id": "25_ensemble",
+  "label": "三个续训模型的价值集成",
+  "group": "round2",
+  "family": "学习＋搜索",
+  "source": "本项目",
+  "model": "artifacts\\round2\\models\\25_ensemble.npz",
+  "original_config": {
+    "kind": 0,
+    "depth": 3
+  },
+  "games": 500,
+  "mean_sum": 713.18,
+  "median_sum": 768.0,
+  "max_sum": 1022,
+  "min_sum": 140,
+  "std_sum": 208.9402010509956,
+  "mean_sum_ci95": [
+    695.0753,
+    731.9017
+  ],
+  "success_256": 0.964,
+  "success_256_ci95": [
+    0.9438156730319729,
+    0.977108939019707
+  ],
+  "success_512": 0.638,
+  "largest_tile": 512,
+  "mean_steps": 322.3,
+  "mean_merge_score": 4749.016,
+  "truncated": 0,
+  "tile_distribution": {
+    "64": 1,
+    "128": 17,
+    "256": 163,
+    "512": 319
+  },
+  "evaluation_seconds": 14.679465600056574,
+  "timing_complete": true,
+  "model_sha256": "44e142f9663038fb8810e3c2d76f142709deafcae2304085f6e594efd598b5a2",
+  "raw_sha256": "779da1a1e4b205ad058183d7822558efcae90579a59c02b15730155f57d52ab8",
+  "ms_per_move": 0.09109193670528436,
+  "success_256_count": 482,
+  "success_1024_count": 0,
+  "origin": "第二轮"
+}

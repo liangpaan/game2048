@@ -1,0 +1,6 @@
+{
+  "id": "16_hybrid_d3",
+  "model": "models/16_hybrid_d3.npz",
+  "criterion": "validation success_256, then validation mean_sum",
+  "depth": 3
+}

@@ -1,0 +1,77 @@
+{
+  "status": "prepared for pull request",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "numpy": "2.5.4",
+  "selected_tests": {
+    "passed": 11,
+    "failed": 0
+  },
+  "historical_leaderboard": {
+    "configurations": 58,
+    "games_each": 500,
+    "total_games": 29000,
+    "verified_raw_sha256": true,
+    "verified_summary_metrics": true
+  },
+  "selected_policy_replay": [
+    {
+      "version": "mc",
+      "games": 500,
+      "mean_sum": 280.164,
+      "success_256": 0.344,
+      "success_512": 0.0,
+      "max_tile": 256,
+      "truncated": 0,
+      "seconds": 26.724205099977553,
+      "exactly_matches_historical_500_games": true,
+      "historical_raw_sha256": "74cd0a334740477706141eb3025174fac38e19475cbccaf709485d4f0f00c8bb"
+    },
+    {
+      "version": "td",
+      "games": 500,
+      "mean_sum": 639.408,
+      "success_256": 0.926,
+      "success_512": 0.546,
+      "max_tile": 512,
+      "truncated": 0,
+      "seconds": 1.617752999998629,
+      "exactly_matches_historical_500_games": true,
+      "historical_raw_sha256": "e7fcbfa04b91c13d86fbf976d2a4cf9deab7a9d1d148fc2357a1aed66ff104b2"
+    },
+    {
+      "version": "best",
+      "games": 500,
+      "mean_sum": 803.58,
+      "success_256": 0.998,
+      "success_512": 0.728,
+      "max_tile": 1024,
+      "truncated": 0,
+      "seconds": 2.1859322000527754,
+      "exactly_matches_historical_500_games": true,
+      "historical_raw_sha256": "197874a47540991aa0c97408ddeaa3b1aac0cd07a31ed8f278bcec4e778fb0ee"
+    }
+  ],
+  "selected_models": {
+    "wrappers/TD/models/optimistic-5tuple-300k.npz": {
+      "sha256": "ff0a7e94427f113db990b737afb8a582f48c0b34b9ac69c33a0bfeb6720d387b",
+      "bytes": 892783
+    },
+    "wrappers/Expectimax/models/lex.npz": {
+      "sha256": "43a7e13b030b69fd44a171fdeb5c40c629f5359b19bd91a83a37d1c1ad9cb949",
+      "bytes": 8811844
+    },
+    "wrappers/Expectimax/models/mass.npz": {
+      "sha256": "123be466cfc45226302c9c1fac3900369255bf87a143d2f68aaebd80eca561f0",
+      "bytes": 63819096
+    }
+  },
+  "wheel": {
+    "build_succeeded": true,
+    "model_hashes_verified": true,
+    "numba_caches_excluded": true
+  },
+  "training_restarted": false,
+  "new_full_planning_solve_started": false,
+  "legacy_test_limitation": "Original game2048/tests suite fails collection on Windows because unchanged Expectimax/exact.py imports POSIX-only fcntl. Selected three-version tests pass.",
+  "history_note": "Historical JSON paths are preserved provenance; see experiments/README.md for relocated evidence. Cancelled resource-matched run is not a complete ranking."
+}

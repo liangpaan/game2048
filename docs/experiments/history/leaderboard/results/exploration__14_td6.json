@@ -1,0 +1,51 @@
+{
+  "key": "exploration__14_td6",
+  "id": "14_td6",
+  "label": "6-tuple 对称 TD 总和+首次256奖励",
+  "group": "exploration",
+  "family": "强化学习",
+  "source": "本项目",
+  "model": "artifacts\\exploration\\models\\14_td6.npz",
+  "original_config": {
+    "method": 6,
+    "width": 6,
+    "objective": 2,
+    "episodes": 100000,
+    "train_seed": 42
+  },
+  "games": 500,
+  "mean_sum": 388.912,
+  "median_sum": 388.0,
+  "max_sum": 754,
+  "min_sum": 62,
+  "std_sum": 175.86226237215678,
+  "mean_sum_ci95": [
+    374.0224,
+    404.0361
+  ],
+  "success_256": 0.616,
+  "success_256_ci95": [
+    0.5726388276307134,
+    0.6575923253822066
+  ],
+  "success_512": 0.176,
+  "largest_tile": 512,
+  "mean_steps": 174.808,
+  "mean_merge_score": 2316.48,
+  "truncated": 0,
+  "tile_distribution": {
+    "32": 27,
+    "64": 26,
+    "128": 139,
+    "256": 220,
+    "512": 88
+  },
+  "evaluation_seconds": 0.09906179993413389,
+  "timing_complete": true,
+  "model_sha256": "cf8abad326a1a396be0b68900fd4008a8de8a4000f7011e89e6034c6af3bf182",
+  "raw_sha256": "0d9c14a82ae91f5d99b822c1487b4239aa7e2b4f02ad4b903dc6a274a846e77f",
+  "ms_per_move": 0.0011333783343340567,
+  "success_256_count": 308,
+  "success_1024_count": 0,
+  "origin": "第一轮"
+}

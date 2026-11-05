@@ -1,0 +1,50 @@
+{
+  "key": "round3__41_tail_td",
+  "id": "41_tail_td",
+  "label": "512残局分布TD微调",
+  "group": "round3",
+  "family": "规划＋学习",
+  "source": "本项目",
+  "model": "artifacts\\round3\\models\\41_tail_td.npz",
+  "original_config": {
+    "mode": 0,
+    "depth": 3,
+    "episodes": 200000,
+    "train_seed": 20261106,
+    "alpha": 0.005,
+    "epsilon": 0.0005,
+    "source": "round2/20_greedy_refine"
+  },
+  "games": 500,
+  "mean_sum": 750.272,
+  "median_sum": 770.0,
+  "max_sum": 1016,
+  "min_sum": 388,
+  "std_sum": 169.71254140286405,
+  "mean_sum_ci95": [
+    735.2034,
+    764.9299
+  ],
+  "success_256": 1.0,
+  "success_256_ci95": [
+    0.9923756595384482,
+    1.0
+  ],
+  "success_512": 0.73,
+  "largest_tile": 512,
+  "mean_steps": 339.054,
+  "mean_merge_score": 5067.024,
+  "truncated": 0,
+  "tile_distribution": {
+    "256": 135,
+    "512": 365
+  },
+  "evaluation_seconds": 2.9952639000257477,
+  "timing_complete": true,
+  "model_sha256": "abe31134445f8407f675fd6748da485cbb1e5984d8c3245006b05c31196b8463",
+  "raw_sha256": "596223cdd041189e0e13820568115be5b73e90f3046781c238c03e14d027f423",
+  "ms_per_move": 0.01766835902260848,
+  "success_256_count": 500,
+  "success_1024_count": 0,
+  "origin": "最后一轮"
+}

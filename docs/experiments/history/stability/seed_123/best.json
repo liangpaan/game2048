@@ -1,0 +1,6 @@
+{
+  "id": "09_td5",
+  "model": "models/09_td5.npz",
+  "criterion": "validation success_256, then validation mean_sum",
+  "depth": 1
+}

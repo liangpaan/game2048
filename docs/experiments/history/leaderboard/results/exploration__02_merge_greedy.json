@@ -1,0 +1,46 @@
+{
+  "key": "exploration__02_merge_greedy",
+  "id": "02_merge_greedy",
+  "label": "即时合并分贪心",
+  "group": "exploration",
+  "family": "基线／搜索",
+  "source": "本项目",
+  "model": null,
+  "original_config": {
+    "method": 1
+  },
+  "games": 500,
+  "mean_sum": 114.208,
+  "median_sum": 112.0,
+  "max_sum": 244,
+  "min_sum": 50,
+  "std_sum": 37.05302402204652,
+  "mean_sum_ci95": [
+    111.10770000000001,
+    117.5084
+  ],
+  "success_256": 0.0,
+  "success_256_ci95": [
+    -4.336808689942018e-19,
+    0.007624340461551825
+  ],
+  "success_512": 0.0,
+  "largest_tile": 128,
+  "mean_steps": 49.944,
+  "mean_merge_score": 380.984,
+  "truncated": 0,
+  "tile_distribution": {
+    "16": 47,
+    "32": 191,
+    "64": 240,
+    "128": 22
+  },
+  "evaluation_seconds": 0.032639800338074565,
+  "timing_complete": true,
+  "model_sha256": null,
+  "raw_sha256": "528b5eabbf7b2befac086bfcf01881500fa1ff3c6e6f217b5455434451e1270e",
+  "ms_per_move": 0.0013070559161490695,
+  "success_256_count": 0,
+  "success_1024_count": 0,
+  "origin": "第一轮"
+}

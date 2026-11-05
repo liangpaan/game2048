@@ -1,0 +1,51 @@
+{
+  "key": "stability_seed_456__09_td5",
+  "id": "09_td5",
+  "label": "5-tuple 对称 TD(0) 总和奖励（训练种子456）",
+  "group": "stability/seed_456",
+  "family": "强化学习",
+  "source": "本项目",
+  "model": "artifacts\\stability\\seed_456\\models\\09_td5.npz",
+  "original_config": {
+    "method": 6,
+    "width": 5,
+    "episodes": 100000,
+    "train_seed": 456
+  },
+  "games": 500,
+  "mean_sum": 452.264,
+  "median_sum": 388.0,
+  "max_sum": 992,
+  "min_sum": 56,
+  "std_sum": 258.4098946466691,
+  "mean_sum_ci95": [
+    430.9266,
+    474.73330000000004
+  ],
+  "success_256": 0.574,
+  "success_256_ci95": [
+    0.5302541759784434,
+    0.616617421633247
+  ],
+  "success_512": 0.274,
+  "largest_tile": 512,
+  "mean_steps": 203.646,
+  "mean_merge_score": 2789.576,
+  "truncated": 0,
+  "tile_distribution": {
+    "16": 3,
+    "32": 22,
+    "64": 22,
+    "128": 166,
+    "256": 150,
+    "512": 137
+  },
+  "evaluation_seconds": 0.08713880006689578,
+  "timing_complete": true,
+  "model_sha256": "230bf1f342bc25176f6d77bd2280e73bfecdc1ec493f6679606ef1c51e6550a5",
+  "raw_sha256": "ecb81b4bc46147a5c88ffa109bda6442230f71278b3b8746934b54f0b853f6a7",
+  "ms_per_move": 0.0008557870035934492,
+  "success_256_count": 287,
+  "success_1024_count": 0,
+  "origin": "种子456"
+}

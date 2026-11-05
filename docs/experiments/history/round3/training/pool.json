@@ -1,0 +1,9 @@
+{
+  "initial_games": 3000,
+  "first512_starts": 2208,
+  "seed_range": [
+    1100000,
+    1102999
+  ],
+  "teacher": "previous DP256/512; collect first player state containing512"
+}

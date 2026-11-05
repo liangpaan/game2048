@@ -1,0 +1,51 @@
+{
+  "key": "exploration__07_td4",
+  "id": "07_td4",
+  "label": "4-tuple 对称 TD(0) 总和奖励",
+  "group": "exploration",
+  "family": "强化学习",
+  "source": "本项目",
+  "model": "artifacts\\exploration\\models\\07_td4.npz",
+  "original_config": {
+    "method": 6,
+    "width": 4,
+    "episodes": 100000,
+    "train_seed": 42
+  },
+  "games": 500,
+  "mean_sum": 427.004,
+  "median_sum": 449.0,
+  "max_sum": 884,
+  "min_sum": 60,
+  "std_sum": 174.3405783474319,
+  "mean_sum_ci95": [
+    411.26370000000003,
+    442.4764
+  ],
+  "success_256": 0.74,
+  "success_256_ci95": [
+    0.699826039763839,
+    0.7765142768146163
+  ],
+  "success_512": 0.152,
+  "largest_tile": 512,
+  "mean_steps": 192.126,
+  "mean_merge_score": 2549.28,
+  "truncated": 0,
+  "tile_distribution": {
+    "16": 1,
+    "32": 11,
+    "64": 28,
+    "128": 90,
+    "256": 294,
+    "512": 76
+  },
+  "evaluation_seconds": 0.058854099828749895,
+  "timing_complete": true,
+  "model_sha256": "2a46ddd7d3a2adc67a54c831f1cc39d071cc5c22bb005ad4d260c12b0279c463",
+  "raw_sha256": "8efe1c358c71d088b73477da351139fec659992eff5f5eb42c329701c42bbe6e",
+  "ms_per_move": 0.0006126614807860455,
+  "success_256_count": 370,
+  "success_1024_count": 0,
+  "origin": "第一轮"
+}

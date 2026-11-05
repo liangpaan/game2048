@@ -1,0 +1,47 @@
+{
+  "key": "52_upstream_expectimax_repro",
+  "id": "52_upstream_expectimax_repro",
+  "label": "上游完整 Expectimax 目标复现（S＋256达标奖励）",
+  "group": "upstream",
+  "family": "完整规划",
+  "source": "链接仓库目标复现",
+  "model": "artifacts/leaderboard/tables/weighted.npz",
+  "original_config": {
+    "upstream_commit": "fc62be0aeb8a660a996cca54f517d119d817fbe7",
+    "reproduction": "same Bellman objective; Numba Windows implementation, numeric ties 1e-10"
+  },
+  "games": 500,
+  "mean_sum": 798.752,
+  "median_sum": 884.0,
+  "max_sum": 1522,
+  "min_sum": 260,
+  "std_sum": 209.54909721659166,
+  "mean_sum_ci95": [
+    781.2719,
+    817.4127
+  ],
+  "success_256": 0.998,
+  "success_256_ci95": [
+    0.9887592932948537,
+    0.9996468636054407
+  ],
+  "success_512": 0.714,
+  "largest_tile": 1024,
+  "mean_steps": 360.942,
+  "mean_merge_score": 5369.872,
+  "truncated": 0,
+  "tile_distribution": {
+    "128": 1,
+    "256": 142,
+    "512": 353,
+    "1024": 4
+  },
+  "evaluation_seconds": 0.1479886999586597,
+  "timing_complete": true,
+  "model_sha256": "7fce421a5a2ca36e2f0cc9f26cb33c503be92374e0c8b0ee5baf769c1c2452a4",
+  "raw_sha256": "c45bf99338fde0954614df4fce7cc717762abee476ce483be283f1112d74ce1d",
+  "ms_per_move": 0.0008200137415909465,
+  "success_256_count": 499,
+  "success_1024_count": 4,
+  "origin": "新增仓库"
+}

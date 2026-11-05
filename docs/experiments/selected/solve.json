@@ -1,0 +1,21 @@
+{
+  "mass_initial_expected_sum": 811.2354652258082,
+  "lex_initial_expected_sum": 811.2315492781737,
+  "lex_initial_success_probability": 0.9957096431988064,
+  "mass_states": 388921077,
+  "lex_states": 48680615,
+  "mass_seconds": 274.87454369990155,
+  "lex_seconds": 57.732323899981566,
+  "mass_slots": 2357947691,
+  "lex_slots": 134217728,
+  "mass_tolerance": 1e-10,
+  "probability_tolerance": 1e-12,
+  "dtype": "float64",
+  "no_learned_boundary": true,
+  "mass_compact_states": 41325017,
+  "mass_compact_bytes": 206625085,
+  "mass_compact_seconds": 64.74249890004285,
+  "lex_compact_states": 5643584,
+  "lex_compact_bytes": 28217920,
+  "lex_compact_seconds": 8.519170699990354
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "a": "round3__45_mass_after256",
+    "b": "round3__46_lexicographic",
+    "mean_difference": 12.64,
+    "ci95": [
+      -3.4162,
+      29.216199999999997
+    ]
+  },
+  {
+    "a": "round3__46_lexicographic",
+    "b": "52_upstream_expectimax_repro",
+    "mean_difference": 4.828,
+    "ci95": [
+      -10.4481,
+      19.980599999999992
+    ]
+  }
+]

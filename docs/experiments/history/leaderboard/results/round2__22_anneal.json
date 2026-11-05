@@ -1,0 +1,52 @@
+{
+  "key": "round2__22_anneal",
+  "id": "22_anneal",
+  "label": "低探索率平缓退火从头训练",
+  "group": "round2",
+  "family": "学习＋搜索",
+  "source": "本项目",
+  "model": "artifacts\\round2\\models\\22_anneal.npz",
+  "original_config": {
+    "source": null,
+    "episodes": 300000,
+    "seed": 456,
+    "epsilon": 0.002,
+    "alpha": 0.03,
+    "kind": 0,
+    "depth": 3
+  },
+  "games": 500,
+  "mean_sum": 681.172,
+  "median_sum": 739.0,
+  "max_sum": 1022,
+  "min_sum": 146,
+  "std_sum": 189.88048771590636,
+  "mean_sum_ci95": [
+    664.6235,
+    697.5444
+  ],
+  "success_256": 0.962,
+  "success_256_ci95": [
+    0.9414152274693568,
+    0.9755398819441694
+  ],
+  "success_512": 0.632,
+  "largest_tile": 512,
+  "mean_steps": 307.656,
+  "mean_merge_score": 4517.264,
+  "truncated": 0,
+  "tile_distribution": {
+    "64": 1,
+    "128": 18,
+    "256": 165,
+    "512": 316
+  },
+  "evaluation_seconds": 14.287971000187099,
+  "timing_complete": true,
+  "model_sha256": "4a2b62bb2ecd6043542d1e424c537ba95849cb26c0180fc093cae4a6cdf5cd58",
+  "raw_sha256": "705022d8721b6d209dc7b36e7d12b46be36fa53c47ce89d5b63d1d5a7ff19b0e",
+  "ms_per_move": 0.092882771668273,
+  "success_256_count": 481,
+  "success_1024_count": 0,
+  "origin": "第二轮"
+}

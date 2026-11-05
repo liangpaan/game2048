@@ -1,0 +1,48 @@
+{
+  "key": "round2__33_direct512_dp",
+  "id": "33_direct512_dp",
+  "label": "直接优化512概率的动态规划 + RL续弈",
+  "group": "round2",
+  "family": "规划＋学习",
+  "source": "本项目",
+  "model": "artifacts\\round2\\models\\33_direct512_dp.npz",
+  "original_config": {
+    "dual_tablebase": true,
+    "hierarchical": false,
+    "depth": 3,
+    "kind": 4,
+    "source": "DP256 boundary: refinement/09_td5; DP512 boundary: round2/20_greedy_refine"
+  },
+  "games": 500,
+  "mean_sum": 749.12,
+  "median_sum": 768.0,
+  "max_sum": 1018,
+  "min_sum": 388,
+  "std_sum": 167.83480760941868,
+  "mean_sum_ci95": [
+    734.0046,
+    763.5633999999999
+  ],
+  "success_256": 1.0,
+  "success_256_ci95": [
+    0.9923756595384482,
+    1.0
+  ],
+  "success_512": 0.726,
+  "largest_tile": 512,
+  "mean_steps": 338.382,
+  "mean_merge_score": 5044.408,
+  "truncated": 0,
+  "tile_distribution": {
+    "256": 137,
+    "512": 363
+  },
+  "evaluation_seconds": 3.0942156999371946,
+  "timing_complete": true,
+  "model_sha256": "a51a98ae4603ca78c7466e806f2094abc9616572547ea37fadb237f8f199684b",
+  "raw_sha256": "b4e5ae76d6b07ebb8e7f8e83ab2d71cf174be47f5b8b83ae89ebc46c753d57a9",
+  "ms_per_move": 0.018288299613674456,
+  "success_256_count": 500,
+  "success_1024_count": 0,
+  "origin": "第二轮"
+}

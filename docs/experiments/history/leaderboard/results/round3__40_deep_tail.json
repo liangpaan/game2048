@@ -1,0 +1,46 @@
+{
+  "key": "round3__40_deep_tail",
+  "id": "40_deep_tail",
+  "label": "只在512后四层搜索",
+  "group": "round3",
+  "family": "规划＋学习",
+  "source": "本项目",
+  "model": "artifacts\\round3\\models\\40_deep_tail.npz",
+  "original_config": {
+    "mode": 0,
+    "depth": 4,
+    "source": "artifacts\\round2\\models\\20_greedy_refine.npz"
+  },
+  "games": 500,
+  "mean_sum": 750.252,
+  "median_sum": 769.0,
+  "max_sum": 1016,
+  "min_sum": 388,
+  "std_sum": 169.63686458920216,
+  "mean_sum_ci95": [
+    735.7675,
+    764.8347
+  ],
+  "success_256": 1.0,
+  "success_256_ci95": [
+    0.9923756595384482,
+    1.0
+  ],
+  "success_512": 0.73,
+  "largest_tile": 512,
+  "mean_steps": 339.118,
+  "mean_merge_score": 5056.096,
+  "truncated": 0,
+  "tile_distribution": {
+    "256": 135,
+    "512": 365
+  },
+  "evaluation_seconds": 35.14886229985859,
+  "timing_complete": true,
+  "model_sha256": "3919e8ee2ee06341c8ae1f283be3e2ddfca85e8569e4bb1fadf915ce53532ee0",
+  "raw_sha256": "b3f614ab8ce77bb6eea5ca667f311f5bad11fff6e135bc668c3d2c7fab153e07",
+  "ms_per_move": 0.20729576312586528,
+  "success_256_count": 500,
+  "success_1024_count": 0,
+  "origin": "最后一轮"
+}

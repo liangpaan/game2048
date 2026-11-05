@@ -1,0 +1,47 @@
+{
+  "key": "51_upstream_ntuple",
+  "id": "51_upstream_ntuple",
+  "label": "上游旧 n-tuple TD（5000局）",
+  "group": "upstream",
+  "family": "强化学习",
+  "source": "链接仓库",
+  "model": "third_party\\game2048-fc62be0aeb8a660a996cca54f517d119d817fbe7\\game2048\\wrappers\\TD\\models\\td-3x3.pkl",
+  "original_config": {
+    "upstream_commit": "fc62be0aeb8a660a996cca54f517d119d817fbe7"
+  },
+  "games": 500,
+  "mean_sum": 389.796,
+  "median_sum": 392.0,
+  "max_sum": 898,
+  "min_sum": 78,
+  "std_sum": 112.91331727673611,
+  "mean_sum_ci95": [
+    380.1238,
+    399.40149999999994
+  ],
+  "success_256": 0.726,
+  "success_256_ci95": [
+    0.6852944237772001,
+    0.7632593743341785
+  ],
+  "success_512": 0.02,
+  "largest_tile": 512,
+  "mean_steps": 175.204,
+  "mean_merge_score": 2221.184,
+  "truncated": 0,
+  "tile_distribution": {
+    "32": 1,
+    "64": 10,
+    "128": 126,
+    "256": 353,
+    "512": 10
+  },
+  "evaluation_seconds": 14.033726399880834,
+  "timing_complete": true,
+  "model_sha256": "bbab9d0477e18b89760ab757e1e0671249233f47bed7529b8bb74e1e537381d5",
+  "raw_sha256": "bb64b92c920316618cbc26f946de4e3a27c339c4d550d6729995cba8f7616f65",
+  "ms_per_move": 0.16019869865848763,
+  "success_256_count": 363,
+  "success_1024_count": 0,
+  "origin": "新增仓库"
+}

@@ -1,0 +1,1058 @@
+[
+  {
+    "id": "18_previous",
+    "label": "上一轮冻结冠军",
+    "kind": 0,
+    "depth": 3,
+    "training_seconds": 0,
+    "advanced": true,
+    "games": 300,
+    "mean_sum": 712.6933333333334,
+    "median_sum": 762.0,
+    "max_sum": 1008,
+    "min_sum": 226,
+    "std_sum": 198.95667489138182,
+    "mean_sum_ci95": [
+      689.8446666666667,
+      733.5158333333333
+    ],
+    "success_256": 0.9766666666666667,
+    "success_256_ci95": [
+      0.9526280277317256,
+      0.9886523397008746
+    ],
+    "success_512": 0.65,
+    "largest_tile": 512,
+    "mean_steps": 321.74,
+    "mean_merge_score": 4763.28,
+    "truncated": 0,
+    "tile_distribution": {
+      "128": 7,
+      "256": 98,
+      "512": 195
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 734.8733333333333,
+      "median_sum": 768.0,
+      "max_sum": 1008,
+      "min_sum": 228,
+      "std_sum": 196.32434417550473,
+      "mean_sum_ci95": [
+        713.0165,
+        756.1221666666667
+      ],
+      "success_256": 0.98,
+      "success_256_ci95": [
+        0.9570603791821403,
+        0.9908023684422963
+      ],
+      "success_512": 0.69,
+      "largest_tile": 512,
+      "mean_steps": 332.2633333333333,
+      "mean_merge_score": 4932.333333333333,
+      "truncated": 0,
+      "tile_distribution": {
+        "128": 6,
+        "256": 87,
+        "512": 207
+      }
+    },
+    "evaluation_seconds": 8.911240099929273,
+    "ms_per_move": 0.09232340917023345
+  },
+  {
+    "id": "19_low_epsilon",
+    "label": "低探索率TD续训",
+    "source": "09_td5",
+    "episodes": 200000,
+    "seed": 20261105,
+    "epsilon": 0.0005,
+    "alpha": 0.01,
+    "advanced": true,
+    "kind": 0,
+    "depth": 3,
+    "training_seconds": 60.95673140010331,
+    "games": 300,
+    "mean_sum": 708.7866666666666,
+    "median_sum": 760.0,
+    "max_sum": 1010,
+    "min_sum": 200,
+    "std_sum": 197.98035734690006,
+    "mean_sum_ci95": [
+      686.8173333333334,
+      729.718
+    ],
+    "success_256": 0.9733333333333334,
+    "success_256_ci95": [
+      0.9482710570494112,
+      0.9864269301913527
+    ],
+    "success_512": 0.6433333333333333,
+    "largest_tile": 512,
+    "mean_steps": 320.02,
+    "mean_merge_score": 4726.1466666666665,
+    "truncated": 0,
+    "tile_distribution": {
+      "128": 8,
+      "256": 99,
+      "512": 193
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 710.8733333333333,
+      "median_sum": 768.0,
+      "max_sum": 1010,
+      "min_sum": 204,
+      "std_sum": 197.51925681207442,
+      "mean_sum_ci95": [
+        687.3955,
+        732.2943333333333
+      ],
+      "success_256": 0.9733333333333334,
+      "success_256_ci95": [
+        0.9482710570494112,
+        0.9864269301913527
+      ],
+      "success_512": 0.6433333333333333,
+      "largest_tile": 512,
+      "mean_steps": 321.39666666666665,
+      "mean_merge_score": 4739.453333333333,
+      "truncated": 0,
+      "tile_distribution": {
+        "128": 8,
+        "256": 99,
+        "512": 193
+      }
+    },
+    "evaluation_seconds": 8.859339699964039,
+    "ms_per_move": 0.09227902110247317
+  },
+  {
+    "id": "20_greedy_refine",
+    "label": "无随机动作TD续训",
+    "source": "09_td5",
+    "episodes": 200000,
+    "seed": 20261105,
+    "epsilon": 0.0,
+    "alpha": 0.01,
+    "advanced": true,
+    "kind": 0,
+    "depth": 3,
+    "training_seconds": 58.75130360003095,
+    "games": 300,
+    "mean_sum": 699.2266666666667,
+    "median_sum": 762.0,
+    "max_sum": 1010,
+    "min_sum": 200,
+    "std_sum": 200.3571776044329,
+    "mean_sum_ci95": [
+      675.9913333333334,
+      721.2538333333333
+    ],
+    "success_256": 0.9666666666666667,
+    "success_256_ci95": [
+      0.9397381741959462,
+      0.9817950526611449
+    ],
+    "success_512": 0.63,
+    "largest_tile": 512,
+    "mean_steps": 315.68,
+    "mean_merge_score": 4656.16,
+    "truncated": 0,
+    "tile_distribution": {
+      "128": 10,
+      "256": 101,
+      "512": 189
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 709.6,
+      "median_sum": 768.0,
+      "max_sum": 1008,
+      "min_sum": 204,
+      "std_sum": 201.9139854618387,
+      "mean_sum_ci95": [
+        687.6819999999999,
+        731.9611666666667
+      ],
+      "success_256": 0.9766666666666667,
+      "success_256_ci95": [
+        0.9526280277317256,
+        0.9886523397008746
+      ],
+      "success_512": 0.63,
+      "largest_tile": 512,
+      "mean_steps": 320.6333333333333,
+      "mean_merge_score": 4734.56,
+      "truncated": 0,
+      "tile_distribution": {
+        "128": 7,
+        "256": 104,
+        "512": 189
+      }
+    },
+    "evaluation_seconds": 8.831672600004822,
+    "ms_per_move": 0.09325553936480847
+  },
+  {
+    "id": "21_optimistic_refine",
+    "label": "乐观模型低探索率续训",
+    "source": "11_optimistic",
+    "episodes": 200000,
+    "seed": 123,
+    "epsilon": 0.0005,
+    "alpha": 0.01,
+    "advanced": true,
+    "kind": 0,
+    "depth": 3,
+    "training_seconds": 58.889705000096,
+    "games": 300,
+    "mean_sum": 700.88,
+    "median_sum": 756.0,
+    "max_sum": 1016,
+    "min_sum": 202,
+    "std_sum": 187.0343777532314,
+    "mean_sum_ci95": [
+      680.1814999999999,
+      721.3805
+    ],
+    "success_256": 0.9833333333333333,
+    "success_256_ci95": [
+      0.9615846051669064,
+      0.9928605226493665
+    ],
+    "success_512": 0.6433333333333333,
+    "largest_tile": 512,
+    "mean_steps": 316.33,
+    "mean_merge_score": 4675.666666666667,
+    "truncated": 0,
+    "tile_distribution": {
+      "128": 5,
+      "256": 102,
+      "512": 193
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 689.6,
+      "median_sum": 756.0,
+      "max_sum": 1022,
+      "min_sum": 140,
+      "std_sum": 202.12820859303656,
+      "mean_sum_ci95": [
+        666.8911666666667,
+        713.3953333333333
+      ],
+      "success_256": 0.96,
+      "success_256_ci95": [
+        0.9313957879613609,
+        0.9769726785120573
+      ],
+      "success_512": 0.6033333333333334,
+      "largest_tile": 512,
+      "mean_steps": 311.59,
+      "mean_merge_score": 4571.64,
+      "truncated": 0,
+      "tile_distribution": {
+        "64": 1,
+        "128": 11,
+        "256": 107,
+        "512": 181
+      }
+    },
+    "evaluation_seconds": 8.703083500033244,
+    "ms_per_move": 0.09170890631127035
+  },
+  {
+    "id": "22_anneal",
+    "label": "低探索率平缓退火从头训练",
+    "source": null,
+    "episodes": 300000,
+    "seed": 456,
+    "epsilon": 0.002,
+    "alpha": 0.03,
+    "advanced": true,
+    "kind": 0,
+    "depth": 3,
+    "training_seconds": 71.08429950010031,
+    "games": 300,
+    "mean_sum": 672.7066666666667,
+    "median_sum": 736.0,
+    "max_sum": 994,
+    "min_sum": 184,
+    "std_sum": 178.72242811108504,
+    "mean_sum_ci95": [
+      652.2131666666667,
+      692.2946666666667
+    ],
+    "success_256": 0.9766666666666667,
+    "success_256_ci95": [
+      0.9526280277317256,
+      0.9886523397008746
+    ],
+    "success_512": 0.61,
+    "largest_tile": 512,
+    "mean_steps": 303.6566666666667,
+    "mean_merge_score": 4443.053333333333,
+    "truncated": 0,
+    "tile_distribution": {
+      "128": 7,
+      "256": 110,
+      "512": 183
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 669.3133333333334,
+      "median_sum": 729.0,
+      "max_sum": 1022,
+      "min_sum": 120,
+      "std_sum": 202.3408044844645,
+      "mean_sum_ci95": [
+        646.0695000000001,
+        692.0561666666666
+      ],
+      "success_256": 0.95,
+      "success_256_ci95": [
+        0.9191529665272569,
+        0.9694683593706523
+      ],
+      "success_512": 0.59,
+      "largest_tile": 512,
+      "mean_steps": 302.2966666666667,
+      "mean_merge_score": 4416.506666666667,
+      "truncated": 0,
+      "tile_distribution": {
+        "64": 2,
+        "128": 13,
+        "256": 108,
+        "512": 177
+      }
+    },
+    "evaluation_seconds": 8.668734999955632,
+    "ms_per_move": 0.09515939053926728
+  },
+  {
+    "id": "23_coherence",
+    "label": "逐权重时间一致性TD续训",
+    "source": "09_td5",
+    "episodes": 200000,
+    "seed": 789,
+    "epsilon": 0.0005,
+    "alpha": 0.2,
+    "coherence": true,
+    "advanced": true,
+    "kind": 0,
+    "depth": 3,
+    "training_seconds": 84.84322349994909,
+    "games": 300,
+    "mean_sum": 692.7533333333333,
+    "median_sum": 756.0,
+    "max_sum": 994,
+    "min_sum": 216,
+    "std_sum": 190.39119863397,
+    "mean_sum_ci95": [
+      670.7666666666667,
+      714.0024999999999
+    ],
+    "success_256": 0.96,
+    "success_256_ci95": [
+      0.9313957879613609,
+      0.9769726785120573
+    ],
+    "success_512": 0.66,
+    "largest_tile": 512,
+    "mean_steps": 312.87333333333333,
+    "mean_merge_score": 4620.56,
+    "truncated": 0,
+    "tile_distribution": {
+      "128": 12,
+      "256": 90,
+      "512": 198
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 685.6866666666666,
+      "median_sum": 742.0,
+      "max_sum": 1014,
+      "min_sum": 140,
+      "std_sum": 188.8341856084421,
+      "mean_sum_ci95": [
+        663.4778333333334,
+        706.9671666666667
+      ],
+      "success_256": 0.96,
+      "success_256_ci95": [
+        0.9313957879613609,
+        0.9769726785120573
+      ],
+      "success_512": 0.6566666666666666,
+      "largest_tile": 512,
+      "mean_steps": 309.9533333333333,
+      "mean_merge_score": 4578.506666666667,
+      "truncated": 0,
+      "tile_distribution": {
+        "64": 1,
+        "128": 11,
+        "256": 91,
+        "512": 197
+      }
+    },
+    "evaluation_seconds": 8.769598600105383,
+    "ms_per_move": 0.09343076644547722
+  },
+  {
+    "id": "24_success_head",
+    "label": "成功概率TD头 + 总和TD续弈",
+    "source": null,
+    "episodes": 200000,
+    "seed": 1234,
+    "alpha": 0.05,
+    "success_head": true,
+    "advanced": true,
+    "kind": 1,
+    "depth": 3,
+    "training_seconds": 30.658830999978818,
+    "games": 300,
+    "mean_sum": 683.0066666666667,
+    "median_sum": 747.0,
+    "max_sum": 1016,
+    "min_sum": 78,
+    "std_sum": 203.13288718243646,
+    "mean_sum_ci95": [
+      659.859,
+      706.2541666666666
+    ],
+    "success_256": 0.9766666666666667,
+    "success_256_ci95": [
+      0.9526280277317256,
+      0.9886523397008746
+    ],
+    "success_512": 0.6033333333333334,
+    "largest_tile": 512,
+    "mean_steps": 308.37,
+    "mean_merge_score": 4524.6,
+    "truncated": 0,
+    "tile_distribution": {
+      "32": 1,
+      "64": 2,
+      "128": 4,
+      "256": 112,
+      "512": 181
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 692.6266666666667,
+      "median_sum": 759.0,
+      "max_sum": 1010,
+      "min_sum": 248,
+      "std_sum": 205.7626826243235,
+      "mean_sum_ci95": [
+        668.7126666666667,
+        716.0775
+      ],
+      "success_256": 0.97,
+      "success_256_ci95": [
+        0.94397746085836,
+        0.9841381461905674
+      ],
+      "success_512": 0.6166666666666667,
+      "largest_tile": 512,
+      "mean_steps": 312.94,
+      "mean_merge_score": 4601.253333333333,
+      "truncated": 0,
+      "tile_distribution": {
+        "128": 9,
+        "256": 106,
+        "512": 185
+      }
+    },
+    "evaluation_seconds": 8.84215280006174,
+    "ms_per_move": 0.0955794748739257
+  },
+  {
+    "id": "25_ensemble",
+    "label": "三个续训模型的价值集成",
+    "kind": 0,
+    "depth": 3,
+    "training_seconds": 0,
+    "members": [
+      "19_low_epsilon",
+      "20_greedy_refine",
+      "21_optimistic_refine"
+    ],
+    "advanced": true,
+    "games": 300,
+    "mean_sum": 714.42,
+    "median_sum": 764.0,
+    "max_sum": 1010,
+    "min_sum": 216,
+    "std_sum": 195.08158896860323,
+    "mean_sum_ci95": [
+      691.9048333333333,
+      736.374
+    ],
+    "success_256": 0.98,
+    "success_256_ci95": [
+      0.9570603791821403,
+      0.9908023684422963
+    ],
+    "success_512": 0.6533333333333333,
+    "largest_tile": 512,
+    "mean_steps": 322.66,
+    "mean_merge_score": 4764.093333333333,
+    "truncated": 0,
+    "tile_distribution": {
+      "128": 6,
+      "256": 98,
+      "512": 196
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 709.5733333333334,
+      "median_sum": 762.0,
+      "max_sum": 1008,
+      "min_sum": 100,
+      "std_sum": 204.1242439761095,
+      "mean_sum_ci95": [
+        686.8181666666667,
+        732.7701666666667
+      ],
+      "success_256": 0.9733333333333334,
+      "success_256_ci95": [
+        0.9482710570494112,
+        0.9864269301913527
+      ],
+      "success_512": 0.6366666666666667,
+      "largest_tile": 512,
+      "mean_steps": 320.6766666666667,
+      "mean_merge_score": 4730.8133333333335,
+      "truncated": 0,
+      "tile_distribution": {
+        "32": 1,
+        "128": 7,
+        "256": 101,
+        "512": 191
+      }
+    },
+    "evaluation_seconds": 9.099857300054282,
+    "ms_per_move": 0.0940087326190033
+  },
+  {
+    "id": "26_adaptive",
+    "label": "空格驱动的2/4层自适应搜索",
+    "kind": 2,
+    "depth": 3,
+    "risk": 0.05,
+    "training_seconds": 0,
+    "source": "19_low_epsilon",
+    "advanced": true,
+    "games": 300,
+    "mean_sum": 702.9733333333334,
+    "median_sum": 756.0,
+    "max_sum": 1016,
+    "min_sum": 228,
+    "std_sum": 188.7989479969935,
+    "mean_sum_ci95": [
+      681.2581666666666,
+      722.9085
+    ],
+    "success_256": 0.9766666666666667,
+    "success_256_ci95": [
+      0.9526280277317256,
+      0.9886523397008746
+    ],
+    "success_512": 0.66,
+    "largest_tile": 512,
+    "mean_steps": 317.3333333333333,
+    "mean_merge_score": 4692.466666666666,
+    "truncated": 0,
+    "tile_distribution": {
+      "128": 7,
+      "256": 95,
+      "512": 198
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 713.98,
+      "median_sum": 763.0,
+      "max_sum": 1016,
+      "min_sum": 232,
+      "std_sum": 204.25706702936407,
+      "mean_sum_ci95": [
+        690.3351666666667,
+        736.6396666666666
+      ],
+      "success_256": 0.9533333333333334,
+      "success_256_ci95": [
+        0.9232026397720801,
+        0.9720010663176657
+      ],
+      "success_512": 0.66,
+      "largest_tile": 512,
+      "mean_steps": 322.68,
+      "mean_merge_score": 4772.693333333334,
+      "truncated": 0,
+      "tile_distribution": {
+        "128": 14,
+        "256": 88,
+        "512": 198
+      }
+    },
+    "evaluation_seconds": 63.27047999994829,
+    "ms_per_move": 0.664605882352398
+  },
+  {
+    "id": "27_risk",
+    "label": "5%最差结果混合的风险搜索",
+    "kind": 3,
+    "depth": 3,
+    "risk": 0.05,
+    "training_seconds": 0,
+    "source": "19_low_epsilon",
+    "advanced": true,
+    "games": 300,
+    "mean_sum": 717.4866666666667,
+    "median_sum": 763.0,
+    "max_sum": 1016,
+    "min_sum": 236,
+    "std_sum": 185.18172351675983,
+    "mean_sum_ci95": [
+      696.3233333333334,
+      737.46
+    ],
+    "success_256": 0.9866666666666667,
+    "success_256_ci95": [
+      0.9662244697474683,
+      0.9948030382606411
+    ],
+    "success_512": 0.6766666666666666,
+    "largest_tile": 512,
+    "mean_steps": 324.1,
+    "mean_merge_score": 4800.053333333333,
+    "truncated": 0,
+    "tile_distribution": {
+      "128": 4,
+      "256": 93,
+      "512": 203
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 733.2533333333333,
+      "median_sum": 768.0,
+      "max_sum": 1016,
+      "min_sum": 228,
+      "std_sum": 197.39609896985624,
+      "mean_sum_ci95": [
+        711.106,
+        755.2396666666666
+      ],
+      "success_256": 0.9733333333333334,
+      "success_256_ci95": [
+        0.9482710570494112,
+        0.9864269301913527
+      ],
+      "success_512": 0.7,
+      "largest_tile": 512,
+      "mean_steps": 331.5233333333333,
+      "mean_merge_score": 4928.053333333333,
+      "truncated": 0,
+      "tile_distribution": {
+        "128": 8,
+        "256": 82,
+        "512": 210
+      }
+    },
+    "evaluation_seconds": 8.816005699918605,
+    "ms_per_move": 0.09067166203762836
+  },
+  {
+    "id": "28_tablebase_rl",
+    "label": "256动态规划 + 原总和RL续弈",
+    "kind": 4,
+    "depth": 3,
+    "training_seconds": 0,
+    "dp_states": 48680615,
+    "dp_start_success_probability": 0.9957096431987144,
+    "continuation_source": "C:\\Users\\31245\\Desktop\\game2048-master\\game2048-master\\artifacts\\refinement\\models\\09_td5.npz",
+    "dp_boundary": "original refinement/09_td5, fixed before exploring runtime continuation variants",
+    "advanced": true,
+    "games": 300,
+    "mean_sum": 742.62,
+    "median_sum": 768.0,
+    "max_sum": 1018,
+    "min_sum": 356,
+    "std_sum": 184.39865821231365,
+    "mean_sum_ci95": [
+      722.6331666666666,
+      762.5681666666667
+    ],
+    "success_256": 1.0,
+    "success_256_ci95": [
+      0.9873570287754548,
+      1.0000000000000002
+    ],
+    "success_512": 0.7,
+    "largest_tile": 512,
+    "mean_steps": 335.36,
+    "mean_merge_score": 4992.893333333333,
+    "truncated": 0,
+    "tile_distribution": {
+      "256": 90,
+      "512": 210
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 735.0666666666667,
+      "median_sum": 768.0,
+      "max_sum": 1016,
+      "min_sum": 260,
+      "std_sum": 192.4840840978604,
+      "mean_sum_ci95": [
+        712.9995,
+        757.4031666666666
+      ],
+      "success_256": 0.9933333333333333,
+      "success_256_ci95": [
+        0.9760224167496937,
+        0.9981698516420882
+      ],
+      "success_512": 0.6766666666666666,
+      "largest_tile": 512,
+      "mean_steps": 332.21,
+      "mean_merge_score": 4924.306666666666,
+      "truncated": 0,
+      "tile_distribution": {
+        "128": 2,
+        "256": 95,
+        "512": 203
+      }
+    },
+    "evaluation_seconds": 3.668442100053653,
+    "ms_per_move": 0.03646272761662744
+  },
+  {
+    "id": "29_tablebase_refined",
+    "label": "256动态规划 + 验证最佳总和RL续弈",
+    "kind": 4,
+    "depth": 3,
+    "training_seconds": 0,
+    "dp_states": 48680615,
+    "dp_start_success_probability": 0.9957096431987144,
+    "continuation_source": "C:\\Users\\31245\\Desktop\\game2048-master\\game2048-master\\artifacts\\round2\\models\\19_low_epsilon.npz",
+    "dp_boundary": "original refinement/09_td5, fixed before exploring runtime continuation variants",
+    "advanced": true,
+    "games": 300,
+    "mean_sum": 721.72,
+    "median_sum": 762.0,
+    "max_sum": 1010,
+    "min_sum": 356,
+    "std_sum": 182.75140268667292,
+    "mean_sum_ci95": [
+      701.8861666666667,
+      741.9621666666667
+    ],
+    "success_256": 1.0,
+    "success_256_ci95": [
+      0.9873570287754548,
+      1.0000000000000002
+    ],
+    "success_512": 0.67,
+    "largest_tile": 512,
+    "mean_steps": 325.94666666666666,
+    "mean_merge_score": 4825.8133333333335,
+    "truncated": 0,
+    "tile_distribution": {
+      "256": 99,
+      "512": 201
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 730.3,
+      "median_sum": 768.0,
+      "max_sum": 1010,
+      "min_sum": 260,
+      "std_sum": 184.38893930074778,
+      "mean_sum_ci95": [
+        710.1961666666667,
+        750.6923333333333
+      ],
+      "success_256": 0.9933333333333333,
+      "success_256_ci95": [
+        0.9760224167496937,
+        0.9981698516420882
+      ],
+      "success_512": 0.6866666666666666,
+      "largest_tile": 512,
+      "mean_steps": 330.04,
+      "mean_merge_score": 4895.0,
+      "truncated": 0,
+      "tile_distribution": {
+        "128": 2,
+        "256": 92,
+        "512": 206
+      }
+    },
+    "evaluation_seconds": 3.5161572999786586,
+    "ms_per_move": 0.03595841139632924
+  },
+  {
+    "id": "30_tablebase_ensemble",
+    "label": "256动态规划 + 集成RL续弈",
+    "kind": 4,
+    "depth": 3,
+    "training_seconds": 0,
+    "dp_states": 48680615,
+    "dp_start_success_probability": 0.9957096431987144,
+    "continuation_source": "C:\\Users\\31245\\Desktop\\game2048-master\\game2048-master\\artifacts\\round2\\models\\25_ensemble.npz",
+    "dp_boundary": "original refinement/09_td5, fixed before exploring runtime continuation variants",
+    "advanced": true,
+    "games": 300,
+    "mean_sum": 725.94,
+    "median_sum": 765.0,
+    "max_sum": 1022,
+    "min_sum": 356,
+    "std_sum": 185.40479910663743,
+    "mean_sum_ci95": [
+      705.0858333333333,
+      746.1869999999999
+    ],
+    "success_256": 1.0,
+    "success_256_ci95": [
+      0.9873570287754548,
+      1.0000000000000002
+    ],
+    "success_512": 0.6666666666666666,
+    "largest_tile": 512,
+    "mean_steps": 327.94,
+    "mean_merge_score": 4852.8133333333335,
+    "truncated": 0,
+    "tile_distribution": {
+      "256": 100,
+      "512": 200
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 724.6866666666666,
+      "median_sum": 767.0,
+      "max_sum": 1022,
+      "min_sum": 260,
+      "std_sum": 193.15468134452908,
+      "mean_sum_ci95": [
+        702.5783333333334,
+        745.4135
+      ],
+      "success_256": 0.9933333333333333,
+      "success_256_ci95": [
+        0.9760224167496937,
+        0.9981698516420882
+      ],
+      "success_512": 0.6533333333333333,
+      "largest_tile": 512,
+      "mean_steps": 327.55333333333334,
+      "mean_merge_score": 4842.026666666667,
+      "truncated": 0,
+      "tile_distribution": {
+        "128": 2,
+        "256": 102,
+        "512": 196
+      }
+    },
+    "evaluation_seconds": 3.58877220004797,
+    "ms_per_move": 0.03647793498859517
+  },
+  {
+    "id": "31_depth4",
+    "label": "四层Expectimax搜索",
+    "kind": 0,
+    "depth": 4,
+    "risk": 0.05,
+    "training_seconds": 0,
+    "source": "19_low_epsilon",
+    "advanced": true,
+    "games": 300,
+    "mean_sum": 704.64,
+    "median_sum": 768.0,
+    "max_sum": 1018,
+    "min_sum": 204,
+    "std_sum": 207.99097227643074,
+    "mean_sum_ci95": [
+      681.3656666666667,
+      728.8345
+    ],
+    "success_256": 0.9566666666666667,
+    "success_256_ci95": [
+      0.9272825343659896,
+      0.9745035519155925
+    ],
+    "success_512": 0.6333333333333333,
+    "largest_tile": 512,
+    "mean_steps": 318.03333333333336,
+    "mean_merge_score": 4686.893333333333,
+    "truncated": 0,
+    "tile_distribution": {
+      "128": 13,
+      "256": 97,
+      "512": 190
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 724.08,
+      "median_sum": 768.0,
+      "max_sum": 1022,
+      "min_sum": 232,
+      "std_sum": 197.76177419082708,
+      "mean_sum_ci95": [
+        701.8176666666667,
+        745.901
+      ],
+      "success_256": 0.9833333333333333,
+      "success_256_ci95": [
+        0.9615846051669064,
+        0.9928605226493665
+      ],
+      "success_512": 0.6433333333333333,
+      "largest_tile": 512,
+      "mean_steps": 327.44666666666666,
+      "mean_merge_score": 4829.266666666666,
+      "truncated": 0,
+      "tile_distribution": {
+        "128": 5,
+        "256": 102,
+        "512": 193
+      }
+    },
+    "evaluation_seconds": 163.58564190007746,
+    "ms_per_move": 1.7145544691340264
+  },
+  {
+    "id": "32_hierarchical_dp",
+    "label": "256/512分层动态规划 + RL续弈",
+    "advanced": true,
+    "dual_tablebase": true,
+    "hierarchical": true,
+    "depth": 3,
+    "kind": 4,
+    "training_seconds": 0,
+    "source": "DP256 boundary: refinement/09_td5; DP512 boundary: round2/20_greedy_refine",
+    "probability_optimal_256": true,
+    "games": 300,
+    "mean_sum": 740.74,
+    "median_sum": 767.0,
+    "max_sum": 1010,
+    "min_sum": 362,
+    "std_sum": 165.54116908554005,
+    "mean_sum_ci95": [
+      721.3048333333332,
+      758.5336666666666
+    ],
+    "success_256": 1.0,
+    "success_256_ci95": [
+      0.9873570287754548,
+      1.0000000000000002
+    ],
+    "success_512": 0.7333333333333333,
+    "largest_tile": 512,
+    "mean_steps": 334.7,
+    "mean_merge_score": 4989.666666666667,
+    "truncated": 0,
+    "tile_distribution": {
+      "256": 80,
+      "512": 220
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 754.0466666666666,
+      "median_sum": 770.0,
+      "max_sum": 1000,
+      "min_sum": 260,
+      "std_sum": 175.93008784244304,
+      "mean_sum_ci95": [
+        734.0561666666666,
+        773.8941666666666
+      ],
+      "success_256": 0.9933333333333333,
+      "success_256_ci95": [
+        0.9760224167496937,
+        0.9981698516420882
+      ],
+      "success_512": 0.73,
+      "largest_tile": 512,
+      "mean_steps": 340.93,
+      "mean_merge_score": 5088.2266666666665,
+      "truncated": 0,
+      "tile_distribution": {
+        "128": 2,
+        "256": 79,
+        "512": 219
+      }
+    },
+    "evaluation_seconds": 1.7504041000502184,
+    "ms_per_move": 0.01743256747385936
+  },
+  {
+    "id": "33_direct512_dp",
+    "label": "直接优化512概率的动态规划 + RL续弈",
+    "advanced": true,
+    "dual_tablebase": true,
+    "hierarchical": false,
+    "depth": 3,
+    "kind": 4,
+    "training_seconds": 0,
+    "source": "DP256 boundary: refinement/09_td5; DP512 boundary: round2/20_greedy_refine",
+    "probability_optimal_256": false,
+    "games": 300,
+    "mean_sum": 743.0066666666667,
+    "median_sum": 768.0,
+    "max_sum": 1016,
+    "min_sum": 260,
+    "std_sum": 162.31547780996675,
+    "mean_sum_ci95": [
+      725.2661666666667,
+      759.8701666666667
+    ],
+    "success_256": 0.9966666666666667,
+    "success_256_ci95": [
+      0.9813633063054695,
+      0.9994113422781489
+    ],
+    "success_512": 0.7466666666666667,
+    "largest_tile": 512,
+    "mean_steps": 335.6333333333333,
+    "mean_merge_score": 5013.32,
+    "truncated": 0,
+    "tile_distribution": {
+      "128": 1,
+      "256": 75,
+      "512": 224
+    },
+    "validation": {
+      "games": 300,
+      "mean_sum": 743.26,
+      "median_sum": 768.0,
+      "max_sum": 1004,
+      "min_sum": 260,
+      "std_sum": 171.18567165683584,
+      "mean_sum_ci95": [
+        723.6255,
+        763.2874999999999
+      ],
+      "success_256": 0.9966666666666667,
+      "success_256_ci95": [
+        0.9813633063054695,
+        0.9994113422781489
+      ],
+      "success_512": 0.71,
+      "largest_tile": 512,
+      "mean_steps": 336.0233333333333,
+      "mean_merge_score": 4996.266666666666,
+      "truncated": 0,
+      "tile_distribution": {
+        "128": 1,
+        "256": 86,
+        "512": 213
+      }
+    },
+    "evaluation_seconds": 1.7795856999000534,
+    "ms_per_move": 0.017673907040421623
+  }
+]

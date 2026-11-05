@@ -1,0 +1,16 @@
+{
+  "id": "28_tablebase_rl",
+  "label": "256概率动态规划 + 强化学习续弈",
+  "tablebase": true,
+  "target_rank": 8,
+  "depth": 3,
+  "objective": 0,
+  "continuation_source": "C:\\Users\\31245\\Desktop\\game2048-master\\game2048-master\\artifacts\\refinement\\models\\09_td5.npz",
+  "numeric_tolerance": 1e-12,
+  "states": 48680615,
+  "slots": 134217728,
+  "start_success_probability": 0.9957096431987144,
+  "start_future_mass_estimate": 677.7503295898423,
+  "solve_seconds": 62.982841700082645,
+  "secondary": "expected future mass with 1-ply learned boundary at target; runtime depth3 after target"
+}

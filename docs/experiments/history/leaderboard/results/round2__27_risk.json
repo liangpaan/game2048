@@ -1,0 +1,48 @@
+{
+  "key": "round2__27_risk",
+  "id": "27_risk",
+  "label": "5%最差结果混合的风险搜索",
+  "group": "round2",
+  "family": "学习＋搜索",
+  "source": "本项目",
+  "model": "artifacts\\round2\\models\\27_risk.npz",
+  "original_config": {
+    "kind": 3,
+    "depth": 3,
+    "risk": 0.05,
+    "source": "19_low_epsilon"
+  },
+  "games": 500,
+  "mean_sum": 705.736,
+  "median_sum": 764.0,
+  "max_sum": 1022,
+  "min_sum": 200,
+  "std_sum": 208.45005433990326,
+  "mean_sum_ci95": [
+    687.2778,
+    723.425
+  ],
+  "success_256": 0.954,
+  "success_256_ci95": [
+    0.9319222072317275,
+    0.9691548916291834
+  ],
+  "success_512": 0.642,
+  "largest_tile": 512,
+  "mean_steps": 318.73,
+  "mean_merge_score": 4702.656,
+  "truncated": 0,
+  "tile_distribution": {
+    "128": 23,
+    "256": 156,
+    "512": 321
+  },
+  "evaluation_seconds": 14.404701400082558,
+  "timing_complete": true,
+  "model_sha256": "6371f83e4dbf2772f8fa5d7a1f3c0346f7de5160fb8b3c1f12851a375ce571c3",
+  "raw_sha256": "f7da8f72b7b84595e9a1a8f1a9c803906f4545cbeda1ab4e189906e89f73c800",
+  "ms_per_move": 0.09038811156830269,
+  "success_256_count": 477,
+  "success_1024_count": 0,
+  "origin": "第二轮"
+}

@@ -1,0 +1,48 @@
+{
+  "key": "exploration__01_random",
+  "id": "01_random",
+  "label": "随机合法动作",
+  "group": "exploration",
+  "family": "基线／搜索",
+  "source": "本项目",
+  "model": null,
+  "original_config": {
+    "method": 0
+  },
+  "games": 500,
+  "mean_sum": 69.244,
+  "median_sum": 70.0,
+  "max_sum": 160,
+  "min_sum": 26,
+  "std_sum": 20.02154310678259,
+  "mean_sum_ci95": [
+    67.5518,
+    71.0204
+  ],
+  "success_256": 0.0,
+  "success_256_ci95": [
+    -4.336808689942018e-19,
+    0.007624340461551825
+  ],
+  "success_512": 0.0,
+  "largest_tile": 128,
+  "mean_steps": 29.536,
+  "mean_merge_score": 169.248,
+  "truncated": 0,
+  "tile_distribution": {
+    "4": 1,
+    "8": 25,
+    "16": 182,
+    "32": 257,
+    "64": 34,
+    "128": 1
+  },
+  "evaluation_seconds": 0.03227700002025813,
+  "timing_complete": true,
+  "model_sha256": null,
+  "raw_sha256": "17e16221428a5263db2f3dc500423e7f20e2a033d4cd1feba34508314efca514",
+  "ms_per_move": 0.0021856040100391473,
+  "success_256_count": 0,
+  "success_1024_count": 0,
+  "origin": "第一轮"
+}

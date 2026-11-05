@@ -1,0 +1,30 @@
+{
+  "validation_seeds": [
+    1200000,
+    1200499
+  ],
+  "screening_seeds": [
+    1300000,
+    1300499
+  ],
+  "holdout_seeds": [
+    2000000,
+    2009999
+  ],
+  "gym_seeds": [
+    3000000,
+    3000499
+  ],
+  "training_start_seeds": [
+    1100000,
+    1102999
+  ],
+  "additional_training_episodes": 300000,
+  "previous_champion_sha256": "8f4793567d815d831dce141cffe7086b0f7facec41c4db3e0386fe3091a584d9",
+  "frozen_selection_rule": "46_lexicographic if Bellman/coverage tests pass and computed P256 matches previous DP within 2e-9; no holdout-based reselection",
+  "source_sha256": {
+    "endgame.py": "77bd6d032b85cef9c4e1fc34872ed0b6bf0e5b8f7e79cf098c6226b7dd13f7d8",
+    "round3_policy.py": "ff8212ea24da12233dc2775a022c1da8519652f554ea898d32b5ada2b8a13ab9",
+    "round3.py": "27d02089bb19f7bc00d2869470c1f9a14c3302a775534da4125c8db86dceb1fe"
+  }
+}

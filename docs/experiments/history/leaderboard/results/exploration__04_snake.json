@@ -1,0 +1,46 @@
+{
+  "key": "exploration__04_snake",
+  "id": "04_snake",
+  "label": "蛇形与单调性启发式",
+  "group": "exploration",
+  "family": "基线／搜索",
+  "source": "本项目",
+  "model": null,
+  "original_config": {
+    "method": 3
+  },
+  "games": 500,
+  "mean_sum": 215.876,
+  "median_sum": 215.0,
+  "max_sum": 504,
+  "min_sum": 62,
+  "std_sum": 77.28535875154303,
+  "mean_sum_ci95": [
+    209.156,
+    222.69639999999998
+  ],
+  "success_256": 0.096,
+  "success_256_ci95": [
+    0.07317350466541958,
+    0.12498696242751431
+  ],
+  "success_512": 0.0,
+  "largest_tile": 256,
+  "mean_steps": 96.17,
+  "mean_merge_score": 1002.424,
+  "truncated": 0,
+  "tile_distribution": {
+    "32": 22,
+    "64": 165,
+    "128": 265,
+    "256": 48
+  },
+  "evaluation_seconds": 0.050674099707975984,
+  "timing_complete": true,
+  "model_sha256": null,
+  "raw_sha256": "49b5898810b88aaebadf36823015e30ec5ff3e5f109eb0dc84d006d248c61735",
+  "ms_per_move": 0.0010538442280955804,
+  "success_256_count": 48,
+  "success_1024_count": 0,
+  "origin": "第一轮"
+}

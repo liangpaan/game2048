@@ -1,0 +1,51 @@
+{
+  "key": "round2__23_coherence",
+  "id": "23_coherence",
+  "label": "逐权重时间一致性TD续训",
+  "group": "round2",
+  "family": "学习＋搜索",
+  "source": "本项目",
+  "model": "artifacts\\round2\\models\\23_coherence.npz",
+  "original_config": {
+    "source": "09_td5",
+    "episodes": 200000,
+    "seed": 789,
+    "epsilon": 0.0005,
+    "alpha": 0.2,
+    "kind": 0,
+    "depth": 3
+  },
+  "games": 500,
+  "mean_sum": 688.952,
+  "median_sum": 740.0,
+  "max_sum": 1008,
+  "min_sum": 200,
+  "std_sum": 192.35939792987472,
+  "mean_sum_ci95": [
+    670.8671999999999,
+    704.5967
+  ],
+  "success_256": 0.962,
+  "success_256_ci95": [
+    0.9414152274693568,
+    0.9755398819441694
+  ],
+  "success_512": 0.64,
+  "largest_tile": 512,
+  "mean_steps": 311.088,
+  "mean_merge_score": 4593.144,
+  "truncated": 0,
+  "tile_distribution": {
+    "128": 19,
+    "256": 161,
+    "512": 320
+  },
+  "evaluation_seconds": 14.464720199932344,
+  "timing_complete": true,
+  "model_sha256": "6c7bd7a2b33af84817a44153fd5dbf0b6bfb3d3ccb8eedfbfb26d60ffa4504c5",
+  "raw_sha256": "e805f49ec0e3f2901fe67a86f6871bf6d15ba0408b2437b2cef803047438d3e1",
+  "ms_per_move": 0.0929943951546337,
+  "success_256_count": 481,
+  "success_1024_count": 0,
+  "origin": "第二轮"
+}

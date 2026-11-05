@@ -1,0 +1,242 @@
+[
+  {
+    "episodes": 10000,
+    "mean_sum": 225.3202,
+    "success_256": 0.195,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 1.1799062999198213
+  },
+  {
+    "episodes": 20000,
+    "mean_sum": 344.4894,
+    "success_256": 0.5801,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 2.739992299932055
+  },
+  {
+    "episodes": 30000,
+    "mean_sum": 369.145,
+    "success_256": 0.6591,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 4.356784699950367
+  },
+  {
+    "episodes": 40000,
+    "mean_sum": 402.5962,
+    "success_256": 0.6966,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 6.1384957999689505
+  },
+  {
+    "episodes": 50000,
+    "mean_sum": 434.332,
+    "success_256": 0.719,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 8.064138400019147
+  },
+  {
+    "episodes": 60000,
+    "mean_sum": 438.564,
+    "success_256": 0.7186,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 10.051699299947359
+  },
+  {
+    "episodes": 70000,
+    "mean_sum": 445.6602,
+    "success_256": 0.7252,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 12.103601799928583
+  },
+  {
+    "episodes": 80000,
+    "mean_sum": 450.077,
+    "success_256": 0.7288,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 14.158820600016043
+  },
+  {
+    "episodes": 90000,
+    "mean_sum": 453.3924,
+    "success_256": 0.7344,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 16.24068879999686
+  },
+  {
+    "episodes": 100000,
+    "mean_sum": 458.9478,
+    "success_256": 0.7378,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 18.393620899994858
+  },
+  {
+    "episodes": 110000,
+    "mean_sum": 458.4172,
+    "success_256": 0.7366,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 20.500713999965228
+  },
+  {
+    "episodes": 120000,
+    "mean_sum": 457.3468,
+    "success_256": 0.7364,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 22.55507319991011
+  },
+  {
+    "episodes": 130000,
+    "mean_sum": 463.3106,
+    "success_256": 0.7449,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 24.60788069991395
+  },
+  {
+    "episodes": 140000,
+    "mean_sum": 465.2832,
+    "success_256": 0.7498,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 26.693878699908964
+  },
+  {
+    "episodes": 150000,
+    "mean_sum": 462.1958,
+    "success_256": 0.7505,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 28.779012199956924
+  },
+  {
+    "episodes": 160000,
+    "mean_sum": 460.7278,
+    "success_256": 0.7466,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 30.89623610000126
+  },
+  {
+    "episodes": 170000,
+    "mean_sum": 462.263,
+    "success_256": 0.747,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 33.076462399913
+  },
+  {
+    "episodes": 180000,
+    "mean_sum": 462.7242,
+    "success_256": 0.7441,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 35.16720079991501
+  },
+  {
+    "episodes": 190000,
+    "mean_sum": 468.3884,
+    "success_256": 0.759,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 37.279023599927314
+  },
+  {
+    "episodes": 200000,
+    "mean_sum": 462.0762,
+    "success_256": 0.7429,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 39.429016200010665
+  },
+  {
+    "episodes": 210000,
+    "mean_sum": 471.3084,
+    "success_256": 0.7603,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 41.55834430002142
+  },
+  {
+    "episodes": 220000,
+    "mean_sum": 486.2922,
+    "success_256": 0.7688,
+    "alpha": 0.03,
+    "epsilon": 0.02,
+    "seconds": 43.87373889994342
+  },
+  {
+    "episodes": 230000,
+    "mean_sum": 488.2244,
+    "success_256": 0.7739,
+    "alpha": 0.03,
+    "epsilon": 0.02,
+    "seconds": 46.150290999910794
+  },
+  {
+    "episodes": 240000,
+    "mean_sum": 489.8592,
+    "success_256": 0.7795,
+    "alpha": 0.03,
+    "epsilon": 0.02,
+    "seconds": 48.413613399956375
+  },
+  {
+    "episodes": 250000,
+    "mean_sum": 617.2302,
+    "success_256": 0.8915,
+    "alpha": 0.03,
+    "epsilon": 0.002,
+    "seconds": 51.19535369996447
+  },
+  {
+    "episodes": 260000,
+    "mean_sum": 616.1262,
+    "success_256": 0.8855,
+    "alpha": 0.03,
+    "epsilon": 0.002,
+    "seconds": 53.93701599992346
+  },
+  {
+    "episodes": 270000,
+    "mean_sum": 618.456,
+    "success_256": 0.8905,
+    "alpha": 0.03,
+    "epsilon": 0.002,
+    "seconds": 56.66115209995769
+  },
+  {
+    "episodes": 280000,
+    "mean_sum": 618.359,
+    "success_256": 0.8937,
+    "alpha": 0.03,
+    "epsilon": 0.002,
+    "seconds": 59.41347679996397
+  },
+  {
+    "episodes": 290000,
+    "mean_sum": 613.161,
+    "success_256": 0.8935,
+    "alpha": 0.03,
+    "epsilon": 0.002,
+    "seconds": 62.1130845999578
+  },
+  {
+    "episodes": 300000,
+    "mean_sum": 617.1694,
+    "success_256": 0.8998,
+    "alpha": 0.03,
+    "epsilon": 0.002,
+    "seconds": 64.90135739999823
+  }
+]

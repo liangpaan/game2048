@@ -7,16 +7,18 @@ packages = ["game2048"]
 
 [project]
 name = "game2048"
-version = "0.0.5"
+version = "0.1.0"
 requires-python = ">=3.10"
 dependencies = [
     "gymnasium",
     "pygame",
-    "numpy",
+    "numpy>=1.26",
+    "numba>=0.61",
     "matplotlib>=3.8",
 ]
 
 [project.optional-dependencies]
+test = ["pytest>=8"]
 td = ["torch>=2.3,<3"]
 ppo = ["sb3-contrib>=2.6,<3", "torch>=2.3,<3"]
 
@@ -29,4 +31,7 @@ url = "https://download.pytorch.org/whl/cpu"
 explicit = true
 
 [project.scripts]
-game2048-play = "game2048.play:main"
+game2048-play = "game2048.autoplay:main"
+game2048-auto = "game2048.autoplay:main"
+game2048-evaluate = "game2048.evaluate:main"
+game2048-legacy = "game2048.play:main"

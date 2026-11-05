@@ -1,0 +1,2 @@
+﻿id,label,mean_sum,median_sum,success_256,success_512,largest_tile,max_sum,ms_per_move,training_seconds
+09_td5,5-tuple 对称 TD(0) 总和奖励,513.972,500.0,0.674,0.344,512,994,0.0008827106681369914,15.563382999971509

@@ -1,0 +1,48 @@
+{
+  "key": "round2__32_hierarchical_dp",
+  "id": "32_hierarchical_dp",
+  "label": "256/512分层动态规划 + RL续弈",
+  "group": "round2",
+  "family": "规划＋学习",
+  "source": "本项目",
+  "model": "artifacts\\round2\\models\\32_hierarchical_dp.npz",
+  "original_config": {
+    "dual_tablebase": true,
+    "hierarchical": true,
+    "depth": 3,
+    "kind": 4,
+    "source": "DP256 boundary: refinement/09_td5; DP512 boundary: round2/20_greedy_refine"
+  },
+  "games": 500,
+  "mean_sum": 750.38,
+  "median_sum": 770.0,
+  "max_sum": 1022,
+  "min_sum": 388,
+  "std_sum": 168.62435157440274,
+  "mean_sum_ci95": [
+    735.6318,
+    764.7844
+  ],
+  "success_256": 1.0,
+  "success_256_ci95": [
+    0.9923756595384482,
+    1.0
+  ],
+  "success_512": 0.73,
+  "largest_tile": 512,
+  "mean_steps": 339.07,
+  "mean_merge_score": 5057.424,
+  "truncated": 0,
+  "tile_distribution": {
+    "256": 135,
+    "512": 365
+  },
+  "evaluation_seconds": 3.035462499829009,
+  "timing_complete": true,
+  "model_sha256": "8f4793567d815d831dce141cffe7086b0f7facec41c4db3e0386fe3091a584d9",
+  "raw_sha256": "d11f987a41d1630ea78db49c707406b2c099029a47ba6cdaa9578b7c93247fb4",
+  "ms_per_move": 0.01790463620980334,
+  "success_256_count": 500,
+  "success_1024_count": 0,
+  "origin": "第二轮"
+}

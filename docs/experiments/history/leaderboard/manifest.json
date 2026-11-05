@@ -1,0 +1,19 @@
+{
+  "start_seed": 5000000,
+  "games_per_method": 500,
+  "last_seed": 5000499,
+  "rules": {
+    "size": 3,
+    "spawn_2_probability": 0.9,
+    "initial_tiles": 2,
+    "stop_on_target": false
+  },
+  "max_steps": 4096,
+  "rank_by": "mean terminal tile sum descending; display P256 separately",
+  "upstream_commit": "fc62be0aeb8a660a996cca54f517d119d817fbe7",
+  "deduplicated_aliases": {
+    "18_previous": "17_phase_switch",
+    "34_previous": "32_hierarchical_dp"
+  },
+  "protocol": "fixed checkpoints, no retraining or tuning; pre-generated independent spawn tape per seed"
+}

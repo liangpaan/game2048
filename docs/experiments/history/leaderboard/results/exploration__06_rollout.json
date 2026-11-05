@@ -1,0 +1,48 @@
+{
+  "key": "exploration__06_rollout",
+  "id": "06_rollout",
+  "label": "蒙特卡洛启发式 Rollout",
+  "group": "exploration",
+  "family": "基线／搜索",
+  "source": "本项目",
+  "model": null,
+  "original_config": {
+    "method": 5
+  },
+  "games": 500,
+  "mean_sum": 296.372,
+  "median_sum": 260.0,
+  "max_sum": 770,
+  "min_sum": 56,
+  "std_sum": 133.4497932206013,
+  "mean_sum_ci95": [
+    285.01390000000004,
+    308.012
+  ],
+  "success_256": 0.346,
+  "success_256_ci95": [
+    0.3056212317880803,
+    0.3887270650740777
+  ],
+  "success_512": 0.024,
+  "largest_tile": 512,
+  "mean_steps": 132.74,
+  "mean_merge_score": 1571.152,
+  "truncated": 0,
+  "tile_distribution": {
+    "16": 4,
+    "32": 13,
+    "64": 60,
+    "128": 250,
+    "256": 161,
+    "512": 12
+  },
+  "evaluation_seconds": 33.96996290003881,
+  "timing_complete": true,
+  "model_sha256": null,
+  "raw_sha256": "4e2f95fe254599cbbfbacccfb7a895403d1c0ae8e7bb1381f1ed0339d08d845f",
+  "ms_per_move": 0.5118270739797922,
+  "success_256_count": 173,
+  "success_1024_count": 0,
+  "origin": "第一轮"
+}

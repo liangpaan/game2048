@@ -1,0 +1,45 @@
+{
+  "key": "round2__29_tablebase_refined",
+  "id": "29_tablebase_refined",
+  "label": "256动态规划 + 验证最佳总和RL续弈",
+  "group": "round2",
+  "family": "规划＋学习",
+  "source": "本项目",
+  "model": "artifacts\\round2\\models\\29_tablebase_refined.npz",
+  "original_config": {
+    "kind": 4,
+    "depth": 3
+  },
+  "games": 500,
+  "mean_sum": 717.996,
+  "median_sum": 759.0,
+  "max_sum": 1022,
+  "min_sum": 328,
+  "std_sum": 182.10008474938024,
+  "mean_sum_ci95": [
+    702.4198,
+    734.0165
+  ],
+  "success_256": 1.0,
+  "success_256_ci95": [
+    0.9923756595384482,
+    1.0
+  ],
+  "success_512": 0.674,
+  "largest_tile": 512,
+  "mean_steps": 324.42,
+  "mean_merge_score": 4804.856,
+  "truncated": 0,
+  "tile_distribution": {
+    "256": 163,
+    "512": 337
+  },
+  "evaluation_seconds": 5.675204700208269,
+  "timing_complete": true,
+  "model_sha256": "e678c00518fe3f997a67f325bd30689c59a93a84f7105824de91f59b219556db",
+  "raw_sha256": "07ac1bd5ad92f1faaf72610e26d2241f73eeabe0f9ebb896de4ed5090f13d9f9",
+  "ms_per_move": 0.034986774552791255,
+  "success_256_count": 500,
+  "success_1024_count": 0,
+  "origin": "第二轮"
+}

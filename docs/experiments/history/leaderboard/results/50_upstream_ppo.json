@@ -1,0 +1,48 @@
+{
+  "key": "50_upstream_ppo",
+  "id": "50_upstream_ppo",
+  "label": "上游 TD教师＋PPO（默认检查点）",
+  "group": "upstream",
+  "family": "强化学习",
+  "source": "链接仓库",
+  "model": "third_party\\game2048-fc62be0aeb8a660a996cca54f517d119d817fbe7\\game2048\\wrappers\\ppo\\models\\ppo-3x3.zip",
+  "original_config": {
+    "upstream_commit": "fc62be0aeb8a660a996cca54f517d119d817fbe7"
+  },
+  "games": 500,
+  "mean_sum": 216.716,
+  "median_sum": 210.0,
+  "max_sum": 512,
+  "min_sum": 44,
+  "std_sum": 96.52332800778991,
+  "mean_sum_ci95": [
+    208.4979,
+    225.4082
+  ],
+  "success_256": 0.166,
+  "success_256_ci95": [
+    0.13595774323101092,
+    0.20113531619730576
+  ],
+  "success_512": 0.0,
+  "largest_tile": 256,
+  "mean_steps": 96.49,
+  "mean_merge_score": 1038.192,
+  "truncated": 0,
+  "tile_distribution": {
+    "8": 1,
+    "16": 10,
+    "32": 50,
+    "64": 134,
+    "128": 222,
+    "256": 83
+  },
+  "evaluation_seconds": 54.46044399996754,
+  "timing_complete": true,
+  "model_sha256": "a259f9b6ff7301a2b947bf75ef6bed00a811a8134e3fdb1614d49d0cf993f7dc",
+  "raw_sha256": "2fb895aee76e7474dea2e641120eda8bf430991bd1ba4f96d6c68dc2d0d6a4ed",
+  "ms_per_move": 1.1288308425736873,
+  "success_256_count": 83,
+  "success_1024_count": 0,
+  "origin": "新增仓库"
+}

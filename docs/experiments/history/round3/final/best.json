@@ -1,0 +1,7 @@
+{
+  "id": "46_lexicographic",
+  "model": "champion.npz",
+  "criterion": "46_lexicographic if Bellman/coverage tests pass and computed P256 matches previous DP within 2e-9; no holdout-based reselection",
+  "calculated_P256": 0.9957096431988064,
+  "calculated_expected_sum": 811.2315492781737
+}

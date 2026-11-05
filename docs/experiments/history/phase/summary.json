@@ -1,0 +1,69 @@
+[
+  {
+    "id": "17_phase_switch",
+    "label": "分阶段双模型 TD + 深度3搜索",
+    "method": 6,
+    "phase_switch": true,
+    "depth": 3,
+    "objective": 0,
+    "training_seconds": 0,
+    "before_source": "refinement/11_optimistic",
+    "after_source": "refinement/09_td5",
+    "source_rule": "before: highest validation success; after: highest validation mass among total-mass policies, using nonoptimistic mass TD when the same model wins both",
+    "games": 500,
+    "mean_sum": 707.168,
+    "median_sum": 762.0,
+    "max_sum": 1022,
+    "min_sum": 134,
+    "std_sum": 202.6708136199852,
+    "mean_sum_ci95": [
+      689.5021,
+      725.1643
+    ],
+    "success_256": 0.96,
+    "success_256_ci95": [
+      0.9390264041651499,
+      0.9739592026102224
+    ],
+    "success_512": 0.654,
+    "largest_tile": 512,
+    "mean_steps": 319.508,
+    "mean_merge_score": 4712.88,
+    "truncated": 0,
+    "tile_distribution": {
+      "64": 2,
+      "128": 18,
+      "256": 153,
+      "512": 327
+    },
+    "validation": {
+      "games": 200,
+      "mean_sum": 705.29,
+      "median_sum": 760.0,
+      "max_sum": 1010,
+      "min_sum": 248,
+      "std_sum": 197.0859973507981,
+      "mean_sum_ci95": [
+        679.7495,
+        731.92275
+      ],
+      "success_256": 0.985,
+      "success_256_ci95": [
+        0.9568342712073108,
+        0.9948857622067415
+      ],
+      "success_512": 0.605,
+      "largest_tile": 512,
+      "mean_steps": 318.44,
+      "mean_merge_score": 4669.12,
+      "truncated": 0,
+      "tile_distribution": {
+        "128": 3,
+        "256": 76,
+        "512": 121
+      }
+    },
+    "evaluation_seconds": 14.701029899995774,
+    "ms_per_move": 0.0920229221177296
+  }
+]

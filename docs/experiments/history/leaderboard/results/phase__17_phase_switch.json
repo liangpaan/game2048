@@ -1,0 +1,51 @@
+{
+  "key": "phase__17_phase_switch",
+  "id": "17_phase_switch",
+  "label": "分阶段双模型 TD + 深度3搜索",
+  "group": "phase",
+  "family": "学习＋搜索",
+  "source": "本项目",
+  "model": "artifacts\\phase\\models\\17_phase_switch.npz",
+  "original_config": {
+    "method": 6,
+    "phase_switch": true,
+    "depth": 3,
+    "objective": 0,
+    "before_source": "refinement/11_optimistic",
+    "after_source": "refinement/09_td5"
+  },
+  "games": 500,
+  "mean_sum": 700.96,
+  "median_sum": 759.0,
+  "max_sum": 1020,
+  "min_sum": 140,
+  "std_sum": 209.18827373381967,
+  "mean_sum_ci95": [
+    682.4431,
+    719.6535
+  ],
+  "success_256": 0.958,
+  "success_256_ci95": [
+    0.9366484142456705,
+    0.972367689891548
+  ],
+  "success_512": 0.636,
+  "largest_tile": 512,
+  "mean_steps": 316.61,
+  "mean_merge_score": 4671.704,
+  "truncated": 0,
+  "tile_distribution": {
+    "64": 1,
+    "128": 20,
+    "256": 161,
+    "512": 318
+  },
+  "evaluation_seconds": 15.039481100044213,
+  "timing_complete": true,
+  "model_sha256": "64b292fa94825e41f6acfc50bc5603dcca5a9cb9aa8e3546203e02dd8c45fb12",
+  "raw_sha256": "ae4762856622efded05f7fabf670403e83cb0faee1ac2028f7a468d3a91b62f6",
+  "ms_per_move": 0.09500319699342544,
+  "success_256_count": 479,
+  "success_1024_count": 0,
+  "origin": "第一轮"
+}

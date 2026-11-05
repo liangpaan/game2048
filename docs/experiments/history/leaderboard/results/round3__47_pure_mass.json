@@ -1,0 +1,46 @@
+{
+  "key": "round3__47_pure_mass",
+  "id": "47_pure_mass",
+  "label": "整局纯期望总和DP",
+  "group": "round3",
+  "family": "完整规划",
+  "source": "本项目",
+  "model": "artifacts\\round3\\models\\47_pure_mass.npz",
+  "original_config": {
+    "mode": 4,
+    "depth": 3
+  },
+  "games": 500,
+  "mean_sum": 795.476,
+  "median_sum": 884.0,
+  "max_sum": 1522,
+  "min_sum": 386,
+  "std_sum": 209.6071461937091,
+  "mean_sum_ci95": [
+    777.3457999999999,
+    814.8530999999999
+  ],
+  "success_256": 1.0,
+  "success_256_ci95": [
+    0.9923756595384482,
+    1.0
+  ],
+  "success_512": 0.706,
+  "largest_tile": 1024,
+  "mean_steps": 359.49,
+  "mean_merge_score": 5341.328,
+  "truncated": 0,
+  "tile_distribution": {
+    "256": 147,
+    "512": 350,
+    "1024": 3
+  },
+  "evaluation_seconds": 0.12450949964113533,
+  "timing_complete": true,
+  "model_sha256": "922de311b472646ebce1e54fc566ae4acbdc5783bd4debeb6332f1faedf2b1c7",
+  "raw_sha256": "cf702994b5d40aa06a1a92f54025cdaa44dd6e8a4a539335822a4f3fd0872400",
+  "ms_per_move": 0.0006927007685395162,
+  "success_256_count": 500,
+  "success_1024_count": 3,
+  "origin": "最后一轮"
+}

@@ -1,0 +1,46 @@
+{
+  "key": "round3__43_tail_ensemble",
+  "id": "43_tail_ensemble",
+  "label": "原模型与残局TD价值集成",
+  "group": "round3",
+  "family": "规划＋学习",
+  "source": "本项目",
+  "model": "artifacts\\round3\\models\\43_tail_ensemble.npz",
+  "original_config": {
+    "mode": 0,
+    "depth": 3,
+    "source": "20 + 41 averaged"
+  },
+  "games": 500,
+  "mean_sum": 758.984,
+  "median_sum": 775.0,
+  "max_sum": 1022,
+  "min_sum": 388,
+  "std_sum": 173.87441550940574,
+  "mean_sum_ci95": [
+    743.0131,
+    773.4357
+  ],
+  "success_256": 1.0,
+  "success_256_ci95": [
+    0.9923756595384482,
+    1.0
+  ],
+  "success_512": 0.73,
+  "largest_tile": 512,
+  "mean_steps": 343.036,
+  "mean_merge_score": 5129.016,
+  "truncated": 0,
+  "tile_distribution": {
+    "256": 135,
+    "512": 365
+  },
+  "evaluation_seconds": 3.175394299789332,
+  "timing_complete": true,
+  "model_sha256": "bac57e01ce9819f87427691eee2a733caa353aa434f1566830af5bc0b7ebb804",
+  "raw_sha256": "cf825654c6f5daf979c21e585c64ad198059b4cceb578ac7be3d559feeab3614",
+  "ms_per_move": 0.018513475552357956,
+  "success_256_count": 500,
+  "success_1024_count": 0,
+  "origin": "最后一轮"
+}

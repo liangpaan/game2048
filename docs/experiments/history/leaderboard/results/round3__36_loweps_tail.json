@@ -1,0 +1,46 @@
+{
+  "key": "round3__36_loweps_tail",
+  "id": "36_loweps_tail",
+  "label": "512后低探索率续训TD",
+  "group": "round3",
+  "family": "规划＋学习",
+  "source": "本项目",
+  "model": "artifacts\\round3\\models\\36_loweps_tail.npz",
+  "original_config": {
+    "mode": 0,
+    "depth": 3,
+    "source": "artifacts\\round2\\models\\19_low_epsilon.npz"
+  },
+  "games": 500,
+  "mean_sum": 744.688,
+  "median_sum": 768.0,
+  "max_sum": 1022,
+  "min_sum": 388,
+  "std_sum": 165.03390875234143,
+  "mean_sum_ci95": [
+    730.3705,
+    759.3325
+  ],
+  "success_256": 1.0,
+  "success_256_ci95": [
+    0.9923756595384482,
+    1.0
+  ],
+  "success_512": 0.73,
+  "largest_tile": 512,
+  "mean_steps": 336.474,
+  "mean_merge_score": 5013.952,
+  "truncated": 0,
+  "tile_distribution": {
+    "256": 135,
+    "512": 365
+  },
+  "evaluation_seconds": 2.9999391002347693,
+  "timing_complete": true,
+  "model_sha256": "83c1908f4593d0b27b58f7ce401d51f2b5da5a4f7e82efafa27c105ee7395d94",
+  "raw_sha256": "fa1677b7ac83444d1aea7266b29bdbb3a421daa9a10e61fec8432a5f89cc1836",
+  "ms_per_move": 0.017831625030372448,
+  "success_256_count": 500,
+  "success_1024_count": 0,
+  "origin": "最后一轮"
+}

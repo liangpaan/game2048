@@ -1,0 +1,82 @@
+[
+  {
+    "episodes": 10000,
+    "mean_sum": 274.5846,
+    "success_256": 0.2744,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 1.3014658000320196
+  },
+  {
+    "episodes": 20000,
+    "mean_sum": 372.8392,
+    "success_256": 0.6247,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 3.0300009000347927
+  },
+  {
+    "episodes": 30000,
+    "mean_sum": 398.4002,
+    "success_256": 0.685,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 4.8454006999963894
+  },
+  {
+    "episodes": 40000,
+    "mean_sum": 429.428,
+    "success_256": 0.6957,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 6.785605899989605
+  },
+  {
+    "episodes": 50000,
+    "mean_sum": 439.3118,
+    "success_256": 0.7167,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 8.793461799970828
+  },
+  {
+    "episodes": 60000,
+    "mean_sum": 446.841,
+    "success_256": 0.7217,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 10.82317799993325
+  },
+  {
+    "episodes": 70000,
+    "mean_sum": 446.4778,
+    "success_256": 0.7198,
+    "alpha": 0.1,
+    "epsilon": 0.02,
+    "seconds": 12.864682000014
+  },
+  {
+    "episodes": 80000,
+    "mean_sum": 467.1062,
+    "success_256": 0.7544,
+    "alpha": 0.03,
+    "epsilon": 0.02,
+    "seconds": 15.101944199996069
+  },
+  {
+    "episodes": 90000,
+    "mean_sum": 594.2492,
+    "success_256": 0.8805,
+    "alpha": 0.03,
+    "epsilon": 0.002,
+    "seconds": 17.85783650004305
+  },
+  {
+    "episodes": 100000,
+    "mean_sum": 590.1934,
+    "success_256": 0.8698,
+    "alpha": 0.03,
+    "epsilon": 0.002,
+    "seconds": 20.602746699936688
+  }
+]

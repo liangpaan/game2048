@@ -1,0 +1,114 @@
+{
+  "selection": {
+    "id": "32_hierarchical_dp",
+    "model": "models/champion.npz",
+    "depth": 3,
+    "criterion": "preserve DP-optimal 256 policy, then maximize new validation mean_sum",
+    "validation": {
+      "games": 300,
+      "mean_sum": 754.0466666666666,
+      "median_sum": 770.0,
+      "max_sum": 1000,
+      "min_sum": 260,
+      "std_sum": 175.93008784244304,
+      "mean_sum_ci95": [
+        734.0561666666666,
+        773.8941666666666
+      ],
+      "success_256": 0.9933333333333333,
+      "success_256_ci95": [
+        0.9760224167496937,
+        0.9981698516420882
+      ],
+      "success_512": 0.73,
+      "largest_tile": 512,
+      "mean_steps": 340.93,
+      "mean_merge_score": 5088.2266666666665,
+      "truncated": 0,
+      "tile_distribution": {
+        "128": 2,
+        "256": 79,
+        "512": 219
+      }
+    }
+  },
+  "previous": {
+    "games": 5000,
+    "mean_sum": 709.93,
+    "median_sum": 762.0,
+    "max_sum": 1020,
+    "min_sum": 120,
+    "std_sum": 207.3963436241578,
+    "mean_sum_ci95": [
+      704.26462,
+      715.66302
+    ],
+    "success_256": 0.9604,
+    "success_256_ci95": [
+      0.9546315666979025,
+      0.9654615333510891
+    ],
+    "success_512": 0.6492,
+    "largest_tile": 512,
+    "mean_steps": 320.6854,
+    "mean_merge_score": 4734.9,
+    "truncated": 0,
+    "tile_distribution": {
+      "64": 12,
+      "128": 186,
+      "256": 1556,
+      "512": 3246
+    },
+    "seed_range": [
+      80000,
+      84999
+    ],
+    "evaluation_seconds": 143.63113100000191,
+    "ms_per_move": 0.08957759286827646
+  },
+  "champion": {
+    "games": 5000,
+    "mean_sum": 743.4456,
+    "median_sum": 768.0,
+    "max_sum": 1400,
+    "min_sum": 208,
+    "std_sum": 170.167087323494,
+    "mean_sum_ci95": [
+      738.6204799999999,
+      748.12482
+    ],
+    "success_256": 0.9958,
+    "success_256_ci95": [
+      0.9935875211615962,
+      0.9972512255896854
+    ],
+    "success_512": 0.7248,
+    "largest_tile": 1024,
+    "mean_steps": 335.912,
+    "mean_merge_score": 5007.428,
+    "truncated": 0,
+    "tile_distribution": {
+      "128": 21,
+      "256": 1355,
+      "512": 3623,
+      "1024": 1
+    },
+    "seed_range": [
+      80000,
+      84999
+    ],
+    "evaluation_seconds": 30.158268099999987,
+    "ms_per_move": 0.01795605283526637
+  },
+  "comparison": {
+    "mean_sum_gain": 33.5156,
+    "mean_sum_gain_ci95": [
+      27.12924,
+      39.79724
+    ],
+    "success_gain": 0.03539999999999999,
+    "rescued": 197,
+    "regressed": 20,
+    "paired_seed_count": 5000
+  }
+}

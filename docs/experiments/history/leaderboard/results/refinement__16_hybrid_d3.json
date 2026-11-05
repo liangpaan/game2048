@@ -1,0 +1,50 @@
+{
+  "key": "refinement__16_hybrid_d3",
+  "id": "16_hybrid_d3",
+  "label": "验证集最佳 TD + Expectimax 深度3（加长训练版）",
+  "group": "refinement",
+  "family": "学习＋搜索",
+  "source": "本项目",
+  "model": "artifacts\\refinement\\models\\16_hybrid_d3.npz",
+  "original_config": {
+    "method": 6,
+    "hybrid": true,
+    "depth": 3,
+    "source": "11_optimistic",
+    "objective": 0
+  },
+  "games": 500,
+  "mean_sum": 701.16,
+  "median_sum": 762.0,
+  "max_sum": 1022,
+  "min_sum": 140,
+  "std_sum": 209.5048040638966,
+  "mean_sum_ci95": [
+    682.8358000000001,
+    718.4618
+  ],
+  "success_256": 0.958,
+  "success_256_ci95": [
+    0.9366484142456705,
+    0.972367689891548
+  ],
+  "success_512": 0.638,
+  "largest_tile": 512,
+  "mean_steps": 316.75,
+  "mean_merge_score": 4677.456,
+  "truncated": 0,
+  "tile_distribution": {
+    "64": 1,
+    "128": 20,
+    "256": 160,
+    "512": 319
+  },
+  "evaluation_seconds": 14.44571569969412,
+  "timing_complete": true,
+  "model_sha256": "4f23e10e0e3428cf75cb7488ba44aab4ae1bd9e5396549e6e705c139847aa2ca",
+  "raw_sha256": "f7e8e8cc62b1f45b0426c3be1c672552ec6b40243e64969f7927f9ff6fdd4ed4",
+  "ms_per_move": 0.09121209597281212,
+  "success_256_count": 479,
+  "success_1024_count": 0,
+  "origin": "加长训练"
+}

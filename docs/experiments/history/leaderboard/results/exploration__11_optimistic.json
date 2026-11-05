@@ -1,0 +1,50 @@
+{
+  "key": "exploration__11_optimistic",
+  "id": "11_optimistic",
+  "label": "5-tuple 乐观初始化 TD",
+  "group": "exploration",
+  "family": "强化学习",
+  "source": "本项目",
+  "model": "artifacts\\exploration\\models\\11_optimistic.npz",
+  "original_config": {
+    "method": 6,
+    "width": 5,
+    "optimism": 300,
+    "episodes": 100000,
+    "train_seed": 42
+  },
+  "games": 500,
+  "mean_sum": 541.976,
+  "median_sum": 508.0,
+  "max_sum": 984,
+  "min_sum": 164,
+  "std_sum": 165.01557412379844,
+  "mean_sum_ci95": [
+    527.928,
+    557.1204
+  ],
+  "success_256": 0.914,
+  "success_256_ci95": [
+    0.8861601885014434,
+    0.9355268575963918
+  ],
+  "success_512": 0.282,
+  "largest_tile": 512,
+  "mean_steps": 244.518,
+  "mean_merge_score": 3385.416,
+  "truncated": 0,
+  "tile_distribution": {
+    "64": 2,
+    "128": 41,
+    "256": 316,
+    "512": 141
+  },
+  "evaluation_seconds": 0.10101010056678206,
+  "timing_complete": true,
+  "model_sha256": "3375e1975aa69822efcf38c379c7276525ad0cee6c442f2a10e31d285b00d7cb",
+  "raw_sha256": "fa79aea0d28554294bcbcc773aae5c8c31a6419357a3ef0ef6d2eebe35afd3a6",
+  "ms_per_move": 0.0008261976669756996,
+  "success_256_count": 457,
+  "success_1024_count": 0,
+  "origin": "第一轮"
+}

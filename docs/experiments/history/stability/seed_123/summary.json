@@ -1,0 +1,71 @@
+[
+  {
+    "id": "09_td5",
+    "label": "5-tuple 对称 TD(0) 总和奖励",
+    "method": 6,
+    "width": 5,
+    "episodes": 100000,
+    "train_seed": 123,
+    "implementation_version": 1,
+    "training_seconds": 15.563382999971509,
+    "games": 500,
+    "mean_sum": 513.972,
+    "median_sum": 500.0,
+    "max_sum": 994,
+    "min_sum": 70,
+    "std_sum": 257.0992322946395,
+    "mean_sum_ci95": [
+      492.4668,
+      536.8808
+    ],
+    "success_256": 0.674,
+    "success_256_ci95": [
+      0.6317220455546285,
+      0.7136246839647516
+    ],
+    "success_512": 0.344,
+    "largest_tile": 512,
+    "mean_steps": 231.692,
+    "mean_merge_score": 3241.024,
+    "truncated": 0,
+    "tile_distribution": {
+      "32": 6,
+      "64": 12,
+      "128": 145,
+      "256": 165,
+      "512": 172
+    },
+    "validation": {
+      "games": 200,
+      "mean_sum": 521.48,
+      "median_sum": 499.0,
+      "max_sum": 988,
+      "min_sum": 56,
+      "std_sum": 254.09144399122877,
+      "mean_sum_ci95": [
+        488.57925,
+        556.93025
+      ],
+      "success_256": 0.685,
+      "success_256_ci95": [
+        0.6176504391426983,
+        0.7453767900977134
+      ],
+      "success_512": 0.375,
+      "largest_tile": 512,
+      "mean_steps": 235.355,
+      "mean_merge_score": 3313.22,
+      "truncated": 0,
+      "tile_distribution": {
+        "16": 1,
+        "32": 1,
+        "64": 3,
+        "128": 58,
+        "256": 62,
+        "512": 75
+      }
+    },
+    "evaluation_seconds": 0.1022585000609979,
+    "ms_per_move": 0.0008827106681369914
+  }
+]

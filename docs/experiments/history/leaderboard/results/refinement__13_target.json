@@ -1,0 +1,51 @@
+{
+  "key": "refinement__13_target",
+  "id": "13_target",
+  "label": "5-tuple TD 总和+首次256奖励（加长训练版）",
+  "group": "refinement",
+  "family": "强化学习",
+  "source": "本项目",
+  "model": "artifacts\\refinement\\models\\13_target.npz",
+  "original_config": {
+    "method": 6,
+    "width": 5,
+    "objective": 2,
+    "episodes": 300000,
+    "train_seed": 42
+  },
+  "games": 500,
+  "mean_sum": 608.884,
+  "median_sum": 596.0,
+  "max_sum": 980,
+  "min_sum": 80,
+  "std_sum": 201.93003248660185,
+  "mean_sum_ci95": [
+    591.4620000000001,
+    625.7245
+  ],
+  "success_256": 0.91,
+  "success_256_ci95": [
+    0.8816905887106675,
+    0.9320574521108601
+  ],
+  "success_512": 0.506,
+  "largest_tile": 512,
+  "mean_steps": 274.736,
+  "mean_merge_score": 3977.072,
+  "truncated": 0,
+  "tile_distribution": {
+    "32": 1,
+    "64": 4,
+    "128": 40,
+    "256": 202,
+    "512": 253
+  },
+  "evaluation_seconds": 0.12467789999209344,
+  "timing_complete": true,
+  "model_sha256": "954bad512742c96ed723b47f7e711f17742b5a1e45f9c97b05a8895798a9108c",
+  "raw_sha256": "0bfadac4914760856ae05909c2b5284591219a1701e30933aa5da12b8d4ed015",
+  "ms_per_move": 0.0009076196784701928,
+  "success_256_count": 455,
+  "success_1024_count": 0,
+  "origin": "加长训练"
+}

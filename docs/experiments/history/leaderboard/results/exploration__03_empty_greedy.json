@@ -1,0 +1,46 @@
+{
+  "key": "exploration__03_empty_greedy",
+  "id": "03_empty_greedy",
+  "label": "空格优先贪心",
+  "group": "exploration",
+  "family": "基线／搜索",
+  "source": "本项目",
+  "model": null,
+  "original_config": {
+    "method": 2
+  },
+  "games": 500,
+  "mean_sum": 114.2,
+  "median_sum": 111.0,
+  "max_sum": 244,
+  "min_sum": 50,
+  "std_sum": 37.17445197658627,
+  "mean_sum_ci95": [
+    111.052,
+    117.4523
+  ],
+  "success_256": 0.0,
+  "success_256_ci95": [
+    -4.336808689942018e-19,
+    0.007624340461551825
+  ],
+  "success_512": 0.0,
+  "largest_tile": 128,
+  "mean_steps": 49.94,
+  "mean_merge_score": 381.352,
+  "truncated": 0,
+  "tile_distribution": {
+    "16": 47,
+    "32": 191,
+    "64": 239,
+    "128": 23
+  },
+  "evaluation_seconds": 0.03296679991763085,
+  "timing_complete": true,
+  "model_sha256": null,
+  "raw_sha256": "669d9566f20ac5bd969159e76bd1d3da2c8612bb03edb53c57a036ec9d185ff2",
+  "ms_per_move": 0.0013202563042703584,
+  "success_256_count": 0,
+  "success_1024_count": 0,
+  "origin": "第一轮"
+}

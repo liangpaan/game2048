@@ -1,0 +1,15 @@
+{
+  "mode": "offline DOM mock; no browser",
+  "table_rows": 16,
+  "board_tiles": 9,
+  "replay_frames": 408,
+  "checks": [
+    "initial board",
+    "end",
+    "seek",
+    "play",
+    "advance",
+    "pause"
+  ],
+  "passed": true
+}

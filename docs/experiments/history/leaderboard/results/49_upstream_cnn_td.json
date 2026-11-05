@@ -1,0 +1,46 @@
+{
+  "key": "49_upstream_cnn_td",
+  "id": "49_upstream_cnn_td",
+  "label": "上游 CNN TD（5万局）",
+  "group": "upstream",
+  "family": "强化学习",
+  "source": "链接仓库",
+  "model": "third_party\\game2048-fc62be0aeb8a660a996cca54f517d119d817fbe7\\game2048\\wrappers\\TD\\models\\td-3x3-cnn.pt",
+  "original_config": {
+    "upstream_commit": "fc62be0aeb8a660a996cca54f517d119d817fbe7"
+  },
+  "games": 500,
+  "mean_sum": 458.732,
+  "median_sum": 478.0,
+  "max_sum": 870,
+  "min_sum": 106,
+  "std_sum": 129.52733625638777,
+  "mean_sum_ci95": [
+    446.9711,
+    470.1174
+  ],
+  "success_256": 0.882,
+  "success_256_ci95": [
+    0.8507680121388815,
+    0.9074069917484929
+  ],
+  "success_512": 0.132,
+  "largest_tile": 512,
+  "mean_steps": 206.52,
+  "mean_merge_score": 2766.336,
+  "truncated": 0,
+  "tile_distribution": {
+    "64": 8,
+    "128": 51,
+    "256": 375,
+    "512": 66
+  },
+  "evaluation_seconds": 70.58264790021349,
+  "timing_complete": true,
+  "model_sha256": "b6083d44c321df945691c416b7b44c9e480dbe98d4c7bce75e79d8e47aa0d221",
+  "raw_sha256": "f38e9149b50c446b6556f4d88810e00718232ee6fd61a5646a7c3cae01eedd45",
+  "ms_per_move": 0.6835429779218816,
+  "success_256_count": 441,
+  "success_1024_count": 0,
+  "origin": "新增仓库"
+}

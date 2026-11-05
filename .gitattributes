@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.bat text eol=crlf
+*.npz binary
+*.pt binary
+*.zip binary
+*.png binary
+# Preserve archived raw-file SHA256 on all platforms.
+*.csv -text whitespace=cr-at-eol
+docs/experiments/history/** -text whitespace=cr-at-eol
