@@ -1,0 +1,169 @@
+{
+  "results": [
+    {
+      "episode": 1,
+      "seed": 10000,
+      "sum": 274,
+      "max_tile": 128,
+      "reached_256": false,
+      "steps": 128
+    },
+    {
+      "episode": 2,
+      "seed": 10001,
+      "sum": 260,
+      "max_tile": 128,
+      "reached_256": false,
+      "steps": 113
+    },
+    {
+      "episode": 3,
+      "seed": 10002,
+      "sum": 306,
+      "max_tile": 256,
+      "reached_256": true,
+      "steps": 138
+    },
+    {
+      "episode": 4,
+      "seed": 10003,
+      "sum": 266,
+      "max_tile": 128,
+      "reached_256": false,
+      "steps": 116
+    },
+    {
+      "episode": 5,
+      "seed": 10004,
+      "sum": 230,
+      "max_tile": 128,
+      "reached_256": false,
+      "steps": 103
+    },
+    {
+      "episode": 6,
+      "seed": 10005,
+      "sum": 256,
+      "max_tile": 128,
+      "reached_256": false,
+      "steps": 116
+    },
+    {
+      "episode": 7,
+      "seed": 10006,
+      "sum": 258,
+      "max_tile": 128,
+      "reached_256": false,
+      "steps": 118
+    },
+    {
+      "episode": 8,
+      "seed": 10007,
+      "sum": 466,
+      "max_tile": 256,
+      "reached_256": true,
+      "steps": 209
+    },
+    {
+      "episode": 9,
+      "seed": 10008,
+      "sum": 120,
+      "max_tile": 64,
+      "reached_256": false,
+      "steps": 54
+    },
+    {
+      "episode": 10,
+      "seed": 10009,
+      "sum": 320,
+      "max_tile": 256,
+      "reached_256": true,
+      "steps": 143
+    },
+    {
+      "episode": 11,
+      "seed": 10010,
+      "sum": 246,
+      "max_tile": 128,
+      "reached_256": false,
+      "steps": 107
+    },
+    {
+      "episode": 12,
+      "seed": 10011,
+      "sum": 214,
+      "max_tile": 128,
+      "reached_256": false,
+      "steps": 94
+    },
+    {
+      "episode": 13,
+      "seed": 10012,
+      "sum": 324,
+      "max_tile": 256,
+      "reached_256": true,
+      "steps": 143
+    },
+    {
+      "episode": 14,
+      "seed": 10013,
+      "sum": 258,
+      "max_tile": 128,
+      "reached_256": false,
+      "steps": 115
+    },
+    {
+      "episode": 15,
+      "seed": 10014,
+      "sum": 200,
+      "max_tile": 128,
+      "reached_256": false,
+      "steps": 91
+    },
+    {
+      "episode": 16,
+      "seed": 10015,
+      "sum": 168,
+      "max_tile": 64,
+      "reached_256": false,
+      "steps": 74
+    },
+    {
+      "episode": 17,
+      "seed": 10016,
+      "sum": 124,
+      "max_tile": 64,
+      "reached_256": false,
+      "steps": 52
+    },
+    {
+      "episode": 18,
+      "seed": 10017,
+      "sum": 364,
+      "max_tile": 256,
+      "reached_256": true,
+      "steps": 166
+    },
+    {
+      "episode": 19,
+      "seed": 10018,
+      "sum": 272,
+      "max_tile": 128,
+      "reached_256": false,
+      "steps": 123
+    },
+    {
+      "episode": 20,
+      "seed": 10019,
+      "sum": 394,
+      "max_tile": 256,
+      "reached_256": true,
+      "steps": 186
+    }
+  ],
+  "summary": {
+    "episodes": 20,
+    "mean_sum": 266.0,
+    "passed": 6
+  }
+}

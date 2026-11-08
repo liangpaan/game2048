@@ -1,0 +1,12 @@
+evaluation:
+  episodes: 20
+  seed: 10000
+  output: null
+agent:
+  simulations: 128
+  depth: 12
+  exploration: 70.0
+  rollout_random: 0.15
+  empty_weight: 18.0
+  order_weight: 1.0
+  target_bonus: 256.0

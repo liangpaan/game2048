@@ -1,0 +1,31 @@
+model: models/ppo/ppo-3x3.npz
+evaluation:
+  episodes: 20
+  seed: 10000
+  output: null
+training:
+  seed: 2026
+  resume: false
+  teacher_model: models/TD/td-3x3-ntuple.npz
+  timesteps: 100000
+  n_envs: 4
+  n_steps: 256
+  batch_size: 128
+  n_epochs: 4
+  learning_rate: 0.0003
+  gamma: 0.995
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.01
+  filters: 64
+  residual_blocks: 4
+  features_dim: 64
+  reward_scale: 0.25
+  target_bonus: 64.0
+  merge_reward_scale: 0.0
+  bc_episodes: 0
+  bc_epochs: 8
+  bc_batch_size: 256
+  bc_learning_rate: 0.001
+  resume_learning_rate: null
+  separate_features: false

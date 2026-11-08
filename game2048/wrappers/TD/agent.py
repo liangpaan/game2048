@@ -15,6 +15,7 @@ import random
 import numpy as np
 
 from game2048.core import merge_score, move_board
+from game2048.utils.weights import conv2d, linear, load_weights, relu, save_weights, torch_arrays
 
 
 @dataclass(frozen=True)
@@ -71,7 +72,7 @@ def _torch():
     try:
         import torch
     except ImportError as exception:
-        raise ImportError("CNN TD requires PyTorch; run uv sync --extra td") from exception
+        raise ImportError("CNN TD training requires PyTorch; use uv run --extra td") from exception
     return torch
 
 
@@ -243,35 +244,43 @@ class TDAgent:
 
     def save(self, path: Path) -> None:
         path = Path(path)
-        if path.suffix != ".pt":
-            raise ValueError("CNN TD models must end in .pt")
-        path.parent.mkdir(parents=True, exist_ok=True)
         payload = {
-            "version": 2, "architecture": "katsuta-deep-79874-linear",
+            "kind": "td-cnn", "version": 2, "architecture": "katsuta-deep-79874-linear",
             "config": asdict(self.config), "size": self.size, "target": self.target,
             "episodes_trained": self.episodes_trained,
             "positions_trained": self.positions_trained, "optimizer_steps": self.optimizer_steps,
             "network": self.network.state_dict(), "optimizer": self.optimizer.state_dict(),
             "rng_state": self.rng.getstate(),
         }
-        temporary = path.with_suffix(".pt.tmp")
-        self.torch.save(payload, temporary)
-        temporary.replace(path)
+        save_weights(path, payload)
 
     @classmethod
-    def load(cls, path: Path, *, seed: int = 0, restore_rng: bool = False):
+    def load(cls, path: Path, *, seed: int = 0, restore_rng: bool = False,
+             training: bool = False):
         path = Path(path)
-        if path.suffix == ".pkl":
+        with np.load(path, allow_pickle=False) as archive:
+            optimistic = "metadata" not in archive.files and all(
+                key in archive.files for key in ("weights", "positions", "tables", "config"))
+        if optimistic:
+            if training:
+                raise ValueError("the imported PR 5-tuple checkpoint is for evaluation; "
+                                 "the current trainer supports CNN and the original n-tuple models")
+            from .optimistic import OptimisticTDAgent
+
+            return OptimisticTDAgent.load(path)
+        payload = load_weights(path)
+        if payload.get("kind") == "td-ntuple":
             from .ntuple import NTupleAgent
 
             return NTupleAgent.load(path, seed=seed)
-        payload = _torch().load(path, map_location="cpu", weights_only=True)
         if payload.get("version") != 2 or payload.get("architecture") != "katsuta-deep-79874-linear":
             raise ValueError("unsupported CNN TD model version or architecture")
+        if not training:
+            return NumpyTDAgent(payload, seed=seed, restore_rng=restore_rng)
         agent = cls(TDConfig(**payload["config"]), seed=seed,
                     size=payload["size"], target=payload["target"])
-        agent.network.load_state_dict(payload["network"])
-        agent.optimizer.load_state_dict(payload["optimizer"])
+        agent.network.load_state_dict(torch_arrays(payload["network"], agent.torch))
+        agent.optimizer.load_state_dict(torch_arrays(payload["optimizer"], agent.torch))
         agent.episodes_trained = payload["episodes_trained"]
         agent.positions_trained = payload["positions_trained"]
         agent.optimizer_steps = payload["optimizer_steps"]
@@ -279,3 +288,41 @@ class TDAgent:
             agent.rng.setstate(payload["rng_state"])
         agent.network.eval()
         return agent
+
+
+class NumpyTDAgent(TDAgent):
+    """Evaluate a saved CNN with NumPy; constructing this never imports torch."""
+
+    def __init__(self, payload, *, seed=0, restore_rng=False):
+        self._payload = payload
+        self.config = TDConfig(**payload["config"])
+        self.size, self.target = payload["size"], payload["target"]
+        self.rng = random.Random(seed)
+        self.weights = payload["network"]
+        for name in ("episodes_trained", "positions_trained", "optimizer_steps"):
+            setattr(self, name, payload[name])
+        if restore_rng:
+            self.rng.setstate(payload["rng_state"])
+
+    @property
+    def parameter_count(self):
+        return sum(weight.size for weight in self.weights.values())
+
+    def values(self, boards):
+        if not len(boards):
+            return np.empty(0, dtype=np.float64)
+        values = encode_boards(boards)
+        for index in (0, 2, 4, 6, 8):
+            values = relu(conv2d(values, self.weights[f"{index}.weight"],
+                                self.weights[f"{index}.bias"], padding=int(index == 2)))
+        values = values.reshape(len(boards), -1)
+        values = relu(linear(values, self.weights["11.weight"], self.weights["11.bias"]))
+        predictions = linear(values, self.weights["13.weight"], self.weights["13.bias"])
+        return (predictions.ravel().astype(np.float64) * self.config.value_scale
+                + np.asarray([self.baseline(board) for board in boards]))
+
+    def train_batch(self, afterstates, targets):
+        raise RuntimeError("load the model with training=True to train the CNN")
+
+    def save(self, path):
+        save_weights(path, {**self._payload, "rng_state": self.rng.getstate()})

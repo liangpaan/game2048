@@ -7,7 +7,7 @@ import math
 import random
 
 from game2048.core import legal_actions, move_board
-from game2048.wrappers.common import heuristic, spawn_tile
+from game2048.utils.common import heuristic, spawn_tile
 
 
 @dataclass(frozen=True)

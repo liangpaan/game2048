@@ -1,0 +1,2 @@
+# Keep the original 50,000-game CNN as an explicit comparison option.
+model: models/TD/td-3x3-cnn.npz

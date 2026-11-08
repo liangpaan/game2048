@@ -140,3 +140,7 @@ cython_debug/
 
 
 log/
+
+# Expectimax state tables are generated locally; keep learned TD/PPO weights.
+/models/Expectimax/*.bin
+/models/Expectimax/*.lock

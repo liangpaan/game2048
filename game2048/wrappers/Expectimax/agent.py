@@ -10,9 +10,10 @@ from __future__ import annotations
 from dataclasses import dataclass
 from functools import lru_cache
 import math
+from pathlib import Path
 
 from game2048.core import move_board
-from game2048.wrappers.common import heuristic
+from game2048.utils.common import heuristic
 
 
 @dataclass(frozen=True)
@@ -58,7 +59,7 @@ class ExpectimaxAgent:
     """
 
     def __init__(self, config: ExpectimaxConfig = ExpectimaxConfig(), *,
-                 size: int = 3, target: int = 256):
+                 size: int = 3, target: int = 256, cache_dir: Path | None = None):
         if size < 2 or target < 2:
             raise ValueError("size and target must be at least 2")
         if config.depth is None and size != 3:
@@ -66,6 +67,7 @@ class ExpectimaxAgent:
         self.config = config
         self.size = size
         self.target = target
+        self.cache_dir = cache_dir
         self._canonical_cache: dict[tuple[int, ...], tuple[int, ...]] = {}
         self._max_cache: dict[tuple[tuple[int, ...], int], float] = {}
         self._chance_cache: dict[tuple[tuple[int, ...], int], float] = {}
@@ -134,7 +136,9 @@ class ExpectimaxAgent:
             from game2048.wrappers.Expectimax.exact import encode, get_solver
 
             encode(board)  # Validate before potentially building a large table.
-            return get_solver(self.target, self.config.target_bonus).action_values(board)
+            solver = (get_solver(self.target, self.config.target_bonus) if self.cache_dir is None
+                      else get_solver(self.target, self.config.target_bonus, self.cache_dir))
+            return solver.action_values(board)
         try:
             return {
                 action: self._chance_value(afterstate, self.config.depth - 1)

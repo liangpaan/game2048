@@ -1,0 +1,12 @@
+methods:
+  mcts: config/mcts.yaml
+  expectimax: config/expectimax.yaml
+  td: config/td.yaml
+  ppo: config/ppo.yaml
+width: 420
+height: 560
+gap: 16
+fps: 60
+episode_pause: 0.0
+# Kept for compatibility; the demo stays on the final board until the window closes.
+close_when_done: false

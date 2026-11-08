@@ -4,11 +4,13 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from pathlib import Path
-import pickle
 import random
 
+import numpy as np
+
 from game2048.core import legal_actions, move_board
-from game2048.wrappers.common import heuristic
+from game2048.utils.common import heuristic
+from game2048.utils.weights import load_weights, save_weights
 
 
 @dataclass(frozen=True)
@@ -125,23 +127,31 @@ class NTupleAgent:
         return error
 
     def save(self, path: Path) -> None:
-        path.parent.mkdir(parents=True, exist_ok=True)
+        features = list(self.weights)
+        width = max((len(tiles) for _, tiles in features), default=0)
+        tiles = np.zeros((len(features), width), dtype=np.uint8)
+        for row, (_, values) in enumerate(features):
+            tiles[row, :len(values)] = values
         payload = {
-            "version": 1, "config": asdict(self.config), "size": self.size,
+            "kind": "td-ntuple", "version": 1, "config": asdict(self.config), "size": self.size,
             "target": self.target, "episodes_trained": self.episodes_trained,
-            "weights": self.weights,
+            "patterns": np.asarray([pattern for pattern, _ in features], dtype=np.int16),
+            "lengths": np.asarray([len(values) for _, values in features], dtype=np.int16),
+            "tiles": tiles, "weights": np.asarray(list(self.weights.values()), dtype=np.float64),
         }
-        with path.open("wb") as stream:
-            pickle.dump(payload, stream, protocol=pickle.HIGHEST_PROTOCOL)
+        save_weights(path, payload)
 
     @classmethod
     def load(cls, path: Path, *, seed: int = 0) -> "NTupleAgent":
-        with path.open("rb") as stream:
-            payload = pickle.load(stream)
-        if payload.get("version") != 1:
+        payload = load_weights(path)
+        if payload.get("kind") != "td-ntuple" or payload.get("version") != 1:
             raise ValueError("unsupported TD model version")
         agent = cls(NTupleConfig(**payload["config"]), seed=seed,
                     size=payload["size"], target=payload["target"])
         agent.episodes_trained = payload["episodes_trained"]
-        agent.weights = payload["weights"]
+        agent.weights = {
+            (int(pattern), tuple(int(tile) for tile in row[:length])): float(weight)
+            for pattern, length, row, weight in zip(
+                payload["patterns"], payload["lengths"], payload["tiles"], payload["weights"])
+        }
         return agent

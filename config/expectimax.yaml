@@ -1,0 +1,10 @@
+evaluation:
+  episodes: 20
+  seed: 10000
+  output: null
+cache_dir: models/Expectimax
+agent:
+  depth: null
+  empty_weight: 18.0
+  order_weight: 1.0
+  target_bonus: 256.0

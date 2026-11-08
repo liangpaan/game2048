@@ -1,0 +1,31 @@
+model: models/TD/optimistic-5tuple-300k.npz
+evaluation:
+  episodes: 20
+  seed: 10000
+  output: null
+training:
+  network: cnn
+  episodes: 1000
+  seed: 20000
+  resume: false
+  save_every: 500
+  n_envs: 32
+  max_steps: null
+  cnn:
+    objective: sum
+    learning_rate: 0.001
+    batch_size: 1024
+    value_scale: 1024.0
+    epsilon_start: 0.1
+    epsilon_end: 0.01
+    epsilon_decay_episodes: 5000
+    target_bonus: 256.0
+    gradient_clip: 10.0
+  ntuple:
+    alpha: 0.2
+    epsilon_start: 0.2
+    epsilon_end: 0.02
+    epsilon_decay_episodes: 1000
+    empty_weight: 18.0
+    order_weight: 1.0
+    target_bonus: 256.0

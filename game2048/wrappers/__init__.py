@@ -1,1 +1,1 @@
-"""Agents that use the shared 2048 environment and move rules."""
+"""Algorithm implementations, experiment adapters, training and evaluation."""

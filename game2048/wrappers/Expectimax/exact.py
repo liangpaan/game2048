@@ -98,10 +98,13 @@ class ExactSolver:
 
 
 @lru_cache(maxsize=1)
-def get_solver(target: int, target_bonus: float) -> ExactSolver:
+def get_solver(target: int, target_bonus: float, cache_dir: Path | None = None) -> ExactSolver:
     # The version names the recurrence/file format, independently of compiler changes.
     identity = hashlib.sha256(f"sum-v1:{target}:{float(target_bonus).hex()}".encode()).hexdigest()[:16]
-    cache = _cache_dir() / f"sum-{identity}.bin"
+    override = os.environ.get("GAME2048_EXPECTIMAX_CACHE")
+    model_dir = (Path(override).expanduser() if override else cache_dir or
+                 Path(__file__).resolve().parents[3] / "models" / "Expectimax")
+    cache = model_dir / f"sum-{identity}.bin"
     solver = ExactSolver(target, target_bonus, cache)
     # Two CLI runs must not build and overwrite the same table concurrently.
     with cache.with_suffix(".lock").open("a") as lock:
