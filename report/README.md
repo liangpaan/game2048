@@ -11,3 +11,11 @@
 测试使用相同的20个种子，达到256后继续运行至自然终局。训练和搜索预算尚未统一，榜单反映当前实现的结果。
 
 原简版报告见 [report.md](report.md)，实验数据位于 [data](data/)。
+
+## LaTeX 源码
+
+三份材料的可编辑源码见 [latex/README.md](latex/README.md)，其中包含编译方法、字体要求和图表、公式的修改位置。
+
+- [实验报告](latex/report/main.tex)
+- [演示文稿](latex/slides/main.tex)
+- [汇报讲稿](latex/speech/main.tex)

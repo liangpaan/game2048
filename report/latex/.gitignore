@@ -1,0 +1,21 @@
+# LaTeX build intermediates
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+
+# Keep published PDFs in report/, alongside their index.
+/report/main.pdf
+/slides/main.pdf
+/speech/main.pdf
