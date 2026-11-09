@@ -57,7 +57,7 @@ subsection={format=\heiti\fontsize{12bp}{15bp}\selectfont,beforeskip=7bp,aftersk
 \subsection{MCTS与完整Expectimax}
 MCTS通过反复模拟估计动作价值。搜索树使用UCT选择动作：
 \begin{equation}
-Q(s,a)+c\sqrt{\frac{\ln N(s)}{N(s,a)}},
+Q(s,a)+c\sqrt{\frac{\ln(N(s)+1)}{N(s,a)}},
 \end{equation}
 其中$N(s)$和$N(s,a)$分别为状态与动作的访问次数，$c$控制探索强度。模拟显式考虑随机落块，达到设定深度后，用棋盘总和、空格数、蛇形排列和达标奖励估值，再向根节点回传。其优点是无需离线训练，但有限模拟次数会带来较大的估计误差。
 
@@ -116,14 +116,14 @@ PPO & 50,176个RL环境步 & 学习率$10^{-4}$，$\gamma=0.999$，GAE $\lambda=
 \end{tabularx}
 \end{table}
 
-MCTS的模拟次数和深度决定前瞻范围，增大预算也会增加每步耗时。完整Expectimax把大量开销放在首次求解与建表阶段，首次求解约需3 GiB内存、缓存约1 GiB，不能只用缓存后的决策耗时评价成本。TD的学习率影响估值修正速度，探索率和乐观先验影响状态覆盖。PPO的折扣因子影响长期收益权重，clip限制策略变化，熵正则有助于保留探索。
+CNN和PPO已有模型的学习率分别为$3\times10^{-4}$和$10^{-4}$，PPO折扣因子为0.999，与当前训练入口的默认值存在差别。PPO还存在教师预训练记录，因此50,176步仅表示强化学习阶段的计数。最终榜单中不同TD模型的训练量、表示方式和先验同时变化，不作单因素消融。下面使用另有记录的历史对照讨论参数影响。
 
-CNN和PPO已有模型的学习率分别为$3\times10^{-4}$和$10^{-4}$，PPO折扣因子为0.999，这些参数与当前训练入口的默认值存在差别。PPO还存在教师预训练记录，因此50,176步仅表示强化学习阶段的计数。三种TD的训练量、表示方式和先验也同时变化，本实验不把它们作为单一因素的消融对照。
+\input{sections/hyperparameters.tex}
 
 \section{结果与分析}
 表\ref{tab:results}给出平均终局总和、生成256的比例和平均步数。MCTS、完整Expectimax、乐观TD及PPO的数据来自逐局记录，CNN与普通n-tuple的数据来自同一20局协议的汇总结果。
 
-\begin{table}[htbp]
+\begin{table}[!htb]
 \centering
 \caption{20局测试结果}\label{tab:results}
 \begin{tabularx}{\linewidth}{@{}p{0.30\linewidth}ZZZ@{}}\toprule
@@ -137,7 +137,7 @@ PPO & 211.40 & 2/20（10\%） & 94.55\\\bottomrule
 \end{tabularx}
 \end{table}
 
-\begin{figure}[htbp]
+\begin{figure}[!htb]
 \centering\input{figures/results.tex}
 \caption{平均终局总和与逐局分布。右图仅包含有逐局记录的四种方法，箱体表示四分位范围，横线为中位数，菱形为均值。}\label{fig:results}
 \end{figure}

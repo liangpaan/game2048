@@ -35,6 +35,7 @@ xelatex -interaction=nonstopmode -halt-on-error main.tex
 ## 修改位置
 
 - **报告正文、表格、分工**：[report/main.tex](report/main.tex)。
+- **超参数对照与讨论**：[report/sections/hyperparameters.tex](report/sections/hyperparameters.tex)，由主文件引入；详细数据解释见[讨论模块](../hyperparameter_discussion.md)。
 - **报告结果图**：[report/figures/results.tex](report/figures/results.tex)，使用 PGFPlots，可直接修改数据和坐标轴。
 - **演示稿内容、表格、逐页备注**：[slides/main.tex](slides/main.tex)。
 - **演示稿结果图**：[slides/figures/means.tex](slides/figures/means.tex)。
@@ -43,4 +44,4 @@ xelatex -interaction=nonstopmode -halt-on-error main.tex
 
 南开 Beamer 主题、颜色文件及实际使用的校徽、背景位于 slides/ 和 slides/assets/，无需另行下载模板。主题原有授权说明保留在文件头和 [slides/LICENSE](slides/LICENSE) 中。
 
-目前报告4页，演示稿正文10页、备用2页，讲稿4页。修改算法顺序或结果时，请同步修改演示稿、讲稿和报告中的对应内容。
+目前报告5页，演示稿正文10页、备用2页，讲稿4页。修改算法顺序或结果时，请同步修改演示稿、讲稿和报告中的对应内容。
