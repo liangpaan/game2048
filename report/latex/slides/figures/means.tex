@@ -1,10 +1,6 @@
-\begin{tikzpicture}
-\begin{axis}[width=\linewidth,height=48mm,ybar,bar width=10pt,ymin=0,ymax=900,
-axis lines=left,ymajorgrids,grid style={gray!20},
-xtick={1,2,3,4,5,6},xticklabels={EX,TD-Opt,CNN,nT,MCTS,PPO},
-tick label style={font=\fontsize{8pt}{9pt}\selectfont},
-title={平均终局总和},title style={font=\fontsize{10pt}{12pt}\selectfont},
-nodes near coords,nodes near coords style={font=\fontsize{8pt}{9pt}\selectfont},
-xmin=0.4,xmax=6.6]
-\addplot[fill=maincolor,draw=none] coordinates {(1,761) (2,612.1) (3,418.8) (4,384) (5,266) (6,211.4)};
+\begin{tikzpicture}\begin{axis}[ybar,width=\linewidth,height=4.7cm,ymin=0,ymax=1000,
+symbolic x coords={Expectimax,TD,MCTS},xtick=data,bar width=22pt,ytick={0,200,400,600,800,1000},
+nodes near coords,nodes near coords style={font=\scriptsize},tick label style={font=\scriptsize},
+ymajorgrids=true,grid style={gray!20},axis lines*=left,ylabel={平均终局总和}]
+\addplot[fill=revisionpurple!75,draw=none] coordinates {(Expectimax,813.2666) (TD,640.743) (MCTS,282.0126)};
 \end{axis}\end{tikzpicture}

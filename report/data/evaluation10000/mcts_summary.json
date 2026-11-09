@@ -1,0 +1,73 @@
+{
+  "method": "mcts",
+  "episodes": 10000,
+  "seed_range": [
+    3000000,
+    3009999
+  ],
+  "mean_sum": 282.0126,
+  "std_sum": 87.64476254563172,
+  "mean_sum_ci95_normal": [
+    280.29479421977004,
+    283.73040578023
+  ],
+  "median_sum": 262.0,
+  "passed": 3496,
+  "success_rate": 0.3496,
+  "success_wilson_ci95": [
+    0.3403134062116385,
+    0.359002100498261
+  ],
+  "mean_steps": 126.1532,
+  "max_sum": 636,
+  "max_tile_counts": {
+    "16": 1,
+    "32": 73,
+    "64": 942,
+    "128": 5488,
+    "256": 3494,
+    "512": 2
+  },
+  "wall_seconds": 52.89889786498679,
+  "workers": 8,
+  "config": {
+    "evaluation": {
+      "episodes": 20,
+      "seed": 10000,
+      "output": null
+    },
+    "agent": {
+      "simulations": 128,
+      "depth": 12,
+      "exploration": 70.0,
+      "rollout_random": 0.15,
+      "empty_weight": 18.0,
+      "order_weight": 1.0,
+      "target_bonus": 256.0
+    }
+  },
+  "python": "3.12.14 (main, Sep  1 2026, 14:16:52) [Clang 22.1.3 ]",
+  "numpy": "2.5.4",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "rules": {
+    "size": 3,
+    "target": 256,
+    "spawn_two_probability": 0.9,
+    "stop_on_target": false,
+    "natural_termination": true,
+    "weights_frozen": true
+  },
+  "source_sha256": {
+    "game2048/runner.py": "9e0f917b6ecf7cb8afd1f37a7e574db7dd401b48e8b5e21540544dd625b634e6",
+    "game2048/wrappers/env.py": "f56d441565b6058a1e8eefddb95ab23e859eefda78e3d79893e33322813c6d5c",
+    "game2048/core.py": "c09956cff725f7ec1b282487e09c9bb9769c6c2c544e2df57a565872492e0819",
+    "report/benchmark10000/run.py": "86b844b9cca8b55e533e7db314f3c26ffa051b471e9e1ea9a98b69c89539254e",
+    "game2048/wrappers/MCTS/agent.py": "6f869326cad0c2edade007a0178ae3b5c9827fe4f2555429942f1b95e05ae6e9",
+    "game2048/utils/common.py": "edf7933128e235d21356216569b7689a712cc35f0eef4a4f23a4c411febd6cf9",
+    "game2048/wrappers/TD/optimistic.py": "7d4f3319c2841e8a31591e2811ae86451050a5b1a6e3eb8fd095b6a6e043d801",
+    "game2048/wrappers/Expectimax/native/solver.cpp": "8cc47c004a786a409f56c5cf912351a36c90bd13b9c7b5c4551fce194ec5723b",
+    "report/benchmark10000/native_mcts.cpp": "51ccb4b5bc6b256c1afde675cd5dc09f744bb1bc2c03147d82fab5fcda00a7a9"
+  },
+  "raw_csv_sha256": "beffb7d45d7008c849764e110012d944ff542efc3cac6793a1ec6c3e614265cf",
+  "wall_time_note": "Concurrent runs and different worker counts; not a comparative timing benchmark. Exact cache construction excluded."
+}

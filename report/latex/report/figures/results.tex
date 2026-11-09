@@ -1,37 +1,11 @@
-% Native PGFPlots figure: no embedded table or chart screenshot.
-\begin{tikzpicture}
-\begin{groupplot}[
- group style={group size=2 by 1,horizontal sep=12mm},
- width=0.45\linewidth,height=59mm,scale only axis=false,
- tick label style={font=\fontsize{9bp}{10bp}\selectfont},
- title style={font=\fontsize{10bp}{12bp}\selectfont},
- label style={font=\fontsize{10bp}{12bp}\selectfont},
- axis lines=left,ymajorgrids,grid style={gray!20},
- xticklabel style={rotate=35,anchor=east},
-]
-\nextgroupplot[title={A. 平均终局总和},ymin=0,ymax=900,
- ylabel={棋盘总和},xtick={1,2,3,4,5,6},
- xticklabels={MCTS,Expectimax,TD-Opt5,TD-CNN,TD-nTuple,PPO},
- xmin=0.4,xmax=6.6,ybar,bar width=13pt,
- nodes near coords,nodes near coords style={font=\fontsize{8bp}{9bp}\selectfont},
- every node near coord/.append style={/pgf/number format/fixed,/pgf/number format/precision=1}]
-
-\addplot+[draw=none,bar shift=0pt,fill=gray!65,nodes near coords style={text=black}] coordinates {(1,266)};
-\addplot+[draw=none,bar shift=0pt,fill=violet!65,nodes near coords style={text=black}] coordinates {(2,761)};
-\addplot+[draw=none,bar shift=0pt,fill=orange!70!brown,nodes near coords style={text=black}] coordinates {(3,612.1)};
-\addplot+[draw=none,bar shift=0pt,fill=teal!65,nodes near coords style={text=black}] coordinates {(4,418.8)};
-\addplot+[draw=none,bar shift=0pt,fill=violet!40,nodes near coords style={text=black}] coordinates {(5,384)};
-\addplot+[draw=none,bar shift=0pt,fill=red!45!gray,nodes near coords style={text=black}] coordinates {(6,211.4)};
-\nextgroupplot[title={B. 逐局总和分布},ymin=0,ymax=1100,
- xmin=0.4,xmax=4.6,xtick={1,2,3,4},xticklabels={MCTS,Expectimax,TD-Opt5,PPO},
- boxplot/draw direction=y,boxplot/box extend=0.5]
-
-\addplot+[fill=gray!65,draw=black,solid,mark=o,boxplot prepared={draw position=1,lower whisker=120.0,lower quartile=226.0,median=259.0,upper quartile=309.5,upper whisker=394.0}] coordinates {(0,466.0)};
-\addplot[only marks,mark=diamond*,mark options={fill=white,draw=black},mark size=2pt] coordinates {(1,266.0)};
-\addplot+[fill=violet!65,draw=black,solid,mark=o,boxplot prepared={draw position=2,lower whisker=500.0,lower quartile=513.5,median=833.0,upper quartile=995.0,upper whisker=1016.0}] coordinates {};
-\addplot[only marks,mark=diamond*,mark options={fill=white,draw=black},mark size=2pt] coordinates {(2,761.0)};
-\addplot+[fill=orange!70!brown,draw=black,solid,mark=o,boxplot prepared={draw position=3,lower whisker=392.0,lower quartile=509.0,median=514.0,upper quartile=753.0,upper whisker=948.0}] coordinates {};
-\addplot[only marks,mark=diamond*,mark options={fill=white,draw=black},mark size=2pt] coordinates {(3,612.1)};
-\addplot+[fill=red!45!gray,draw=black,solid,mark=o,boxplot prepared={draw position=4,lower whisker=46.0,lower quartile=144.0,median=226.0,upper quartile=262.5,upper whisker=368.0}] coordinates {(0,508.0)};
-\addplot[only marks,mark=diamond*,mark options={fill=white,draw=black},mark size=2pt] coordinates {(4,211.4)};
-\end{groupplot}\end{tikzpicture}
+\begin{tikzpicture}\begin{groupplot}[group style={group size=2 by 1,horizontal sep=1.6cm},
+width=.44\linewidth,height=5cm,axis lines*=left,tick label style={font=\small},label style={font=\small},
+symbolic x coords={EX,TD,MCTS},xtick=data,ymajorgrids=true,grid style={gray!15},ymin=0]
+\nextgroupplot[ybar,bar width=18pt,ymax=1000,ylabel={平均总和},title={终局数字总和},nodes near coords,nodes near coords style={font=\small}]
+\addplot[fill=purple!60,draw=none] coordinates {(EX,813.3) (TD,640.7) (MCTS,282.0)};
+\nextgroupplot[ybar stacked,bar width=20pt,ymax=100,ylabel={比例/\%},title={终局最大块},legend style={font=\scriptsize,at={(.5,-.22)},anchor=north,legend columns=2}]
+\addplot[fill=gray!40,draw=none] coordinates {(EX,0.46) (TD,8.81) (MCTS,65.04)};
+\addplot[fill=orange!65,draw=none] coordinates {(EX,25.80) (TD,36.21) (MCTS,34.94)};
+\addplot[fill=purple!60,draw=none] coordinates {(EX,72.45) (TD,54.98) (MCTS,0.02)};
+\addplot[fill=teal!65,draw=none] coordinates {(EX,1.29) (TD,0.00) (MCTS,0.00)};
+\legend{低于256,256,512,1024}\end{groupplot}\end{tikzpicture}

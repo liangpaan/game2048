@@ -1,0 +1,30 @@
+{
+  "action_and_rng_boards": 194,
+  "matching_full_episodes": [
+    {
+      "seed": 3000000,
+      "sum": 264,
+      "max_tile": 128,
+      "reached_256": false,
+      "steps": 121
+    },
+    {
+      "seed": 3000001,
+      "sum": 248,
+      "max_tile": 128,
+      "reached_256": false,
+      "steps": 112
+    },
+    {
+      "seed": 3000002,
+      "sum": 202,
+      "max_tile": 128,
+      "reached_256": false,
+      "steps": 89
+    }
+  ],
+  "matched_episode_actions": 322,
+  "random_primitive_pairs": 10000,
+  "seconds": 19.557494762004353,
+  "native_sha256": "51ccb4b5bc6b256c1afde675cd5dc09f744bb1bc2c03147d82fab5fcda00a7a9"
+}

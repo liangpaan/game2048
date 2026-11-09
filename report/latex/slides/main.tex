@@ -34,190 +34,129 @@
 \newcommand{\ptext}[1]{{\color{revisionpurple}\textbf{#1}}}
 \definecolor{revisionpurple}{HTML}{7E0C6E}
 
+
+
+
+\setbeamertemplate{footline}{\begin{beamercolorbox}[wd=\textwidth,ht=5mm,dp=3mm,leftskip=1cm]{footline}\ifnum\value{framenumber}<10\insertframenumber/9\else 问答备用\fi\end{beamercolorbox}}
+
+\setbeamertemplate{footline}{\begin{beamercolorbox}[wd=\textwidth,ht=5mm,dp=3mm,leftskip=1cm]{footline}\ifnum\value{framenumber}<10\insertframenumber/9\else 问答备用\fi\end{beamercolorbox}}
+
+\setbeamertemplate{footline}{\begin{beamercolorbox}[wd=\textwidth,ht=5mm,dp=3mm,leftskip=1cm]{footline}\ifnum\value{framenumber}<10\relax\insertframenumber/9\else 问答备用\fi\end{beamercolorbox}}
 \begin{document}
 \maketitle
-\note{大家好，我们介绍3乘3的2048自主游戏，重点比较搜索方法和强化学习方法的实现与结果。}
-
+\note{大家好，我们介绍3乘3的2048自主游戏，比较完整Expectimax、MCTS和乐观TD三种方法。}
 \begin{frame}{任务与环境}
-\textbf{目标：终局总和尽量大，并生成至少256的方块}\\[2mm]
-\smalltext 达到256后继续游戏。每次有效移动后，以0.9/0.1概率落下2/4。\\[3mm]
+\textbf{目标：终局总和尽量大，并生成至少256的方块}\\[3mm]
+\smalltext 达到256后继续游戏；有效移动后，以0.9/0.1概率落下2/4。\\[4mm]
 \begin{columns}[T,onlytextwidth]
 \begin{column}{.31\textwidth}\centering 移动前\\[1mm]\board{2&2&}{4&&}{&&}\\[1mm]总和8\end{column}
 \begin{column}{.31\textwidth}\centering 向左合并后\\[1mm]\board{4&&}{4&&}{&&}\\[1mm]总和8\end{column}
 \begin{column}{.31\textwidth}\centering 随机落块示例\\[1mm]\board{4&&}{4&&}{&&\textcolor{revisionpurple}{2}}\\[1mm]总和10\end{column}
 \end{columns}\vspace{3mm}
-\smalltext 合并保持总和，随机落块增加总和。释放空间才能继续接纳新方块。\\[1.5mm]
-相同的20个测试种子，冻结参数，运行至自然终局。
+\smalltext 合并保持总和，随机落块增加总和。每方法10,000局，运行至自然终局。
 \end{frame}
-\note{目标是让终局棋盘总和尽量大，同时生成至少256的方块。看下面这个例子：两个2合成4，总和仍是8，随机落下一个2后，总和才变成10。所以提高总和，需要不断释放空间来接纳新方块。测试时，达到256后继续游戏，直到没有合法动作，各方法使用同一组20个测试种子。}
-
-\begin{frame}{完整Expectimax：先看完整搜索}
+\note{目标是让终局总和尽量大，同时生成至少256的方块。合并不会增加总和，新落块才会增加总和，因此策略要通过合并释放空间，尽量延长游戏。三个方法都在达到256后继续运行，直到没有合法动作。}
+\begin{frame}{完整Expectimax：按概率搜索至终局}
 \smalltext 玩家节点选最佳动作，机会节点按真实概率加权，一直递推到终局。
-{\large \[\input{formulas/expect.tex}\]}
+{\large\[\input{formulas/expect.tex}\]}
 \begin{columns}[T,onlytextwidth]
-\begin{column}{.54\textwidth}
-\smalltext $s$为当前棋盘，$s'$为动作与落块后的棋盘。\\[1mm]
+\begin{column}{.54\textwidth}\smalltext
+$s$为当前棋盘，$s'$为动作与落块后的棋盘。\\[1mm]
 $A(s)$为合法动作集合，$P$为转移概率。\\[2mm]
-终局边界：$V(s)=U(s)$，$S(s)$为总和
-{\large \[\input{formulas/terminal.tex}\]}
+终局边界$V(s)=U(s)$，$S(s)$为总和
+{\large\[\input{formulas/terminal.tex}\]}
 \end{column}
 \begin{column}{.42\textwidth}\smalltext 移动后有2个空格时\\[1.5mm]
-\begin{tabular}{@{}lrr@{}}\toprule 位置 & 出现2 & 出现4\\\midrule 空格1 & 0.45 & 0.05\\空格2 & 0.45 & 0.05\\\bottomrule\end{tabular}\\[1.5mm]
-各分支概率相加为1。
-\end{column}\end{columns}\vspace{1mm}
-\smalltext C++求解器，旋转/镜像归一与缓存。首次求解及存储开销较大。
+\begin{tabular}{@{}lrr@{}}\toprule 位置&出现2&出现4\\\midrule 空格1&0.45&0.05\\空格2&0.45&0.05\\\bottomrule\end{tabular}\\[1.5mm]各分支概率相加为1。\end{column}
+\end{columns}\vspace{1mm}\smalltext C++求解器，旋转/镜像归一与缓存。首次求解及存储开销较大。
 \end{frame}
-\note{先讲完整Expectimax，它把规则已知的搜索问题算到终局。在玩家节点，选择期望效用最大的合法动作；在机会节点，按实际落块概率加权。比如移动后有两个空格，每个位置出现2的概率是零点四五，出现4的概率是零点零五。终局效用是棋盘总和，再加256的达标奖励。这里的最优针对这项期望效用，不是优先最大化达标概率。实现采用C加加求解器，用旋转、镜像归一和缓存减少重复局面，代价是首次求解和存储开销较大。}
-
-\begin{frame}{MCTS：用采样减少搜索开销}
+\note{先看完整Expectimax。玩家节点选择期望效用最大的合法动作；机会节点枚举空格，并按实际概率对出生块2和4求期望。比如有两个空格，每个位置出现2的概率是零点四五，出现4的概率是零点零五。终局效用是数字总和，再加256的达标奖励。这里的最优针对这一加权期望，不能保证每局都达到256。实现用C加加和旋转、镜像缓存减少重复求解，主要代价在首次建表和存储。}
+\begin{frame}{MCTS：通过模拟估计动作价值}
 \textbf{每次决策128次模拟，搜索深度12，探索系数70}\\[2mm]
 \smalltext 未访问动作优先扩展。已访问动作按UCT选择：
-{\large \[\input{formulas/uct.tex}\]}
+{\large\[\input{formulas/uct.tex}\]}
 \begin{columns}[T,onlytextwidth]
-\begin{column}{.48\textwidth}\smalltext
-$\bar Q$：该动作的模拟回报均值\\[1.5mm]
-$N(s)$：父节点访问次数\\[1.5mm]
-$N(s,a)$：动作访问次数，$c$控制探索
-\end{column}
-\begin{column}{.48\textwidth}\smalltext
-每步重新建树，按真实概率模拟落块\\[1.5mm]
-到达深度上限后，用启发式评价局面\\[1.5mm]
-最终选择根节点平均回报最大的动作
-\end{column}\end{columns}\vspace{3mm}
-\smalltext 模拟预算决定估计精度，截断估值会影响决策。
-\end{frame}
-\note{完整枚举的开销较大，MCTS改为采样。每次实际决策重新建树，做128次模拟，最多前看12步。未访问动作优先扩展；已访问动作使用下面的UCT公式。左边是模拟回报的均值，右边是探索项，访问较少的动作得到更大的探索奖励。代码里对父节点访问次数使用加一再取对数。模拟按真实概率落块，深度截断后用启发式估值，最后选择根节点平均回报最大的动作。}
-
-\begin{frame}{TD：从后状态学习长期价值}
-\smalltext 后状态$x_t$：移动后、随机落块前的棋盘。以乐观TD为例：
-{\large \[\input{formulas/td.tex}\]}
-\smalltext $z_{t+1}$为新落块数值2或4，$\gamma=1$，终局之后的后续价值取0。\\[1mm]
-用TD误差修正当前估值，学习未来可接纳的新方块总和。\\[2mm]
-\renewcommand{\arraystretch}{1.04}
-\begin{tabularx}{\textwidth}{@{}lY@{}}\toprule
-价值表示 & 实现特点\\\midrule
-乐观5-tuple & 3张$16^5$表，24个对称特征，初始总价值300\\
-CNN-TD & 11通道棋盘编码，卷积价值网络\\
-普通n-tuple & 行、列和$2\times2$局部模式，含启发式先验\\\bottomrule
-\end{tabularx}\\[2mm]
-\smalltext 乐观初始化鼓励尝试较少访问的局面。其余TD版本的效用定义有所不同。
-\end{frame}
-\note{TD通过训练复用过去的经验。这里用移动后、随机落块前的后状态表示动作结果。以乐观TD为例，价值估计未来还能接纳多少新方块。公式把下一次落块的数值，加上下一后状态的价值，作为更新目标，再减去当前估值。终局之后的后续价值取零，折扣因子取一。乐观5元组将局部棋盘编码成查表特征，用三张表共享24个对称特征，初始总价值设为300。较少访问的局面保持较高估值，能够鼓励探索。我们还比较了CNN和普通元组表，但它们的效用定义有所不同。}
-
-\begin{frame}{PPO：直接学习动作策略}
-\textbf{卷积残差网络提取棋盘特征}\\[3mm]
-\begin{columns}[T,onlytextwidth]
-\begin{column}{.46\textwidth}
-\ptext{策略分支}\\[2mm]\smalltext 输出四个方向的概率\\[1.5mm]
-屏蔽非法动作并重新归一\\[1.5mm]
-测试选择概率最大的合法动作
-\end{column}
-\begin{column}{.48\textwidth}
-\ptext{价值分支}\\[2mm]\smalltext 估计状态价值\\[1.5mm]
-与轨迹回报共同用于GAE优势估计\\[1.5mm]
-剪切目标限制单次策略更新幅度
-\end{column}\end{columns}\vspace{4mm}
-\smalltext 训练循环：收集交互轨迹，计算优势，再更新网络。\\[2mm]
-剪切系数0.2，折扣因子0.999，GAE参数0.95。\\[2mm]
-当前模型的训练量和奖励设置仍需进一步检验。
-\end{frame}
-\note{PPO直接输出四个方向的动作概率。卷积残差网络提取棋盘特征，策略分支给出动作概率，价值分支用于估计优势。训练时先收集交互轨迹，再用GAE计算优势，并用剪切目标限制策略更新幅度，这里的剪切系数是零点二。网络在输出端屏蔽非法动作，测试时选择概率最大的合法动作。本次模型表现有限，还需要进一步检验训练量和奖励设置。}
-
-\begin{frame}{实现与超参数}
-\smalltext 继承原环境，共用配置与评测入口。\\[1mm]
-\renewcommand{\arraystretch}{1.1}
-\begin{tabularx}{\textwidth}{@{}l l Y@{}}\toprule
-方法 & 计算预算 & 关键设置\\\midrule
-Expectimax & 完整搜索与缓存 & 终局达标奖励256\\
-MCTS & 每步128次模拟 & 深度12，$c=70$\\
-乐观TD & 300,000局 & 初始总价值300\\
-CNN-TD & 50,000局 & 学习率$3\times10^{-4}$，批量1024\\
-n-tuple TD & 5,000局 & $\alpha=0.2$，探索率0.20降至0.02\\
-PPO & 50,176个RL环境步 & $\gamma=0.999$，clip=0.2\\\bottomrule
-\end{tabularx}\\[2mm]
-搜索预算影响前瞻精度，学习率与探索率影响更新和覆盖。\\[1mm]
-训练局数、RL步数和搜索次数不能直接等同，PPO另有预训练记录。
-\end{frame}
-\note{这些方法共用环境和评测入口。表中列出实际模型的训练量和搜索预算，不能把训练局数、环境步数和模拟次数直接等同，PPO还有教师预训练记录。超参数上，搜索预算影响前瞻精度，TD学习率和探索率影响更新与覆盖，PPO剪切系数控制更新幅度。本次没有做单因素消融，因此不能把这些值称为最优参数。}
-
-\begin{frame}{实验结果}
-\begin{columns}[T,onlytextwidth]
-\begin{column}{0.60\textwidth}
-\input{figures/means.tex}
-\end{column}
-\begin{column}{0.36\textwidth}
-\smalltext\renewcommand{\arraystretch}{1.24}
-\begin{tabular}{@{}lr@{}}\toprule
-方法 & 达到256\\\midrule
-Expectimax & 20/20\\
-乐观TD & 20/20\\
-CNN-TD & 16/20\\
-n-tuple TD & 14/20\\
-MCTS & 6/20\\
-PPO & 2/20\\\bottomrule
-\end{tabular}\\[3mm]
-完整搜索平均总和比乐观TD高\textbf{24.3\%}。
-\end{column}
+\begin{column}{.48\textwidth}\smalltext $\bar Q$：动作的模拟回报均值\\[1.5mm]$N(s)$：父节点访问次数\\[1.5mm]$N(s,a)$：动作访问次数，$c$控制探索\end{column}
+\begin{column}{.48\textwidth}\smalltext 每步重新建树，按真实概率模拟落块\\[1.5mm]深度截断后，用启发式评价局面\\[1.5mm]最终选择根节点平均回报最大的动作\end{column}
 \end{columns}
-\smalltext 每方法20局。CNN与普通n-tuple仅有汇总值，训练与搜索预算不同。
 \end{frame}
-\note{结果按平均终局总和排序。完整Expectimax为761，乐观TD为612.1，两者在20局里都达到256。完整搜索比乐观TD高大约百分之二十四。CNN和普通元组表的平均总和分别为418.8和384，达标次数分别为16次和14次。当前MCTS为266，PPO为211.4。这说明完整搜索和乐观查表TD在当前设置下效果较好。但训练和搜索资源没有统一，CNN与普通元组表也只有汇总结果，所以这个榜单不能用来证明等资源下的算法优劣。}
-
-\begin{frame}{结果解释与实验局限}
-\textbf{当前设置下，完整搜索与乐观TD效果较好}\\[4mm]
-\smalltext 已统一环境规则、测试种子和终止条件。\\[3mm]
-训练与搜索资源尚未统一，不能据此比较等资源下的算法优劣。\\[3mm]
-每方法仅20局，CNN与普通n-tuple只有汇总结果。\\[4mm]
-后续固定运行时间，并用多个训练种子重复实验。
+\note{MCTS用采样减少枚举开销。每次决策重新建树，做128次模拟，最多前看12步。未访问动作优先扩展，其余动作使用UCT：左边是回报均值，右边鼓励访问较少的动作。模拟采用真实落块概率，到深度上限后用总和、空格和排列等启发式估值。最后选择根节点平均回报最高的动作。它不需要离线训练，但对有限模拟和截断估值较敏感。}
+\begin{frame}{TD：学习后状态的长期价值}
+\textbf{后状态$x_t$：移动后、随机落块前的棋盘}
+{\large\[\input{formulas/td.tex}\]}
+\smalltext $z$为新落块2或4，$\gamma=1$，终局之后的后续价值取0。\\[5mm]
+\begin{columns}[T,onlytextwidth]
+\begin{column}{.48\textwidth}\textbf{价值表示}\\[2mm]3张$16^5$查找表，24个对称特征\\[2mm]旋转与镜像局面共享权重\end{column}
+\begin{column}{.48\textwidth}\textbf{训练与决策}\\[2mm]训练300,000局，初始总价值300\\[2mm]测试时比较合法动作的后状态估值\end{column}
+\end{columns}
 \end{frame}
-\note{目前统一了环境规则、测试种子和终止条件，但计算资源尚未统一，20局也只是有限样本。下一步应固定运行时间，并用多个训练种子重复实验。}
-
-\begingroup
-\themecolor{main}
+\note{TD把交互经验保存在权重中。后状态是移动后、随机落块前的棋盘。价值估计未来还能接纳多少新方块；更新目标是下一次落块值，加上下一后状态的价值，再减去当前估值，终局之后的价值取零，折扣因子取一。我们用三张5元组表，共24个对称特征，让旋转和镜像局面共享经验。模型训练30万局，初始总价值设为300，测试时直接比较各合法动作的后状态估值。}
+\begin{frame}{实现与评测协议}
+\textbf{每种方法10,000局，共30,000局，全部运行至自然终局}\\[3mm]
+\smalltext\begin{tabularx}{\linewidth}{@{}lX@{}}\toprule 共同条件&设置\\\midrule
+环境&3×3棋盘；落块2/4的概率为0.9/0.1\\[2mm]
+测试种子&3,000,000至3,009,999，每局重新设置种子\\[2mm]
+决策设置&MCTS每步128次模拟，深度12，$c=70$\\[2mm]
+训练与缓存&冻结TD权重，Expectimax复用完整求解缓存\\\bottomrule\end{tabularx}\\[3mm]
+环境与搜索随机数分开，达到256后继续游戏。\\[2mm]
+统一评测样本，不等于统一训练与搜索计算量。
+\end{frame}
+\note{实现沿用原环境，通过包装类调整为3乘3，方法统一提供动作选择接口。本次三个方法各测试一万局，使用同一组新的种子，冻结TD权重，搜索随机数与环境随机数分开，并保留全部失败局。统一的是评测协议，训练和搜索的计算量仍不相同。}
+\begin{frame}{超参数讨论}
+\textbf{TD历史对照：同为10万局训练，500局测试}\\[3mm]
+\begin{tabularx}{\linewidth}{@{}Xrr@{}}\toprule TD配置&平均总和&达到256\\\midrule
+不共享对称，初值0&417.7&72.2\%\\[2mm]
+共享对称，初值0&605.8&89.0\%\\[2mm]
+共享对称，初值300&540.8&94.4\%\\\bottomrule\end{tabularx}\\[3mm]
+\smalltext 对称共享提高经验利用率；乐观初值提高达标率，但总和下降。\\[2mm]
+$\alpha$：0.1降至0.03；$\epsilon$：0.02降至0.002。尚无独立多取值对照。\\[2mm]
+历史对照与本次万局榜单分别统计，不把采用参数称为最优值。
+\end{frame}
+\note{参数讨论只保留有对照的数据。历史实验中，同样训练10万局，对称共享把总和从417点7提高到605点8。把初值从零改为300后，达标率从89提高到94点4，但总和下降到540点8，说明达标和继续累积总和存在取舍。学习率和探索率按进度下降，但没有独立多取值实验，所以不能把采用值称为最优参数。}
+\begin{frame}{每方法10,000局的实验结果}
+\begin{columns}[T,onlytextwidth]\begin{column}{.57\textwidth}\input{figures/means.tex}\end{column}
+\begin{column}{.40\textwidth}\smalltext\vspace{7mm}
+\begin{tabular}{@{}lrr@{}}\toprule 方法&达标局数&达标率\\\midrule
+Expectimax&9954&99.54\%\\[2mm]
+TD&9119&91.19\%\\[2mm]
+MCTS&3496&34.96\%\\[2mm]
+\bottomrule\end{tabular}
+\end{column}\end{columns}\vspace{1mm}\smalltext
+完整搜索总和最高；乐观TD次之；有限预算MCTS仍有明显差距。\\[2mm]
+每方法10,000局，包含全部失败局；置信区间与分布见备用页。
+\end{frame}
+\note{本次一万局的结果更加稳定。完整Expectimax的平均总和为813点27，达标率99点54；乐观TD为640点74，达标率91点19；MCTS为282点01，达标率34点96。完整搜索的平均总和比TD高约百分之二十六点九，同时仍有46局没有达到256。TD的9119局达标说明，以前20局全部成功并不代表稳定百分之百。MCTS的小预算模拟仍落后，可能受到短视估值影响，需要另做预算对照确认。这些结果比较的是当前配置，不能证明等计算资源下的算法优劣。}
 \begin{frame}{结论}
-\usebeamercolor[fg]{normal text}
-\large 完整Expectimax取得最高平均总和。\\[5mm]
-乐观TD兼顾效果与在线计算开销。\\[8mm]
-\normalsize 谢谢，欢迎提问。
+\textbf{完整搜索、采样搜索与学习估值各有计算代价}\\[5mm]
+\smalltext 完整Expectimax：本次平均总和最高，首次建表和存储开销较大。\\[4mm]
+乐观5-tuple TD：离线学习后查表决策，测试达标率91.19\%。\\[4mm]
+MCTS：无需离线训练，当前128次模拟的效果仍有提升空间。\\[5mm]
+\centering 谢谢大家
 \end{frame}
-\endgroup
-\note{本次完整Expectimax效果最好，乐观TD的在线决策开销较小。我们的汇报到这里，谢谢大家。}
-
-\begingroup
-\setbeamertemplate{footline}{\hspace{7mm}\scriptsize 补充资料\vspace{3mm}}
-\begin{frame}[noframenumbering]{完整测试结果}
-\smalltext\renewcommand{\arraystretch}{1.2}
-\begin{tabularx}{\textwidth}{@{}Y r r r@{}}\toprule
-方法 & 平均总和 & 达到256 & 平均步数\\\midrule
-完整Expectimax & 761.00 & 20/20 & 344.55\\
-乐观5-tuple TD & 612.10 & 20/20 & 277.60\\
-CNN-TD & 418.80 & 16/20 & 188.50\\
-n-tuple TD & 384.00 & 14/20 & 172.15\\
-MCTS & 266.00 & 6/20 & 119.45\\
-PPO & 211.40 & 2/20 & 94.55\\\bottomrule
-\end{tabularx}\\[3mm]
-乐观TD另一次500局测试：平均639.408，463局达标。\\[1mm]
-该次测试设置不同，不与上表合并。
+\note{在这组一万局测试中，完整搜索效果最好；乐观TD用查表完成决策，效果与在线开销之间较均衡；MCTS在当前预算下仍有提升空间。更大的评测样本减少了偶然波动，但公平比较还需要统一计算预算。谢谢大家。}
+\begin{frame}{补充：区间与最大块分布}
+\scriptsize\begin{tabularx}{\linewidth}{@{}lXX@{}}\toprule 方法&总和均值95\%区间&达标率95\%区间\\\midrule
+Expectimax&809.07--817.46&99.39\%--99.65\%\\[1mm]
+TD&636.45--645.03&90.62\%--91.73\%\\[1mm]
+MCTS&280.29--283.73&34.03\%--35.90\%\\[1mm]
+\bottomrule\end{tabularx}\\[4mm]
+\begin{tabularx}{\linewidth}{@{}Xrrrrr@{}}\toprule 方法&低于256&256&512&1024&平均步数\\\midrule
+Expectimax&46&2580&7245&129&367.68\\[1mm]
+TD&881&3621&5498&0&289.22\\[1mm]
+MCTS&6504&3494&2&0&126.15\\[1mm]
+\bottomrule\end{tabularx}\\[3mm]
+\smalltext 总和区间采用均值正态近似，达标率采用Wilson区间。仅反映评测波动。
 \end{frame}
-\endgroup
-\note{本页用于回答平均步数、达标次数和历史测试相关问题。500局乐观TD测试使用不同设置，平均总和639.408，463局达标，不与本页20局数据合并。}
-
-\begingroup
-\setbeamertemplate{footline}{\hspace{7mm}\scriptsize 补充资料\vspace{3mm}}
-\begin{frame}[noframenumbering]{分工与参考文献}
-\smalltext\renewcommand{\arraystretch}{1.15}
-\begin{tabularx}{\textwidth}{@{}l Y@{}}\toprule
-蔡明辰 & 环境适配、规则测试与代码整合\\
-潘亮 & TD方法、模型训练与超参数整理\\
-陈达 & 搜索方法、PPO与对照分析\\
-孟维祎 & 评测整理、图表与报告\\\bottomrule
-\end{tabularx}\\[2mm]
-\fontsize{8pt}{10pt}\selectfont
-[1] Guei et al. \href{https://arxiv.org/abs/2111.11090}{Optimistic Temporal Difference Learning for 2048}, 2021.\\[1mm]
-[2] Szubert \& Jaskowski. N-Tuple Networks for the Game 2048, CIG 2014.\\[1mm]
-[3] Schulman et al. \href{https://arxiv.org/abs/1707.06347}{Proximal Policy Optimization Algorithms}, 2017.
+\note{总和均值使用正态近似区间，达标率使用Wilson区间。它们只反映冻结模型的测试波动，不包含重新训练的差异。完整搜索还有129局生成1024，不能把这些局遗漏在最大块分布之外。}
+\begin{frame}{补充：分工与问答}
+\smalltext\begin{tabularx}{\linewidth}{@{}lX@{}}\toprule 成员&工作分工\\\midrule
+蔡明辰&环境适配、规则核对与代码整合\\[2mm]
+潘亮&TD实现、训练及超参数讨论\\[2mm]
+陈达&MCTS与Expectimax实现及结果分析\\[2mm]
+孟维祎&评测整理、图表与汇报材料\\\bottomrule\end{tabularx}\\[4mm]
+\textbf{为什么1万局仍不能证明等资源下算法更优？}\\[2mm]
+它减少评测抽样波动，但没有统一训练量、建表成本与每步计算量。\\[2mm]
+完整Expectimax属于已知模型规划；TD通过交互学习权重。
 \end{frame}
-\endgroup
-\note{蔡明辰负责环境适配与代码整合，潘亮负责TD和训练，陈达负责搜索方法及PPO，孟维祎负责评测整理、图表与报告。}
-
+\note{蔡明辰负责环境适配、规则核对与代码整合；潘亮负责TD实现、训练及参数讨论；陈达负责搜索方法与对照分析；孟维祎负责数据、图表和汇报材料。}
 \end{document}

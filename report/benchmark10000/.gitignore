@@ -1,0 +1,3 @@
+results/
+*.so
+__pycache__/

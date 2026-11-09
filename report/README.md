@@ -1,27 +1,29 @@
-# 实验报告与课程汇报
+# 三方法实验报告与课程汇报
+
+汇报只介绍完整 Expectimax、MCTS、乐观5-tuple TD，顺序为完整搜索、采样搜索、学习估值。正文9页，按5分钟编排；另有2页问答备用。
 
 | 材料 | 文件 | 内容 |
 | --- | --- | --- |
-| 演示文稿 | [game2048_presentation.pdf](game2048_presentation.pdf) | 南开 Beamer 模板，正文10页，问答备用2页 |
-| 汇报讲稿 | [game2048_speaker_notes.pdf](game2048_speaker_notes.pdf) | 逐页讲稿、5分钟时间安排和问答准备，共4页 |
-| 实验报告 | [game2048_experiment_report.pdf](game2048_experiment_report.pdf) | 宋体小四、单倍行距，共5页，含方法、结果、超参数讨论和成员分工 |
+| 演示文稿PDF | [game2048_presentation.pdf](game2048_presentation.pdf) | 南开 Beamer 模板，9页正文＋2页备用 |
+| 可编辑PPTX | [game2048_presentation.pptx](game2048_presentation.pptx) | 结果图和表格可编辑，附逐页讲稿备注 |
+| 汇报讲稿 | [game2048_speaker_notes.pdf](game2048_speaker_notes.pdf) | 5分钟逐页讲稿、1—2分钟问答准备，共3页 |
+| 实验报告 | [game2048_experiment_report.pdf](game2048_experiment_report.pdf) | 宋体小四、单倍行距，共3页，含分工 |
+| LaTeX源码 | [latex/README.md](latex/README.md) | 报告、Beamer演示稿、讲稿及所需模板资源 |
 
-演示稿依次介绍完整 Expectimax、MCTS、TD 和 PPO。TD 部分比较乐观5-tuple、CNN 和普通 n-tuple 三种价值表示。
+## 新增万局评测
 
-测试使用相同的20个种子，达到256后继续运行至自然终局。训练和搜索预算尚未统一，榜单反映当前实现的结果。
+三个方法各评测10,000局，共30,000局；种子3,000,000至3,009,999，达到256后继续，运行至自然终局。使用冻结TD权重，没有重新训练。
 
-原简版报告见 [report.md](report.md)，实验数据位于 [data](data/)。
+| 方法 | 平均终局总和 | 达到256 | 平均步数 |
+| --- | ---: | ---: | ---: |
+| 完整Expectimax | 813.2666 | 9954/10000（99.54%） | 367.6799 |
+| 乐观5-tuple TD | 640.7430 | 9119/10000（91.19%） | 289.2224 |
+| MCTS | 282.0126 | 3496/10000（34.96%） | 126.1532 |
 
-## 超参数讨论
+[逐局压缩CSV与汇总](data/evaluation10000/README.md)包含置信区间、最大块分布、种子和来源校验值。[评测入口及说明](benchmark10000/README.md)保留原环境，并提供经动作与随机状态一致性核对的MCTS评测加速内核。训练、建表和每步计算资源未统一，因此这不是等资源算法排名。
 
-新增[详细讨论模块](hyperparameter_discussion.md)，整理相同训练局数下的对称特征、模式结构、初始化与奖励对照，以及训练预算、探索率和固定权重的搜索深度实验。历史500局/300局对照与最终20局榜单分别统计；未重新训练模型。
+## 简洁超参数讨论
 
-[精简数据索引](data/hyperparameter_evidence.json)包含15个配置、4组配对区间和原始归档摘要。正式报告第3.1节保留关键表格与分析，可直接修改[对应LaTeX模块](latex/report/sections/hyperparameters.tex)。
+正式材料只保留三组同为10万局训练、500局测试的TD历史对照：对称共享、初值0/300。它们与新万局评测分别统计；学习率、探索率与MCTS搜索预算没有独立多取值实验，不声称参数已最优。
 
-## LaTeX 源码
-
-三份材料的可编辑源码见 [latex/README.md](latex/README.md)，其中包含编译方法、字体要求和图表、公式的修改位置。
-
-- [实验报告](latex/report/main.tex)
-- [演示文稿](latex/slides/main.tex)
-- [汇报讲稿](latex/speech/main.tex)
+可编辑[LaTeX讨论模块](latex/report/sections/hyperparameters.tex)。此前较完整的[历史讨论](hyperparameter_discussion.md)及[数据索引](data/hyperparameter_evidence.json)继续作为归档，不代表本次万局成绩。原有简版[report.md](report.md)也作为历史材料保留。

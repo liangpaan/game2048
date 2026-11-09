@@ -44,4 +44,4 @@ xelatex -interaction=nonstopmode -halt-on-error main.tex
 
 南开 Beamer 主题、颜色文件及实际使用的校徽、背景位于 slides/ 和 slides/assets/，无需另行下载模板。主题原有授权说明保留在文件头和 [slides/LICENSE](slides/LICENSE) 中。
 
-目前报告5页，演示稿正文10页、备用2页，讲稿4页。修改算法顺序或结果时，请同步修改演示稿、讲稿和报告中的对应内容。
+目前报告3页，演示稿正文9页、备用2页，讲稿3页。修改算法顺序或结果时，请同步修改演示稿、讲稿和报告中的对应内容。
