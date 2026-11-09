@@ -1,0 +1,565 @@
+{
+  "scope": "Historical experiments; separate from the final 20-game leaderboard",
+  "training_runs_per_configuration": 1,
+  "equal_episodes_does_not_imply_equal_transitions_or_wall_time": true,
+  "runs": [
+    {
+      "group": "exploration",
+      "id": "07_td4",
+      "config": {
+        "id": "07_td4",
+        "label": "4-tuple 对称 TD(0) 总和奖励",
+        "method": 6,
+        "width": 4,
+        "episodes": 100000,
+        "train_seed": 42,
+        "implementation_version": 1,
+        "training_seconds": 11.84723039995879
+      },
+      "games": 500,
+      "seed_range": [
+        20000,
+        20499
+      ],
+      "mean_sum": 432.876,
+      "reached_256": 370,
+      "success_256": 0.74,
+      "ms_per_move": 0.0006089108514827343,
+      "validation": {
+        "games": 200,
+        "mean_sum": 433.48,
+        "success_256": 0.755
+      },
+      "archive_raw_path": "history_archive_20261105/artifacts/exploration/raw/07_td4.csv",
+      "archive_raw_sha256": "897e0ea9cd36f04abc48af2b5e830afbf87fc819deb807a3d3491f9dd03501d8"
+    },
+    {
+      "group": "exploration",
+      "id": "08_td5_no_sym",
+      "config": {
+        "id": "08_td5_no_sym",
+        "label": "5-tuple TD(0) 无对称共享",
+        "method": 6,
+        "width": 5,
+        "symmetry": false,
+        "episodes": 100000,
+        "train_seed": 42,
+        "implementation_version": 1,
+        "training_seconds": 4.403931500040926
+      },
+      "games": 500,
+      "seed_range": [
+        20000,
+        20499
+      ],
+      "mean_sum": 417.688,
+      "reached_256": 361,
+      "success_256": 0.722,
+      "ms_per_move": 0.000513409647040173,
+      "validation": {
+        "games": 200,
+        "mean_sum": 410.83,
+        "success_256": 0.77
+      },
+      "archive_raw_path": "history_archive_20261105/artifacts/exploration/raw/08_td5_no_sym.csv",
+      "archive_raw_sha256": "9e9d3cd3eb7b639d1639e1fe86849ee4ef5e1a2d94d5a32d6a88cd4d4fd607c2"
+    },
+    {
+      "group": "exploration",
+      "id": "09_td5",
+      "config": {
+        "id": "09_td5",
+        "label": "5-tuple 对称 TD(0) 总和奖励",
+        "method": 6,
+        "width": 5,
+        "episodes": 100000,
+        "train_seed": 42,
+        "implementation_version": 1,
+        "training_seconds": 19.85945750004612
+      },
+      "games": 500,
+      "seed_range": [
+        20000,
+        20499
+      ],
+      "mean_sum": 605.764,
+      "reached_256": 445,
+      "success_256": 0.89,
+      "ms_per_move": 0.0007603713273272817,
+      "validation": {
+        "games": 200,
+        "mean_sum": 614.58,
+        "success_256": 0.93
+      },
+      "archive_raw_path": "history_archive_20261105/artifacts/exploration/raw/09_td5.csv",
+      "archive_raw_sha256": "1bf57560d64904922d2b9859dd1ff52307a0cab65a45137bf4864736e58ff61f"
+    },
+    {
+      "group": "exploration",
+      "id": "10_td_merge",
+      "config": {
+        "id": "10_td_merge",
+        "label": "5-tuple TD 传统合并分奖励",
+        "method": 6,
+        "width": 5,
+        "objective": 1,
+        "episodes": 100000,
+        "train_seed": 42,
+        "implementation_version": 1,
+        "training_seconds": 20.602781699970365
+      },
+      "games": 500,
+      "seed_range": [
+        20000,
+        20499
+      ],
+      "mean_sum": 592.64,
+      "reached_256": 442,
+      "success_256": 0.884,
+      "ms_per_move": 0.0007477755751861397,
+      "validation": {
+        "games": 200,
+        "mean_sum": 597.2,
+        "success_256": 0.91
+      },
+      "archive_raw_path": "history_archive_20261105/artifacts/exploration/raw/10_td_merge.csv",
+      "archive_raw_sha256": "fa46704d2baac6837abe97ac177bde9cfe680306eaeb2c2cc9e29931869287e1"
+    },
+    {
+      "group": "exploration",
+      "id": "11_optimistic",
+      "config": {
+        "id": "11_optimistic",
+        "label": "5-tuple 乐观初始化 TD",
+        "method": 6,
+        "width": 5,
+        "optimism": 300,
+        "episodes": 100000,
+        "train_seed": 42,
+        "implementation_version": 1,
+        "training_seconds": 18.837167299934663
+      },
+      "games": 500,
+      "seed_range": [
+        20000,
+        20499
+      ],
+      "mean_sum": 540.784,
+      "reached_256": 472,
+      "success_256": 0.944,
+      "ms_per_move": 0.0007942607289613468,
+      "validation": {
+        "games": 200,
+        "mean_sum": 532.64,
+        "success_256": 0.92
+      },
+      "archive_raw_path": "history_archive_20261105/artifacts/exploration/raw/11_optimistic.csv",
+      "archive_raw_sha256": "c9907063d99a4e71bd00ec29a942bfba6dabbb328085f6d340d52082275204ec"
+    },
+    {
+      "group": "exploration",
+      "id": "12_lambda",
+      "config": {
+        "id": "12_lambda",
+        "label": "5-tuple 离线 TD(lambda=0.5)",
+        "method": 6,
+        "width": 5,
+        "lam": 0.5,
+        "episodes": 100000,
+        "train_seed": 42,
+        "implementation_version": 1,
+        "training_seconds": 18.7761266999878
+      },
+      "games": 500,
+      "seed_range": [
+        20000,
+        20499
+      ],
+      "mean_sum": 576.324,
+      "reached_256": 422,
+      "success_256": 0.844,
+      "ms_per_move": 0.000752784850319075,
+      "validation": {
+        "games": 200,
+        "mean_sum": 582.18,
+        "success_256": 0.855
+      },
+      "archive_raw_path": "history_archive_20261105/artifacts/exploration/raw/12_lambda.csv",
+      "archive_raw_sha256": "90da04c6800c84a99d8a68151113dc9df917c60d5ca81457daefba88fc25ebd4"
+    },
+    {
+      "group": "exploration",
+      "id": "13_target",
+      "config": {
+        "id": "13_target",
+        "label": "5-tuple TD 总和+首次256奖励",
+        "method": 6,
+        "width": 5,
+        "objective": 2,
+        "episodes": 100000,
+        "train_seed": 42,
+        "implementation_version": 1,
+        "training_seconds": 18.406152099953033
+      },
+      "games": 500,
+      "seed_range": [
+        20000,
+        20499
+      ],
+      "mean_sum": 482.92,
+      "reached_256": 434,
+      "success_256": 0.868,
+      "ms_per_move": 0.0008984684267653923,
+      "validation": {
+        "games": 200,
+        "mean_sum": 488.13,
+        "success_256": 0.905
+      },
+      "archive_raw_path": "history_archive_20261105/artifacts/exploration/raw/13_target.csv",
+      "archive_raw_sha256": "30232b28cf31d0abc4d43840f6654a60f36dfaad6bc3ec76f64133f45d60fcf9"
+    },
+    {
+      "group": "exploration",
+      "id": "14_td6",
+      "config": {
+        "id": "14_td6",
+        "label": "6-tuple 对称 TD 总和+首次256奖励",
+        "method": 6,
+        "width": 6,
+        "objective": 2,
+        "episodes": 100000,
+        "train_seed": 42,
+        "implementation_version": 1,
+        "training_seconds": 11.233228700002655
+      },
+      "games": 500,
+      "seed_range": [
+        20000,
+        20499
+      ],
+      "mean_sum": 401.52,
+      "reached_256": 333,
+      "success_256": 0.666,
+      "ms_per_move": 0.000891141935165294,
+      "validation": {
+        "games": 200,
+        "mean_sum": 387.17,
+        "success_256": 0.575
+      },
+      "archive_raw_path": "history_archive_20261105/artifacts/exploration/raw/14_td6.csv",
+      "archive_raw_sha256": "7ae0a49dcfd5ddded5735a0c4935e7f495a5d01adcabe8c9f334124161b623cd"
+    },
+    {
+      "group": "exploration",
+      "id": "15_hybrid_d2",
+      "config": {
+        "id": "15_hybrid_d2",
+        "label": "验证集最佳 TD + Expectimax 深度2",
+        "method": 6,
+        "hybrid": true,
+        "depth": 2,
+        "source": "09_td5",
+        "objective": 0,
+        "training_seconds": 0
+      },
+      "games": 500,
+      "seed_range": [
+        20000,
+        20499
+      ],
+      "mean_sum": 670.876,
+      "reached_256": 471,
+      "success_256": 0.942,
+      "ms_per_move": 0.006153109764247438,
+      "validation": {
+        "games": 200,
+        "mean_sum": 667.68,
+        "success_256": 0.95
+      },
+      "archive_raw_path": "history_archive_20261105/artifacts/exploration/raw/15_hybrid_d2.csv",
+      "archive_raw_sha256": "284bc33e114308017fe7cd1bc5752b8e6276b2ec5f21a275dd093bdbfdab254a"
+    },
+    {
+      "group": "exploration",
+      "id": "16_hybrid_d3",
+      "config": {
+        "id": "16_hybrid_d3",
+        "label": "验证集最佳 TD + Expectimax 深度3",
+        "method": 6,
+        "hybrid": true,
+        "depth": 3,
+        "source": "09_td5",
+        "objective": 0,
+        "training_seconds": 0
+      },
+      "games": 500,
+      "seed_range": [
+        20000,
+        20499
+      ],
+      "mean_sum": 716.068,
+      "reached_256": 479,
+      "success_256": 0.958,
+      "ms_per_move": 0.08854825629218682,
+      "validation": {
+        "games": 200,
+        "mean_sum": 707.69,
+        "success_256": 0.96
+      },
+      "archive_raw_path": "history_archive_20261105/artifacts/exploration/raw/16_hybrid_d3.csv",
+      "archive_raw_sha256": "3cbe6fa3f20e4bd1ac7fa10faf94f3969897f59a3daa6ad0a923509ad7839a04"
+    },
+    {
+      "group": "refinement",
+      "id": "09_td5",
+      "config": {
+        "id": "09_td5",
+        "label": "5-tuple 对称 TD(0) 总和奖励",
+        "method": 6,
+        "width": 5,
+        "episodes": 300000,
+        "train_seed": 42,
+        "implementation_version": 1,
+        "training_seconds": 64.90139779995661
+      },
+      "games": 500,
+      "seed_range": [
+        20000,
+        20499
+      ],
+      "mean_sum": 629.836,
+      "reached_256": 465,
+      "success_256": 0.93,
+      "ms_per_move": 0.0007366756962161271,
+      "validation": {
+        "games": 200,
+        "mean_sum": 637.62,
+        "success_256": 0.93
+      },
+      "archive_raw_path": "history_archive_20261105/artifacts/refinement/raw/09_td5.csv",
+      "archive_raw_sha256": "c0bebae67f2df30de8b6849bfd31116b212baf98e38d430446c1a6b2ba2cd0b8"
+    },
+    {
+      "group": "refinement",
+      "id": "11_optimistic",
+      "config": {
+        "id": "11_optimistic",
+        "label": "5-tuple 乐观初始化 TD",
+        "method": 6,
+        "width": 5,
+        "optimism": 300,
+        "episodes": 300000,
+        "train_seed": 42,
+        "implementation_version": 1,
+        "training_seconds": 64.304411200108
+      },
+      "games": 500,
+      "seed_range": [
+        20000,
+        20499
+      ],
+      "mean_sum": 618.684,
+      "reached_256": 452,
+      "success_256": 0.904,
+      "ms_per_move": 0.000746309989426039,
+      "validation": {
+        "games": 200,
+        "mean_sum": 639.28,
+        "success_256": 0.94
+      },
+      "archive_raw_path": "history_archive_20261105/artifacts/refinement/raw/11_optimistic.csv",
+      "archive_raw_sha256": "3e53e121bfbc3a90c64a429eee87cd8227a5252b112f4b6b2b484cfc920485a5"
+    },
+    {
+      "group": "refinement",
+      "id": "13_target",
+      "config": {
+        "id": "13_target",
+        "label": "5-tuple TD 总和+首次256奖励",
+        "method": 6,
+        "width": 5,
+        "objective": 2,
+        "episodes": 300000,
+        "train_seed": 42,
+        "implementation_version": 1,
+        "training_seconds": 65.45285200001672
+      },
+      "games": 500,
+      "seed_range": [
+        20000,
+        20499
+      ],
+      "mean_sum": 594.996,
+      "reached_256": 453,
+      "success_256": 0.906,
+      "ms_per_move": 0.0007873718485200307,
+      "validation": {
+        "games": 200,
+        "mean_sum": 605.86,
+        "success_256": 0.89
+      },
+      "archive_raw_path": "history_archive_20261105/artifacts/refinement/raw/13_target.csv",
+      "archive_raw_sha256": "f18736ef8750326dd97b66e4be49bb2a7147ad9a92c9f7beb744e046571b3881"
+    },
+    {
+      "group": "round2",
+      "id": "19_low_epsilon",
+      "config": {
+        "id": "19_low_epsilon",
+        "label": "低探索率TD续训",
+        "source": "09_td5",
+        "episodes": 200000,
+        "seed": 20261105,
+        "epsilon": 0.0005,
+        "alpha": 0.01,
+        "advanced": true,
+        "kind": 0,
+        "depth": 3,
+        "training_seconds": 60.95673140010331
+      },
+      "games": 300,
+      "seed_range": [
+        71000,
+        71299
+      ],
+      "mean_sum": 708.7866666666666,
+      "reached_256": 292,
+      "success_256": 0.9733333333333334,
+      "ms_per_move": 0.09227902110247317,
+      "validation": {
+        "games": 300,
+        "mean_sum": 710.8733333333333,
+        "success_256": 0.9733333333333334
+      },
+      "archive_raw_path": "history_archive_20261105/artifacts/round2/raw/19_low_epsilon.csv",
+      "archive_raw_sha256": "b0484c36563b32e0031bc46acd92f2817d4eaa725f69cbbe79d5d701570a0c00"
+    },
+    {
+      "group": "round2",
+      "id": "20_greedy_refine",
+      "config": {
+        "id": "20_greedy_refine",
+        "label": "无随机动作TD续训",
+        "source": "09_td5",
+        "episodes": 200000,
+        "seed": 20261105,
+        "epsilon": 0.0,
+        "alpha": 0.01,
+        "advanced": true,
+        "kind": 0,
+        "depth": 3,
+        "training_seconds": 58.75130360003095
+      },
+      "games": 300,
+      "seed_range": [
+        71000,
+        71299
+      ],
+      "mean_sum": 699.2266666666667,
+      "reached_256": 290,
+      "success_256": 0.9666666666666667,
+      "ms_per_move": 0.09325553936480847,
+      "validation": {
+        "games": 300,
+        "mean_sum": 709.6,
+        "success_256": 0.9766666666666667
+      },
+      "archive_raw_path": "history_archive_20261105/artifacts/round2/raw/20_greedy_refine.csv",
+      "archive_raw_sha256": "7780f1f76de244a3c40950b889eb3dcc32e20d98672c9a0631bc1459a68d14d9"
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "group": "exploration",
+      "a": "09_td5",
+      "b": "08_td5_no_sym",
+      "mean_sum_difference": 188.076,
+      "bootstrap_ci95": [
+        164.59959999999998,
+        211.85229999999999
+      ],
+      "bootstrap_repetitions": 10000,
+      "bootstrap_seed": 20261109,
+      "scope": "Fixed trained weights; excludes variation across training seeds"
+    },
+    {
+      "group": "exploration",
+      "a": "11_optimistic",
+      "b": "09_td5",
+      "mean_sum_difference": -64.98,
+      "bootstrap_ci95": [
+        -88.2925,
+        -41.92
+      ],
+      "bootstrap_repetitions": 10000,
+      "bootstrap_seed": 20261109,
+      "scope": "Fixed trained weights; excludes variation across training seeds"
+    },
+    {
+      "group": "exploration",
+      "a": "16_hybrid_d3",
+      "b": "15_hybrid_d2",
+      "mean_sum_difference": 45.192,
+      "bootstrap_ci95": [
+        21.2317,
+        69.20089999999999
+      ],
+      "bootstrap_repetitions": 10000,
+      "bootstrap_seed": 20261109,
+      "scope": "Fixed trained weights; excludes variation across training seeds"
+    },
+    {
+      "group": "round2",
+      "a": "19_low_epsilon",
+      "b": "20_greedy_refine",
+      "mean_sum_difference": 9.56,
+      "bootstrap_ci95": [
+        -16.401166666666665,
+        35.340333333333334
+      ],
+      "bootstrap_repetitions": 10000,
+      "bootstrap_seed": 20261109,
+      "scope": "Fixed trained weights; excludes variation across training seeds"
+    }
+  ],
+  "training_schedule": {
+    "exploration_and_refinement": "alpha=0.1 for first 70%, then 0.03; epsilon=0.02 for first 80%, then 0.002; 10000-episode batches",
+    "curriculum_note": "100k and 300k are separately trained runs, not a shared checkpoint trajectory",
+    "curve_scope": "Training batch statistics, including exploratory actions; not frozen-policy evaluation"
+  },
+  "optimistic_training_batches": [
+    {
+      "episodes": 70000,
+      "mean_sum": 390.3416,
+      "success_256": 0.7326,
+      "alpha": 0.1,
+      "epsilon": 0.02,
+      "seconds": 12.30472379992716
+    },
+    {
+      "episodes": 80000,
+      "mean_sum": 404.5334,
+      "success_256": 0.7615,
+      "alpha": 0.03,
+      "epsilon": 0.02,
+      "seconds": 14.178180699935183
+    },
+    {
+      "episodes": 90000,
+      "mean_sum": 489.9078,
+      "success_256": 0.91,
+      "alpha": 0.03,
+      "epsilon": 0.002,
+      "seconds": 16.4321670999052
+    },
+    {
+      "episodes": 100000,
+      "mean_sum": 519.6434,
+      "success_256": 0.9089,
+      "alpha": 0.03,
+      "epsilon": 0.002,
+      "seconds": 18.83713049988728
+    }
+  ],
+  "optimistic_training_log_sha256": "61dffefd2ead7a45e776ca3fa6da995bcfe8c12f5a9ccd0d9336b3a658fb33a1"
+}
