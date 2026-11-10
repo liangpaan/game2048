@@ -1,3 +1,5 @@
+> 最新的五分钟汇报大纲、素材与问答准备见 [presentation_materials](presentation_materials/README.md)。目录使用英文命名，不包含PPT模板；补充调参与更新后的MCTS结果见其中说明。本目录已有PDF、PPTX与LaTeX成品保留为此前版本，本次未同步修改。
+
 # 三方法实验报告与课程汇报
 
 汇报只介绍完整 Expectimax、MCTS、乐观5-tuple TD，顺序为完整搜索、采样搜索、学习估值。正文9页，按5分钟编排；另有2页问答备用。
